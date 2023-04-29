@@ -1,30 +1,55 @@
 using Godot;
 
 public partial class Blub : CharacterBody2D {
+  private float maxXVelocity = 300;
   public override void _Ready() {
   }
 
-  public override void _Process(double delta) {
+  public override void _Process(double deltaTime) {
     // move via arrow keys
-    var move = new Vector2();
+    var delta = new Vector2();
 
-    if (Input.IsActionPressed("ui_right")) {
-      move.X += 1;
+    if (Input.IsActionPressed("right")) {
+      delta.X += 60;
     }
 
-    if (Input.IsActionPressed("ui_left")) {
-      move.X -= 1;
+    if (Input.IsActionPressed("left")) {
+      delta.X -= 60;
     }
 
-    if (Input.IsActionPressed("ui_down")) {
-      move.Y += 1;
+    delta.Y += 50.0f;
+
+    if (delta.Y >= 10) {
+      delta.Y = 10;
     }
 
-    if (Input.IsActionPressed("ui_up")) {
-      move.Y -= 1;
+    // if we're on the ground, we can jump
+    if (IsOnFloor()) {
+      if (Input.IsActionJustPressed("jump")) {
+        delta.Y = -600;
+      }
     }
 
-    Velocity = move.Normalized() * 300;
+    Velocity += delta;
+
+    if (Velocity.X > maxXVelocity) {
+      Velocity = new Vector2(maxXVelocity, Velocity.Y);
+    }
+
+    if (Velocity.X < -maxXVelocity) {
+      Velocity = new Vector2(-maxXVelocity, Velocity.Y);
+    }
+
+    if (Velocity.Y > 200) {
+      Velocity = new Vector2(Velocity.X, 200);
+    }
+
+    if (
+      !Input.IsActionPressed("right") &&
+      !Input.IsActionPressed("left")
+    ) {
+      Velocity = new Vector2(Velocity.X * 0.92f, Velocity.Y);
+    }
 
     MoveAndSlide();
 
@@ -36,12 +61,12 @@ public partial class Blub : CharacterBody2D {
     var tilePosition = Root.Instance.Nodes.TileMap.LocalToMap(Position);
     var r = Root.Instance.Nodes;
 
-    var sourceId = r.TileMap.TileSet.GetSourceId(0);
-    r.TileMap.SetCell(
-      0,
-      tilePosition,
-      sourceId,
-      new Vector2I(2, 0)
-    );
+    // var sourceId = r.TileMap.TileSet.GetSourceId(0);
+    // r.TileMap.SetCell(
+    //   0,
+    //   tilePosition,
+    //   sourceId,
+    //   new Vector2I(2, 0)
+    // );
   }
 }

@@ -3,7 +3,7 @@
   "tasks": [
     {
       "label": "build",
-      "command": "/Users/grant/Downloads/Godot_csharp_b1.app/Contents/MacOS/Godot",
+      "command": "/Users/grant/Downloads/Godot.app/Contents/MacOS/Godot",
       "type": "process",
       "args": [
         "--build-solutions",
