@@ -1,11 +1,14 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
 using static Utils;
 
 public partial class Blub : CharacterBody2D {
+  public static bool IsInteracting = false;
+
   private float maxXVelocity = 300;
   public Vector2 FacingDirection = new Vector2(0, 0);
-  public static bool IsInteracting = false;
+  public Vector2 LastSafeSpot = new Vector2(0, 0);
 
   public override void _Ready() {
   }
@@ -15,7 +18,6 @@ public partial class Blub : CharacterBody2D {
 
     if (!IsInteracting) {
       ProcessKeyboardInput();
-      CheckForTilemapUpdates();
       CheckForDialog();
     }
   }
@@ -121,6 +123,33 @@ public partial class Blub : CharacterBody2D {
       Velocity = new Vector2(Velocity.X * 0.92f, Velocity.Y);
     }
 
+    if (IsOnFloor()) {
+      var positions = new List<Vector2> {
+        GlobalPosition + new Vector2(-20, 15),
+        GlobalPosition + new Vector2(0, 15),
+        GlobalPosition + new Vector2(20, 15),
+      };
+      var collisions = 0;
+
+      foreach (var position in positions) {
+        var collision = PhysicsServer2D.SpaceGetDirectState(GetWorld2D().Space).IntersectPoint(
+          new PhysicsPointQueryParameters2D {
+            Position = position,
+            CollideWithBodies = true,
+            CollideWithAreas = true,
+            CollisionMask = 1,
+          });
+
+        if (collision.Count > 0) {
+          collisions += 1;
+        }
+      }
+
+      if (collisions == 3) {
+        LastSafeSpot = GlobalPosition;
+      }
+    }
+
     MoveAndSlide();
 
     var numCollisions = GetSlideCollisionCount();
@@ -133,24 +162,33 @@ public partial class Blub : CharacterBody2D {
       if (collider is TileMap tm) {
         var rid = collision.GetColliderRid();
         var layer = PhysicsServer2D.BodyGetCollisionLayer(rid);
-
         var mask = Globals.LayerMasks[layer];
-        print(mask);
+
+        if (mask == LayerMask.Spikes) {
+          Respawn();
+        }
       }
     }
+
   }
 
-  private void CheckForTilemapUpdates() {
-    var mousePosition = GetViewport().GetMousePosition();
-    var tilePosition = Root.Instance.Nodes.TileMap.LocalToMap(Position);
-    var r = Root.Instance.Nodes;
+  private void Respawn() {
+    print("Respawn");
 
-    // var sourceId = r.TileMap.TileSet.GetSourceId(0);
-    // r.TileMap.SetCell(
-    //   0,
-    //   tilePosition,
-    //   sourceId,
-    //   new Vector2I(2, 0)
-    // );
+    GlobalPosition = LastSafeSpot;
   }
+
+  // private void CheckForTilemapUpdates() {
+  //   var mousePosition = GetViewport().GetMousePosition();
+  //   var tilePosition = Root.Instance.Nodes.TileMap.LocalToMap(Position);
+  //   var r = Root.Instance.Nodes;
+
+  //   // var sourceId = r.TileMap.TileSet.GetSourceId(0);
+  //   // r.TileMap.SetCell(
+  //   //   0,
+  //   //   tilePosition,
+  //   //   sourceId,
+  //   //   new Vector2I(2, 0)
+  //   // );
+  // }
 }
