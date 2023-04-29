@@ -1,0 +1,12 @@
+<Project Sdk="Godot.NET.Sdk/4.0.2">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <NoWarn>8019</NoWarn>
+    <NoWarn>8524</NoWarn>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Nullable>enable</Nullable>
+
+    <DefaultItemExcludes>$(DefaultItemExcludes);script_templates/**/*.cs</DefaultItemExcludes>
+  </PropertyGroup>
+</Project>
