@@ -156,6 +156,10 @@ public partial class Blub : CharacterBody2D {
       Velocity = new Vector2(-maxXVelocity, Velocity.Y);
     }
 
+    if (!Input.IsActionPressed("jump") && Velocity.Y < 0) {
+      Velocity = new Vector2(Velocity.X, 0.0f);
+    }
+
     if (
       !Input.IsActionPressed("right") &&
       !Input.IsActionPressed("left")

@@ -10,7 +10,7 @@ public partial class CannonBall : RigidBody2D {
     ContactMonitor = true;
     MaxContactsReported = 32;
 
-    ApplyImpulse(Facing * 300);
+    ApplyImpulse(Facing * 200);
 
     BodyEntered += (body) => {
       Explode();

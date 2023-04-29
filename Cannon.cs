@@ -16,7 +16,7 @@ public partial class Cannon : Node2D {
   public override void _Process(double delta) {
     _time += delta;
 
-    if (_time > 1) {
+    if (_time > 2) {
       _time = 0;
 
       var cannonBall = (CannonBall)CannonBallScene.Instantiate();
