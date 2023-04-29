@@ -15,6 +15,12 @@ public class DialogText {
       "OWW.",
       "That was a long way to fall!",
       "Dang it, granny. Why do you have such a huge pit right in front of your house? That seems like a safety hazard.",
+    },
+
+    [DialogTriggerName.OhShootSpikes] = new List<string> {
+      "Oh no! My worst enemy!",
+      "Spikes!",
+      "I better be careful.",
     }
   };
 

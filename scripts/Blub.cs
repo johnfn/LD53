@@ -4,7 +4,13 @@ using Godot;
 using static Utils;
 
 public partial class Blub : CharacterBody2D {
-  public static bool IsInteracting = false;
+  public static bool IsFrozen {
+    get {
+      return DialogLock || DeathLock;
+    }
+  }
+  public static bool DialogLock = false;
+  public static bool DeathLock = false;
 
   private float maxXVelocity = 300;
   public Vector2 FacingDirection = new Vector2(0, 0);
@@ -16,9 +22,39 @@ public partial class Blub : CharacterBody2D {
   public override void _Process(double deltaTime) {
     UpdateCamera();
 
-    if (!IsInteracting) {
+    if (!IsFrozen) {
+      LookForCheckpoint();
       ProcessKeyboardInput();
       CheckForDialog();
+    }
+  }
+
+  private void LookForCheckpoint() {
+    if (IsOnFloor()) {
+      var positions = new List<Vector2> {
+        GlobalPosition + new Vector2(-20, 15),
+        GlobalPosition + new Vector2(0, 15),
+        GlobalPosition + new Vector2(20, 15),
+      };
+      var collisions = 0;
+
+      foreach (var position in positions) {
+        var collision = PhysicsServer2D.SpaceGetDirectState(GetWorld2D().Space).IntersectPoint(
+          new PhysicsPointQueryParameters2D {
+            Position = position,
+            CollideWithBodies = true,
+            CollideWithAreas = true,
+            CollisionMask = 1,
+          });
+
+        if (collision.Count > 0) {
+          collisions += 1;
+        }
+      }
+
+      if (collisions == 3) {
+        LastSafeSpot = GlobalPosition;
+      }
     }
   }
 
@@ -45,13 +81,17 @@ public partial class Blub : CharacterBody2D {
   }
 
   private async Task TriggerDialog(DialogTrigger trigger, DialogTriggerName name) {
-    IsInteracting = true;
+    if (IsFrozen) {
+      return;
+    }
+
+    DialogLock = true;
 
     trigger.QueueFree();
 
     await Root.Instance.Nodes.StaticCanvasLayer_Dialog.RunDialog(name);
 
-    IsInteracting = false;
+    DialogLock = false;
   }
 
   private void UpdateCamera() {
@@ -123,33 +163,6 @@ public partial class Blub : CharacterBody2D {
       Velocity = new Vector2(Velocity.X * 0.92f, Velocity.Y);
     }
 
-    if (IsOnFloor()) {
-      var positions = new List<Vector2> {
-        GlobalPosition + new Vector2(-20, 15),
-        GlobalPosition + new Vector2(0, 15),
-        GlobalPosition + new Vector2(20, 15),
-      };
-      var collisions = 0;
-
-      foreach (var position in positions) {
-        var collision = PhysicsServer2D.SpaceGetDirectState(GetWorld2D().Space).IntersectPoint(
-          new PhysicsPointQueryParameters2D {
-            Position = position,
-            CollideWithBodies = true,
-            CollideWithAreas = true,
-            CollisionMask = 1,
-          });
-
-        if (collision.Count > 0) {
-          collisions += 1;
-        }
-      }
-
-      if (collisions == 3) {
-        LastSafeSpot = GlobalPosition;
-      }
-    }
-
     MoveAndSlide();
 
     var numCollisions = GetSlideCollisionCount();
@@ -165,17 +178,51 @@ public partial class Blub : CharacterBody2D {
         var mask = Globals.LayerMasks[layer];
 
         if (mask == LayerMask.Spikes) {
-          Respawn();
+          DieAndRespawn();
         }
+      }
+
+      if (collider is CannonBall c) {
+        c.Explode();
+        DieAndRespawn();
+      }
+    }
+  }
+
+  public async void DieAndRespawn() {
+    if (IsFrozen) {
+      return;
+    }
+
+    DeathLock = true;
+
+    for (var i = 0; i < 20; i++) {
+      await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+
+      Scale += new Vector2(0.04f, 0.04f);
+      Modulate = new Color(1, 1, 1, 1.0f - i * 0.05f);
+    }
+
+    Scale = new Vector2(1, 1);
+    Modulate = new Color(1, 1, 1, 1);
+
+    GlobalPosition = LastSafeSpot;
+
+    DeathLock = false;
+
+    for (var i = 0; i < 40; i++) {
+      await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+
+      // do a flicker effect
+
+      if (i % 8 < 4) {
+        Modulate = new Color(0.2f, 1, 1, 0);
+      } else {
+        Modulate = new Color(1, 1, 1, 0.3f);
       }
     }
 
-  }
-
-  private void Respawn() {
-    print("Respawn");
-
-    GlobalPosition = LastSafeSpot;
+    Modulate = new Color(1, 1, 1, 1);
   }
 
   // private void CheckForTilemapUpdates() {
