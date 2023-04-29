@@ -122,6 +122,22 @@ public partial class Blub : CharacterBody2D {
     }
 
     MoveAndSlide();
+
+    var numCollisions = GetSlideCollisionCount();
+
+    for (var i = 0; i < numCollisions; i++) {
+      var collision = GetSlideCollision(i);
+      var collider = collision.GetCollider();
+      var position = collision.GetPosition();
+
+      if (collider is TileMap tm) {
+        var rid = collision.GetColliderRid();
+        var layer = PhysicsServer2D.BodyGetCollisionLayer(rid);
+
+        var mask = Globals.LayerMasks[layer];
+        print(mask);
+      }
+    }
   }
 
   private void CheckForTilemapUpdates() {

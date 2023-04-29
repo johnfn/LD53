@@ -24,6 +24,26 @@ public partial class Root : Node2D {
       }
     }
 
+    private TileMap? _DarkWorld;
+    public TileMap DarkWorld {
+      get {
+        if (_DarkWorld == null) {
+          _DarkWorld = parent.GetNode<TileMap>("DarkWorld");
+        }
+        return _DarkWorld;
+      }
+    }
+
+    private Sprite2D? _FakeBlub;
+    public Sprite2D FakeBlub {
+      get {
+        if (_FakeBlub == null) {
+          _FakeBlub = parent.GetNode<Sprite2D>("FakeBlub");
+        }
+        return _FakeBlub;
+      }
+    }
+
     private Camera2D? _Camera2D;
     public Camera2D Camera2D {
       get {
@@ -51,36 +71,6 @@ public partial class Root : Node2D {
           _StaticCanvasLayer = parent.GetNode<CanvasLayer>("StaticCanvasLayer");
         }
         return _StaticCanvasLayer;
-      }
-    }
-
-    private Node2D? _Mailbox;
-    public Node2D Mailbox {
-      get {
-        if (_Mailbox == null) {
-          _Mailbox = parent.GetNode<Node2D>("Mailbox");
-        }
-        return _Mailbox;
-      }
-    }
-
-    private Sprite2D? _Mailbox_Graphic;
-    public Sprite2D Mailbox_Graphic {
-      get {
-        if (_Mailbox_Graphic == null) {
-          _Mailbox_Graphic = parent.GetNode<Sprite2D>("Mailbox/Graphic");
-        }
-        return _Mailbox_Graphic;
-      }
-    }
-
-    private Sprite2D? _Mailbox_RippleEffect;
-    public Sprite2D Mailbox_RippleEffect {
-      get {
-        if (_Mailbox_RippleEffect == null) {
-          _Mailbox_RippleEffect = parent.GetNode<Sprite2D>("Mailbox/RippleEffect");
-        }
-        return _Mailbox_RippleEffect;
       }
     }
 
@@ -121,6 +111,16 @@ public partial class Root : Node2D {
           _StaticCanvasLayer_Dialog = parent.GetNode<Dialog>("StaticCanvasLayer/Dialog");
         }
         return _StaticCanvasLayer_Dialog;
+      }
+    }
+
+    private Mailbox? _Mailbox;
+    public Mailbox Mailbox {
+      get {
+        if (_Mailbox == null) {
+          _Mailbox = parent.GetNode<Mailbox>("Mailbox");
+        }
+        return _Mailbox;
       }
     }
 
