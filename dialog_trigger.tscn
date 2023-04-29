@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu2vk3novv12j"]
+
+[ext_resource type="Script" path="res://DialogTrigger.cs" id="1_6l7cv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_71vyr"]
+size = Vector2(111, 94)
+
+[node name="DialogTrigger" type="Node2D"]
+position = Vector2(269, 142)
+script = ExtResource("1_6l7cv")
+
+[node name="Area" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="Area"]
+position = Vector2(28.5, 14)
+shape = SubResource("RectangleShape2D_71vyr")

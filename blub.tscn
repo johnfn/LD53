@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp5iapgyc1h2b"]
+
+[ext_resource type="Script" path="res://scripts/Blub.cs" id="1_g3qqm"]
+[ext_resource type="Texture2D" uid="uid://c16y0nr2tjyvv" path="res://assets/Blub.png" id="2_bm5wa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpdwq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rwl2"]
+
+[node name="Blub" type="CharacterBody2D"]
+position = Vector2(131, 65)
+script = ExtResource("1_g3qqm")
+
+[node name="Graphic" type="Sprite2D" parent="."]
+position = Vector2(1, -2)
+texture = ExtResource("2_bm5wa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qpdwq")
+
+[node name="InteractionArea" type="Area2D" parent="."]
+
+[node name="Shape" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("RectangleShape2D_2rwl2")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cighlqxcgtwkt"]
+[gd_scene load_steps=10 format=3 uid="uid://cighlqxcgtwkt"]
 
 [ext_resource type="Script" path="res://scripts/Root.cs" id="1_g2nw5"]
 [ext_resource type="Texture2D" uid="uid://c0s6np8wr34b4" path="res://assets/tilesheet.png" id="2_epo2w"]
-[ext_resource type="Script" path="res://scripts/Blub.cs" id="2_laj22"]
-[ext_resource type="Texture2D" uid="uid://c16y0nr2tjyvv" path="res://assets/Blub.png" id="2_v7jbu"]
+[ext_resource type="PackedScene" uid="uid://bp5iapgyc1h2b" path="res://blub.tscn" id="3_mvtuh"]
+[ext_resource type="PackedScene" uid="uid://bu2vk3novv12j" path="res://dialog_trigger.tscn" id="4_0fiya"]
+[ext_resource type="Texture2D" uid="uid://dpylpemn7mpfg" path="res://assets/dialogbox.png" id="5_gcnhj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x8do0"]
 texture = ExtResource("2_epo2w")
@@ -64,7 +65,11 @@ tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_x8do0")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpdwq"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xpou0"]
+texture = ExtResource("5_gcnhj")
+
+[sub_resource type="Theme" id="Theme_74v02"]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_xpou0")
 
 [node name="Root" type="Node2D"]
 script = ExtResource("1_g2nw5")
@@ -82,17 +87,22 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
-[node name="Blub" type="CharacterBody2D" parent="."]
-position = Vector2(131, 65)
-script = ExtResource("2_laj22")
-
-[node name="Graphic" type="Sprite2D" parent="Blub"]
-position = Vector2(1, -2)
-texture = ExtResource("2_v7jbu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blub"]
-shape = SubResource("RectangleShape2D_qpdwq")
+[node name="Blub" parent="." instance=ExtResource("3_mvtuh")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
+
+[node name="DialogTrigger" parent="." instance=ExtResource("4_0fiya")]
+
+[node name="Dialog2" type="PanelContainer" parent="."]
+offset_left = 59.0
+offset_top = 530.0
+offset_right = 99.0
+offset_bottom = 570.0
+theme = SubResource("Theme_74v02")
+
+[node name="Label" type="Label" parent="Dialog2"]
+layout_mode = 2
+text = "asdfalsdfaklsjflaksdf klasdjhlkasjdhl asdf asdf asd fas dfa sdf asdf asdf asdf asd fasd fa sdfa sdf asdf asdf asd f"
+autowrap_mode = 2

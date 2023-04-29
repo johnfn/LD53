@@ -1,4 +1,5 @@
 using Godot;
+using static Utils;
 
 public partial class Blub : CharacterBody2D {
   private float maxXVelocity = 300;
@@ -10,6 +11,35 @@ public partial class Blub : CharacterBody2D {
     ProcessKeyboardInput();
     UpdateCamera();
     CheckForTilemapUpdates();
+    CheckForDialog();
+  }
+
+  private void CheckForDialog() {
+    var allAreas = Nodes.InteractionArea.GetOverlappingAreas();
+
+    if (allAreas.Count > 0) {
+      foreach (var area in allAreas) {
+        var parent = area.GetParent();
+
+        if (parent is DialogTrigger trigger) {
+          if (trigger.TriggerType == DialogTriggerType.Automatic) {
+            TriggerDialog(trigger, trigger.TriggerName);
+          } else if (trigger.TriggerType == DialogTriggerType.RequiresInteraction) {
+            if (Input.IsActionJustPressed("interact")) {
+              TriggerDialog(trigger, trigger.TriggerName);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  private void TriggerDialog(DialogTrigger trigger, DialogTriggerName name) {
+    trigger.HasBeenTriggered = true;
+
+    print(name);
+
+    // TODO: Destroy the trigger.
   }
 
   private void UpdateCamera() {
