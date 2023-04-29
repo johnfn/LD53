@@ -14,23 +14,43 @@ public partial class Dialog : PanelContainer {
     public DialogNodes(Dialog parent) {
       this.parent = parent;
     }
-    private MarginContainer? _MarginContainer;
-    public MarginContainer MarginContainer {
+    private VBoxContainer? _VBoxContainer;
+    public VBoxContainer VBoxContainer {
       get {
-        if (_MarginContainer == null) {
-          _MarginContainer = parent.GetNode<MarginContainer>("MarginContainer");
+        if (_VBoxContainer == null) {
+          _VBoxContainer = parent.GetNode<VBoxContainer>("VBoxContainer");
         }
-        return _MarginContainer;
+        return _VBoxContainer;
       }
     }
 
-    private Label? _MarginContainer_Label;
-    public Label MarginContainer_Label {
+    private MarginContainer? _VBoxContainer_MarginContainer;
+    public MarginContainer VBoxContainer_MarginContainer {
       get {
-        if (_MarginContainer_Label == null) {
-          _MarginContainer_Label = parent.GetNode<Label>("MarginContainer/Label");
+        if (_VBoxContainer_MarginContainer == null) {
+          _VBoxContainer_MarginContainer = parent.GetNode<MarginContainer>("VBoxContainer/MarginContainer");
         }
-        return _MarginContainer_Label;
+        return _VBoxContainer_MarginContainer;
+      }
+    }
+
+    private Label? _VBoxContainer_MarginContainer_Label;
+    public Label VBoxContainer_MarginContainer_Label {
+      get {
+        if (_VBoxContainer_MarginContainer_Label == null) {
+          _VBoxContainer_MarginContainer_Label = parent.GetNode<Label>("VBoxContainer/MarginContainer/Label");
+        }
+        return _VBoxContainer_MarginContainer_Label;
+      }
+    }
+
+    private Button? _VBoxContainer_Button;
+    public Button VBoxContainer_Button {
+      get {
+        if (_VBoxContainer_Button == null) {
+          _VBoxContainer_Button = parent.GetNode<Button>("VBoxContainer/Button");
+        }
+        return _VBoxContainer_Button;
       }
     }
 

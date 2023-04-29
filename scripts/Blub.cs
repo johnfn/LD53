@@ -1,18 +1,23 @@
+using System.Threading.Tasks;
 using Godot;
 using static Utils;
 
 public partial class Blub : CharacterBody2D {
   private float maxXVelocity = 300;
   public Vector2 FacingDirection = new Vector2(0, 0);
+  public static bool IsInteracting = false;
 
   public override void _Ready() {
   }
 
   public override void _Process(double deltaTime) {
-    ProcessKeyboardInput();
     UpdateCamera();
-    CheckForTilemapUpdates();
-    CheckForDialog();
+
+    if (!IsInteracting) {
+      ProcessKeyboardInput();
+      CheckForTilemapUpdates();
+      CheckForDialog();
+    }
   }
 
   private void CheckForDialog() {
@@ -24,10 +29,10 @@ public partial class Blub : CharacterBody2D {
 
         if (parent is DialogTrigger trigger) {
           if (trigger.TriggerType == DialogTriggerType.Automatic) {
-            TriggerDialog(trigger, trigger.TriggerName);
+            var _ = TriggerDialog(trigger, trigger.TriggerName);
           } else if (trigger.TriggerType == DialogTriggerType.RequiresInteraction) {
             if (Input.IsActionJustPressed("interact")) {
-              TriggerDialog(trigger, trigger.TriggerName);
+              var _ = TriggerDialog(trigger, trigger.TriggerName);
             }
           }
         }
@@ -35,12 +40,14 @@ public partial class Blub : CharacterBody2D {
     }
   }
 
-  private void TriggerDialog(DialogTrigger trigger, DialogTriggerName name) {
+  private async Task TriggerDialog(DialogTrigger trigger, DialogTriggerName name) {
+    IsInteracting = true;
+
     trigger.QueueFree();
 
-    Root.Instance.Nodes.StaticCanvasLayer_Dialog.StartDialog(name);
+    await Root.Instance.Nodes.StaticCanvasLayer_Dialog.RunDialog(name);
 
-    print(name);
+    IsInteracting = false;
   }
 
   private void UpdateCamera() {
