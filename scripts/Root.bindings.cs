@@ -64,16 +64,6 @@ public partial class Root : Node2D {
       }
     }
 
-    private Node2D? _Camera2D_Node2D;
-    public Node2D Camera2D_Node2D {
-      get {
-        if (_Camera2D_Node2D == null) {
-          _Camera2D_Node2D = parent.GetNode<Node2D>("Camera2D/Node2D");
-        }
-        return _Camera2D_Node2D;
-      }
-    }
-
   }
 
   public RootNodes? _Nodes;
