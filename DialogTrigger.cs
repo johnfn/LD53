@@ -8,7 +8,8 @@ public enum DialogTriggerType {
 }
 
 public enum DialogTriggerName {
-  FirstInteraction
+  FirstInteraction,
+  SecondInteraction,
 }
 
 public partial class DialogTrigger : Node2D {

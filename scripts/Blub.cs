@@ -29,7 +29,9 @@ public partial class Blub : CharacterBody2D {
 
         if (parent is DialogTrigger trigger) {
           if (trigger.TriggerType == DialogTriggerType.Automatic) {
-            var _ = TriggerDialog(trigger, trigger.TriggerName);
+            if (IsOnFloor()) {
+              var _ = TriggerDialog(trigger, trigger.TriggerName);
+            }
           } else if (trigger.TriggerType == DialogTriggerType.RequiresInteraction) {
             if (Input.IsActionJustPressed("interact")) {
               var _ = TriggerDialog(trigger, trigger.TriggerName);

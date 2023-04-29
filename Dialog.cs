@@ -29,7 +29,13 @@ public partial class Dialog : PanelContainer {
         await ToSignal(GetTree().CreateTimer(0.02), SceneTreeTimer.SignalName.Timeout);
 
         Nodes.VBoxContainer_MarginContainer_Label.VisibleCharacters += 1;
+
+        if (Input.IsActionJustPressed("jump")) {
+          break;
+        }
       }
+
+      Nodes.VBoxContainer_MarginContainer_Label.VisibleCharacters = str.Length;
 
       Nodes.VBoxContainer_Button.Text = "Next (Space)";
 

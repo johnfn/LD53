@@ -34,6 +34,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private Node2D? _DialogTriggers;
+    public Node2D DialogTriggers {
+      get {
+        if (_DialogTriggers == null) {
+          _DialogTriggers = parent.GetNode<Node2D>("DialogTriggers");
+        }
+        return _DialogTriggers;
+      }
+    }
+
     private CanvasLayer? _StaticCanvasLayer;
     public CanvasLayer StaticCanvasLayer {
       get {
@@ -41,6 +51,36 @@ public partial class Root : Node2D {
           _StaticCanvasLayer = parent.GetNode<CanvasLayer>("StaticCanvasLayer");
         }
         return _StaticCanvasLayer;
+      }
+    }
+
+    private Node2D? _Mailbox;
+    public Node2D Mailbox {
+      get {
+        if (_Mailbox == null) {
+          _Mailbox = parent.GetNode<Node2D>("Mailbox");
+        }
+        return _Mailbox;
+      }
+    }
+
+    private Sprite2D? _Mailbox_Graphic;
+    public Sprite2D Mailbox_Graphic {
+      get {
+        if (_Mailbox_Graphic == null) {
+          _Mailbox_Graphic = parent.GetNode<Sprite2D>("Mailbox/Graphic");
+        }
+        return _Mailbox_Graphic;
+      }
+    }
+
+    private Sprite2D? _Mailbox_RippleEffect;
+    public Sprite2D Mailbox_RippleEffect {
+      get {
+        if (_Mailbox_RippleEffect == null) {
+          _Mailbox_RippleEffect = parent.GetNode<Sprite2D>("Mailbox/RippleEffect");
+        }
+        return _Mailbox_RippleEffect;
       }
     }
 
@@ -54,13 +94,23 @@ public partial class Root : Node2D {
       }
     }
 
-    private DialogTrigger? _DialogTrigger;
-    public DialogTrigger DialogTrigger {
+    private DialogTrigger? _DialogTriggers_FirstDialog;
+    public DialogTrigger DialogTriggers_FirstDialog {
       get {
-        if (_DialogTrigger == null) {
-          _DialogTrigger = parent.GetNode<DialogTrigger>("DialogTrigger");
+        if (_DialogTriggers_FirstDialog == null) {
+          _DialogTriggers_FirstDialog = parent.GetNode<DialogTrigger>("DialogTriggers/FirstDialog");
         }
-        return _DialogTrigger;
+        return _DialogTriggers_FirstDialog;
+      }
+    }
+
+    private DialogTrigger? _DialogTriggers_FallDialogTrigger;
+    public DialogTrigger DialogTriggers_FallDialogTrigger {
+      get {
+        if (_DialogTriggers_FallDialogTrigger == null) {
+          _DialogTriggers_FallDialogTrigger = parent.GetNode<DialogTrigger>("DialogTriggers/FallDialogTrigger");
+        }
+        return _DialogTriggers_FallDialogTrigger;
       }
     }
 

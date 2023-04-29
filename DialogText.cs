@@ -6,10 +6,18 @@ using System.Collections.Generic;
 public class DialogText {
   public static Dictionary<DialogTriggerName, List<string>> Dialogs = new Dictionary<DialogTriggerName, List<string>> {
     [DialogTriggerName.FirstInteraction] = new List<string> {
-      "Hello, I'm a dialog box.",
-      "I'm not sure why you're talking to me.",
+      "Hey, there's granny's house!",
+      "Right across that massive gap.",
+      "If only I could just jump across! That would be so easy!",
+    },
+
+    [DialogTriggerName.SecondInteraction] = new List<string> {
+      "OWW.",
+      "That was a long way to fall!",
+      "Dang it, granny. Why do you have such a huge pit right in front of your house? That seems like a safety hazard.",
     }
   };
+
   //   { DialogTriggerName.Bed,
   //   new List<string> {
   //     "Yo, I'm a bed.",
