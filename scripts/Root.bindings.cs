@@ -74,6 +74,36 @@ public partial class Root : Node2D {
       }
     }
 
+    private Label? _StaticCanvasLayer_Label;
+    public Label StaticCanvasLayer_Label {
+      get {
+        if (_StaticCanvasLayer_Label == null) {
+          _StaticCanvasLayer_Label = parent.GetNode<Label>("StaticCanvasLayer/Label");
+        }
+        return _StaticCanvasLayer_Label;
+      }
+    }
+
+    private CanvasLayer? _BackgroundCanvasLayer;
+    public CanvasLayer BackgroundCanvasLayer {
+      get {
+        if (_BackgroundCanvasLayer == null) {
+          _BackgroundCanvasLayer = parent.GetNode<CanvasLayer>("BackgroundCanvasLayer");
+        }
+        return _BackgroundCanvasLayer;
+      }
+    }
+
+    private Sprite2D? _BackgroundCanvasLayer_Sky;
+    public Sprite2D BackgroundCanvasLayer_Sky {
+      get {
+        if (_BackgroundCanvasLayer_Sky == null) {
+          _BackgroundCanvasLayer_Sky = parent.GetNode<Sprite2D>("BackgroundCanvasLayer/Sky");
+        }
+        return _BackgroundCanvasLayer_Sky;
+      }
+    }
+
     private Blub? _Blub;
     public Blub Blub {
       get {
@@ -104,6 +134,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private DialogTrigger? _DialogTriggers_OhShootSpikes;
+    public DialogTrigger DialogTriggers_OhShootSpikes {
+      get {
+        if (_DialogTriggers_OhShootSpikes == null) {
+          _DialogTriggers_OhShootSpikes = parent.GetNode<DialogTrigger>("DialogTriggers/OhShootSpikes");
+        }
+        return _DialogTriggers_OhShootSpikes;
+      }
+    }
+
     private Dialog? _StaticCanvasLayer_Dialog;
     public Dialog StaticCanvasLayer_Dialog {
       get {
@@ -121,6 +161,36 @@ public partial class Root : Node2D {
           _Mailbox = parent.GetNode<Mailbox>("Mailbox");
         }
         return _Mailbox;
+      }
+    }
+
+    private Cannon? _Cannon;
+    public Cannon Cannon {
+      get {
+        if (_Cannon == null) {
+          _Cannon = parent.GetNode<Cannon>("Cannon");
+        }
+        return _Cannon;
+      }
+    }
+
+    private CannonBall? _Cannonball;
+    public CannonBall Cannonball {
+      get {
+        if (_Cannonball == null) {
+          _Cannonball = parent.GetNode<CannonBall>("Cannonball");
+        }
+        return _Cannonball;
+      }
+    }
+
+    private VortexGun? _VortexGun;
+    public VortexGun VortexGun {
+      get {
+        if (_VortexGun == null) {
+          _VortexGun = parent.GetNode<VortexGun>("VortexGun");
+        }
+        return _VortexGun;
       }
     }
 

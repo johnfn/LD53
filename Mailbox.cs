@@ -71,7 +71,8 @@ public partial class Mailbox : Node2D {
         destTileMap.SetCell(
           0,
           destLocation,
-          sourceTileMap.GetCellSourceId(0, sourceLocation),
+          // sourceTileMap.GetCellSourceId(0, sourceLocation),
+          0, // TODO... lol. or maybe not. it works well enough.
           sourceTileMap.GetCellAtlasCoords(0, sourceLocation)
         );
 
@@ -96,11 +97,11 @@ public partial class Mailbox : Node2D {
 
   public override void _Draw() {
     foreach (var rect in sourceRects) {
-      DrawRect(rect, new Color(1, 0, 0, 0.4f));
+      DrawRect(rect, new Color(1, 0, 0, 0.1f));
     }
 
     foreach (var rect in destRects) {
-      DrawRect(rect, new Color(0, 0, 1, 0.4f));
+      DrawRect(rect, new Color(0, 0, 1, 0.1f));
     }
   }
 }

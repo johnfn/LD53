@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cn20y86hb7sr7"]
+
+[ext_resource type="Script" path="res://VortexGun.cs" id="1_gapga"]
+[ext_resource type="Texture2D" uid="uid://bnlkk1b3jmp8q" path="res://assets/reticle.png" id="2_qde4e"]
+[ext_resource type="PackedScene" uid="uid://dw30pcm2qfsbr" path="res://aim.tscn" id="3_mdayk"]
+
+[node name="VortexGun" type="Node2D"]
+script = ExtResource("1_gapga")
+
+[node name="Reticle" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("2_qde4e")
+
+[node name="Aim" parent="." instance=ExtResource("3_mdayk")]

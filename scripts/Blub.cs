@@ -21,12 +21,33 @@ public partial class Blub : CharacterBody2D {
 
   public override void _Process(double deltaTime) {
     UpdateCamera();
+    FaceCorrectDirection();
 
     if (!IsFrozen) {
       LookForCheckpoint();
       ProcessKeyboardInput();
       CheckForDialog();
     }
+  }
+
+  private void FaceCorrectDirection() {
+    var newFacingDirection = FacingDirection;
+
+    if (Input.IsActionPressed("right")) {
+      newFacingDirection.X = 1;
+    } else if (Input.IsActionPressed("left")) {
+      newFacingDirection.X = -1;
+    }
+
+    if (Input.IsActionPressed("down")) {
+      newFacingDirection.Y = 1;
+    } else if (Input.IsActionPressed("up")) {
+      newFacingDirection.Y = -1;
+    }
+
+    FacingDirection = newFacingDirection;
+
+    Nodes.Graphic.FlipH = FacingDirection.X < 0;
   }
 
   private void LookForCheckpoint() {
@@ -106,14 +127,6 @@ public partial class Blub : CharacterBody2D {
   private void ProcessKeyboardInput() {
     // move via arrow keys
     var delta = new Vector2();
-
-    FacingDirection = new Vector2(
-      (Input.IsActionPressed("right") ? 1 : 0) +
-      (Input.IsActionPressed("left") ? -1 : 0),
-      (Input.IsActionPressed("down") ? 1 : 0) +
-      (Input.IsActionPressed("up") ? -1 : 0) +
-      (IsOnFloor() && Input.IsActionPressed("jump") ? -1 : 0)
-    );
 
     // ensure no component of facing direction is greater than 1
     if (FacingDirection.Length() > 1) {

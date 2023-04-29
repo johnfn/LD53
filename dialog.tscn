@@ -1,14 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6kqd3g2qewxd"]
+[gd_scene load_steps=6 format=3 uid="uid://b6kqd3g2qewxd"]
 
-[ext_resource type="Texture2D" uid="uid://dpylpemn7mpfg" path="res://assets/dialogbox.png" id="1_dbrvb"]
+[ext_resource type="Texture2D" uid="uid://canwy1ykkebvd" path="res://assets/background.png" id="1_5aa4l"]
 [ext_resource type="Script" path="res://Dialog.cs" id="2_xl3l2"]
+[ext_resource type="FontFile" uid="uid://c4404rcqc4lxq" path="res://assets/FreePixel.ttf" id="3_teerf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xpou0"]
 content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-texture = ExtResource("1_dbrvb")
+texture = ExtResource("1_5aa4l")
 
 [sub_resource type="Theme" id="Theme_74v02"]
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_xpou0")
@@ -38,6 +39,7 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_teerf")
 theme_override_font_sizes/font_size = 30
 text = "asdf"
 autowrap_mode = 2

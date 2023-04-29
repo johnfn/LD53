@@ -24,16 +24,6 @@ public partial class Mailbox : Node2D {
       }
     }
 
-    private Sprite2D? _Graphic;
-    public Sprite2D Graphic {
-      get {
-        if (_Graphic == null) {
-          _Graphic = parent.GetNode<Sprite2D>("Graphic");
-        }
-        return _Graphic;
-      }
-    }
-
     private Sprite2D? _RippleEffect;
     public Sprite2D RippleEffect {
       get {
