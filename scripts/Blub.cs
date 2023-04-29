@@ -49,7 +49,11 @@ public partial class Blub : CharacterBody2D {
     delta.Y += 50.0f;
 
     if (delta.Y >= 10) {
-      delta.Y = 10;
+      if (Velocity.Y > 200) {
+        delta.Y = 3;
+      } else {
+        delta.Y = 10;
+      }
     }
 
     // if we're on the ground, we can jump
@@ -59,6 +63,7 @@ public partial class Blub : CharacterBody2D {
       }
     }
 
+
     Velocity += delta;
 
     if (Velocity.X > maxXVelocity) {
@@ -67,10 +72,6 @@ public partial class Blub : CharacterBody2D {
 
     if (Velocity.X < -maxXVelocity) {
       Velocity = new Vector2(-maxXVelocity, Velocity.Y);
-    }
-
-    if (Velocity.Y > 200) {
-      Velocity = new Vector2(Velocity.X, 200);
     }
 
     if (
