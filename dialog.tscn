@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6kqd3g2qewxd"]
+
+[ext_resource type="Texture2D" uid="uid://dpylpemn7mpfg" path="res://assets/dialogbox.png" id="1_dbrvb"]
+[ext_resource type="Script" path="res://Dialog.cs" id="2_xl3l2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xpou0"]
+texture = ExtResource("1_dbrvb")
+
+[sub_resource type="Theme" id="Theme_74v02"]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_xpou0")
+
+[node name="Dialog" type="PanelContainer"]
+custom_minimum_size = Vector2(600, 2.08165e-12)
+offset_left = 60.0
+offset_top = 314.0
+offset_right = 660.0
+offset_bottom = 375.0
+size_flags_vertical = 3
+theme = SubResource("Theme_74v02")
+script = ExtResource("2_xl3l2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "asdf"
+autowrap_mode = 2

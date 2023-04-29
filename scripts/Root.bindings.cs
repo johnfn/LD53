@@ -34,23 +34,13 @@ public partial class Root : Node2D {
       }
     }
 
-    private PanelContainer? _Dialog2;
-    public PanelContainer Dialog2 {
+    private CanvasLayer? _StaticCanvasLayer;
+    public CanvasLayer StaticCanvasLayer {
       get {
-        if (_Dialog2 == null) {
-          _Dialog2 = parent.GetNode<PanelContainer>("Dialog2");
+        if (_StaticCanvasLayer == null) {
+          _StaticCanvasLayer = parent.GetNode<CanvasLayer>("StaticCanvasLayer");
         }
-        return _Dialog2;
-      }
-    }
-
-    private Label? _Dialog2_Label;
-    public Label Dialog2_Label {
-      get {
-        if (_Dialog2_Label == null) {
-          _Dialog2_Label = parent.GetNode<Label>("Dialog2/Label");
-        }
-        return _Dialog2_Label;
+        return _StaticCanvasLayer;
       }
     }
 
@@ -71,6 +61,16 @@ public partial class Root : Node2D {
           _DialogTrigger = parent.GetNode<DialogTrigger>("DialogTrigger");
         }
         return _DialogTrigger;
+      }
+    }
+
+    private Dialog? _StaticCanvasLayer_Dialog;
+    public Dialog StaticCanvasLayer_Dialog {
+      get {
+        if (_StaticCanvasLayer_Dialog == null) {
+          _StaticCanvasLayer_Dialog = parent.GetNode<Dialog>("StaticCanvasLayer/Dialog");
+        }
+        return _StaticCanvasLayer_Dialog;
       }
     }
 

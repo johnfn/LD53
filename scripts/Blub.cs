@@ -4,6 +4,7 @@ using static Utils;
 public partial class Blub : CharacterBody2D {
   private float maxXVelocity = 300;
   public Vector2 FacingDirection = new Vector2(0, 0);
+
   public override void _Ready() {
   }
 
@@ -35,11 +36,11 @@ public partial class Blub : CharacterBody2D {
   }
 
   private void TriggerDialog(DialogTrigger trigger, DialogTriggerName name) {
-    trigger.HasBeenTriggered = true;
+    trigger.QueueFree();
+
+    Root.Instance.Nodes.StaticCanvasLayer_Dialog.StartDialog(name);
 
     print(name);
-
-    // TODO: Destroy the trigger.
   }
 
   private void UpdateCamera() {
