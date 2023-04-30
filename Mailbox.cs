@@ -5,6 +5,7 @@ using static Utils;
 
 public partial class Mailbox : Node2D {
   public bool PortalExists = false;
+  public bool IsActivated = false;
   public Vector2 PortalTopLeft;
   public Rect2 SourceRect;
   public Rect2 DestRect;

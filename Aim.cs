@@ -39,6 +39,13 @@ public partial class Aim : Node2D {
   }
 
   public override void _Draw() {
+    var mailbox = Root.Instance.Nodes.Mailbox;
+
+    if (!mailbox.IsActivated) {
+      Nodes.Reticle.Visible = false;
+      return;
+    }
+
     var start = Vector2.Zero;
     var end = ToLocal(GetGlobalMousePosition());
     var endReasonablyCloseToMouse = true;
