@@ -8,7 +8,7 @@ public partial class Mailbox : Node2D {
   public Vector2 GlobalPortalLocation;
   public Rect2 SourceRect;
   public Rect2 DestRect;
-  public int PortalRadius = 3;
+  public static int PortalRadius = 3;
 
   public override void _Process(double delta) {
     var fakeBlub = Root.Instance.Nodes.FakeBlub;

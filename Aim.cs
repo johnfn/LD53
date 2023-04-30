@@ -72,6 +72,7 @@ public partial class Aim : Node2D {
     }
 
     if (nullableEnd == null) {
+      Nodes.SourceBackground.Visible = false;
       return;
     }
 
@@ -109,6 +110,14 @@ public partial class Aim : Node2D {
 
     Nodes.Reticle.GlobalPosition = tilePosition;
 
-    // TODO: If the reticle is on a wall, we should push it closer to the source.
+    Nodes.SourceBackground.Visible = true;
+    Nodes.SourceBackground.GlobalPosition = Nodes.Reticle.GlobalPosition - new Vector2(
+      Mailbox.PortalRadius * 32,
+      Mailbox.PortalRadius * 32
+    );
+    Nodes.SourceBackground.Scale = new Vector2 {
+      X = (Mailbox.PortalRadius * 2 * 32) / Nodes.SourceBackground.Texture.GetSize().X,
+      Y = (Mailbox.PortalRadius * 2 * 32) / Nodes.SourceBackground.Texture.GetSize().Y,
+    };
   }
 }

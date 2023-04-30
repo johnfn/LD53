@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw30pcm2qfsbr"]
+[gd_scene load_steps=8 format=3 uid="uid://dw30pcm2qfsbr"]
 
 [ext_resource type="Script" path="res://Aim.cs" id="1_bnc0i"]
 [ext_resource type="Texture2D" uid="uid://bnlkk1b3jmp8q" path="res://assets/reticle.png" id="2_i54df"]
+[ext_resource type="Texture2D" uid="uid://b3sgumv72o0a6" path="res://assets/transparent.png" id="3_1g6ef"]
 
 [sub_resource type="Animation" id="Animation_v54p7"]
 resource_name = "Reticle"
@@ -23,6 +24,35 @@ _data = {
 "Reticle": SubResource("Animation_v54p7")
 }
 
+[sub_resource type="Shader" id="Shader_k2jqa"]
+code = "shader_type canvas_item;
+
+uniform float border_width : hint_range(0, 10) = 4.0;
+uniform vec4 border_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec2 texture_size = vec2(100, 100);
+
+void fragment() {
+    vec2 uv = UV;
+    float left_edge = border_width / texture_size.x;
+    float right_edge = 1.0 - left_edge;
+    float top_edge = border_width / texture_size.y;
+    float bottom_edge = 1.0 - top_edge;
+
+    vec4 tex_color = texture(TEXTURE, uv);
+
+    if (uv.x < left_edge || uv.x > right_edge || uv.y < top_edge || uv.y > bottom_edge) {
+        COLOR = border_color;
+    } else {
+        COLOR = tex_color;
+    }
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rrf8i"]
+shader = SubResource("Shader_k2jqa")
+shader_parameter/border_width = 4.0
+shader_parameter/border_color = Color(1, 0.435294, 0.396078, 0.188235)
+shader_parameter/texture_size = Vector2(100, 100)
+
 [node name="Aim" type="Node2D"]
 script = ExtResource("1_bnc0i")
 
@@ -34,3 +64,10 @@ centered = false
 libraries = {
 "": SubResource("AnimationLibrary_sw5cc")
 }
+
+[node name="SourceBackground" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.152941)
+material = SubResource("ShaderMaterial_rrf8i")
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("3_1g6ef")
+centered = false
