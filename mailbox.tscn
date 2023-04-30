@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://g2suktq4d3b7"]
+[gd_scene load_steps=20 format=3 uid="uid://g2suktq4d3b7"]
 
 [ext_resource type="Script" path="res://Mailbox.cs" id="1_enhfc"]
 [ext_resource type="Texture2D" uid="uid://de5oo8vtjhmh0" path="res://assets/mailbox.png" id="1_yjd0e"]
 [ext_resource type="Texture2D" uid="uid://bb6u5qh36d534" path="res://assets/simplebackground.png" id="5_oeskr"]
+[ext_resource type="Texture2D" uid="uid://0sgv1b0lv1hl" path="res://assets/particle.png" id="5_rwjy1"]
 [ext_resource type="Shader" path="res://border.gdshader" id="6_jlyew"]
 [ext_resource type="Texture2D" uid="uid://b3sgumv72o0a6" path="res://assets/transparent.png" id="8_au0fx"]
 
@@ -11,6 +12,36 @@ shader = ExtResource("6_jlyew")
 shader_parameter/border_width = 2.0
 shader_parameter/border_color = Color(0.635294, 0.686275, 0.980392, 1)
 shader_parameter/texture_size = Vector2(100, 100)
+
+[sub_resource type="Gradient" id="Gradient_ant4m"]
+offsets = PackedFloat32Array(0.279221, 1)
+colors = PackedColorArray(1, 1, 1, 0.478431, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bjwec"]
+gradient = SubResource("Gradient_ant4m")
+
+[sub_resource type="Gradient" id="Gradient_i6y3o"]
+offsets = PackedFloat32Array(0.804281, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4qi0y"]
+gradient = SubResource("Gradient_i6y3o")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ya80t"]
+emission_shape = 3
+emission_box_extents = Vector3(96, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 2.08165e-12)
+spread = 82.98
+gravity = Vector3(2.08165e-12, -98, 2.08165e-12)
+initial_velocity_max = 2.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.4
+scale_max = 0.8
+color = Color(0.709804, 0.956863, 1, 1)
+color_ramp = SubResource("GradientTexture1D_4qi0y")
+color_initial_ramp = SubResource("GradientTexture1D_bjwec")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlqu1"]
 size = Vector2(203, 203)
@@ -43,6 +74,22 @@ shader = SubResource("Shader_0dxol")
 shader_parameter/border_width = 4.0
 shader_parameter/border_color = Color(1, 0.435294, 0.396078, 1)
 shader_parameter/texture_size = Vector2(100, 100)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wmlgm"]
+emission_shape = 3
+emission_box_extents = Vector3(96, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 2.08165e-12)
+spread = 82.98
+gravity = Vector3(2.08165e-12, -98, 2.08165e-12)
+initial_velocity_max = 2.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.4
+scale_max = 0.8
+color = Color(1, 0.8, 0.796078, 1)
+color_ramp = SubResource("GradientTexture1D_4qi0y")
+color_initial_ramp = SubResource("GradientTexture1D_bjwec")
 
 [sub_resource type="Animation" id="Animation_1lic5"]
 resource_name = "PulseBorder"
@@ -119,6 +166,14 @@ position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("5_oeskr")
 centered = false
 
+[node name="PortalParticles" type="GPUParticles2D" parent="SimpleBackground"]
+position = Vector2(103, -2)
+process_material = SubResource("ParticleProcessMaterial_ya80t")
+texture = ExtResource("5_rwjy1")
+lifetime = 2.0
+explosiveness = 0.36
+randomness = 0.24
+
 [node name="Area2D" type="Area2D" parent="SimpleBackground" groups=["Portal"]]
 collision_layer = 8
 
@@ -128,7 +183,7 @@ shape = SubResource("RectangleShape2D_mlqu1")
 
 [node name="SourceBackground" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_n7kig")
-position = Vector2(2.08165e-12, 2.08165e-12)
+position = Vector2(-339, 44)
 texture = ExtResource("8_au0fx")
 centered = false
 
@@ -138,6 +193,15 @@ collision_layer = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SourceBackground/Area2D"]
 position = Vector2(98.5, 98.5)
 shape = SubResource("RectangleShape2D_mlqu1")
+
+[node name="PortalParticles" type="GPUParticles2D" parent="SourceBackground"]
+position = Vector2(11, -3)
+scale = Vector2(0.125869, 0.125869)
+process_material = SubResource("ParticleProcessMaterial_wmlgm")
+texture = ExtResource("5_rwjy1")
+lifetime = 2.0
+explosiveness = 0.36
+randomness = 0.24
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -5,7 +5,7 @@ using static Utils;
 
 public partial class Mailbox : Node2D {
   public bool PortalExists = false;
-  public Vector2 GlobalPortalLocation;
+  public Vector2 PortalTopLeft;
   public Rect2 SourceRect;
   public Rect2 DestRect;
   public static int PortalRadius = 3;
@@ -15,7 +15,8 @@ public partial class Mailbox : Node2D {
     fakeBlub.Modulate = new Color(1, 1, 1, 0.3f);
 
     if (PortalExists) {
-      var portalDelta = GlobalPosition - GlobalPortalLocation;
+      var sourceTopLeft = getSourceTopLeft();
+      var portalDelta = sourceTopLeft - PortalTopLeft;
       var player = Root.Instance.Nodes.Blub;
       var playerRect = new Rect2(player.GlobalPosition, new Vector2(16, 16));
 
@@ -69,6 +70,13 @@ public partial class Mailbox : Node2D {
     }
   }
 
+  private Vector2 getSourceTopLeft() {
+    var sourceTileMap = Root.Instance.Nodes.TileMap;
+    var sourceCenter = sourceTileMap.LocalToMap(GlobalPosition);
+
+    return sourceTileMap.MapToLocal(sourceCenter - new Vector2I(PortalRadius, PortalRadius)) - new Vector2(16, 16);
+  }
+
   List<Rect2> sourceRects = new();
   List<Rect2> destRects = new();
   List<Vector2I> previouslyClearedTiles = new();
@@ -76,9 +84,11 @@ public partial class Mailbox : Node2D {
   public async void CreatePortalAt(Vector2 globalPosition) {
     Nodes.AnimationPlayer.Play("PulseBorder");
 
+    Nodes.SimpleBackground_PortalParticles.Restart();
+    Nodes.SourceBackground_PortalParticles.Restart();
+
     PortalExists = true;
 
-    GlobalPortalLocation = globalPosition;
     var portalLocation = globalPosition;
     var sourceTileMap = Root.Instance.Nodes.TileMap;
     var sourceCenter = sourceTileMap.LocalToMap(GlobalPosition);
@@ -92,7 +102,7 @@ public partial class Mailbox : Node2D {
     // draw source rect
 
     var sr = new Rect2(
-      sourceTileMap.MapToLocal(sourceCenter - new Vector2I(PortalRadius, PortalRadius)) - new Vector2(16, 16),
+      getSourceTopLeft(),
       new Vector2(PortalRadius * 2 * 32, PortalRadius * 2 * 32)
     );
 
@@ -108,6 +118,8 @@ public partial class Mailbox : Node2D {
       destTileMap.MapToLocal(destCenter - new Vector2I(PortalRadius, PortalRadius)) - new Vector2(16, 16),
       new Vector2(PortalRadius * 2 * 32, PortalRadius * 2 * 32)
     );
+
+    PortalTopLeft = dr.Position;
 
     Nodes.SimpleBackground.GlobalPosition = dr.Position;
     Nodes.SimpleBackground.Scale = new Vector2 {

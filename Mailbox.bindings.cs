@@ -34,6 +34,16 @@ public partial class Mailbox : Node2D {
       }
     }
 
+    private GpuParticles2D? _SimpleBackground_PortalParticles;
+    public GpuParticles2D SimpleBackground_PortalParticles {
+      get {
+        if (_SimpleBackground_PortalParticles == null) {
+          _SimpleBackground_PortalParticles = parent.GetNode<GpuParticles2D>("SimpleBackground/PortalParticles");
+        }
+        return _SimpleBackground_PortalParticles;
+      }
+    }
+
     private Area2D? _SimpleBackground_Area2D;
     public Area2D SimpleBackground_Area2D {
       get {
@@ -81,6 +91,16 @@ public partial class Mailbox : Node2D {
           _SourceBackground_Area2D_CollisionShape2D = parent.GetNode<CollisionShape2D>("SourceBackground/Area2D/CollisionShape2D");
         }
         return _SourceBackground_Area2D_CollisionShape2D;
+      }
+    }
+
+    private GpuParticles2D? _SourceBackground_PortalParticles;
+    public GpuParticles2D SourceBackground_PortalParticles {
+      get {
+        if (_SourceBackground_PortalParticles == null) {
+          _SourceBackground_PortalParticles = parent.GetNode<GpuParticles2D>("SourceBackground/PortalParticles");
+        }
+        return _SourceBackground_PortalParticles;
       }
     }
 
