@@ -54,6 +54,16 @@ public partial class Mailbox : Node2D {
       }
     }
 
+    private Sprite2D? _SourceBackground;
+    public Sprite2D SourceBackground {
+      get {
+        if (_SourceBackground == null) {
+          _SourceBackground = parent.GetNode<Sprite2D>("SourceBackground");
+        }
+        return _SourceBackground;
+      }
+    }
+
     private AnimationPlayer? _AnimationPlayer;
     public AnimationPlayer AnimationPlayer {
       get {

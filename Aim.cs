@@ -38,7 +38,7 @@ public partial class Aim : Node2D {
 
   public override void _Draw() {
     var start = Vector2.Zero;
-    var end = ToLocal(GetGlobalMousePosition());
+    Vector2? nullableEnd = ToLocal(GetGlobalMousePosition());
 
     // First, let's just see if we can even make it to the end w/o hitting a wall
 
@@ -47,11 +47,35 @@ public partial class Aim : Node2D {
     var result = spaceState.IntersectRay(query);
 
     if (result != null && result.Keys.Contains("position")) {
-      var collision = (Godot.Collections.Dictionary)result;
-      var position = (Vector2)collision["position"];
+      nullableEnd = null;
 
-      end = ToLocal(position);
+      var collision = (Godot.Collections.Dictionary)result;
+      var globalPosition = (Vector2)collision["position"];
+
+      // walk position backwards, until we no longer collide w anything. Or just give up. Who knows!
+
+      var dir = (globalPosition - GlobalPosition).Normalized();
+
+      for (int i = 0; i < 100; i++) {
+        var candidatePosition = GetGlobalMousePosition() - dir * (float)i;
+        var query2 = PhysicsRayQueryParameters2D.Create(GlobalPosition, candidatePosition);
+        var result2 = spaceState.IntersectRay(query2);
+
+        if (result2 == null || !result2.Keys.Contains("position")) {
+          nullableEnd = ToLocal(candidatePosition);
+
+          break;
+        }
+      }
+
+      nullableEnd = ToLocal(globalPosition);
     }
+
+    if (nullableEnd == null) {
+      return;
+    }
+
+    var end = nullableEnd.Value;
 
     double lineLength = start.DistanceTo(end);
     var firstOffset = -_offset;

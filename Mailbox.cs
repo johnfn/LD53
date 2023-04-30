@@ -102,7 +102,7 @@ public partial class Mailbox : Node2D {
 
     sourceRects.Add(
       new Rect2(
-        sourceTileMap.MapToLocal(sourceCenter) - GlobalPosition,
+        sourceTileMap.MapToLocal(sourceCenter - new Vector2I(PortalRadius, PortalRadius)) - new Vector2(16, 16),
         new Vector2(PortalRadius * 2 * 32, PortalRadius * 2 * 32)
       )
     );
@@ -119,8 +119,11 @@ public partial class Mailbox : Node2D {
 
   public override void _Draw() {
     foreach (var rect in sourceRects) {
-      // DrawRect(rect, new Color(5 / 256, 20 / 256, 24 / 256, 1f));
-      // DrawRect(rect, new Color(1, 0, 0, 0.1f));
+      Nodes.SourceBackground.GlobalPosition = rect.Position;
+      Nodes.SourceBackground.Scale = new Vector2 {
+        X = rect.Size.X / Nodes.SourceBackground.Texture.GetSize().X,
+        Y = rect.Size.Y / Nodes.SourceBackground.Texture.GetSize().Y,
+      };
     }
 
     foreach (var rect in destRects) {
@@ -129,8 +132,6 @@ public partial class Mailbox : Node2D {
         X = rect.Size.X / Nodes.SimpleBackground.Texture.GetSize().X,
         Y = rect.Size.Y / Nodes.SimpleBackground.Texture.GetSize().Y,
       };
-
-      // Nodes.SimpleBackground.Visible = false;
     }
   }
 }
