@@ -3,7 +3,7 @@ using System;
 using static Utils;
 
 public partial class FadingWhiteSquare : Sprite2D {
-  private double LifeSpan = 1.0;
+  private double LifeSpan = 0.6;
 
   public override void _Process(double delta) {
     LifeSpan -= delta;
