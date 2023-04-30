@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static Utils;
 
 public partial class Dialog : PanelContainer {
   public override void _Ready() {
@@ -26,14 +27,20 @@ public partial class Dialog : PanelContainer {
       Nodes.VBoxContainer_MarginContainer_Label.VisibleCharacters = 0;
 
       foreach (var c in str) {
-        await ToSignal(GetTree().CreateTimer(0.02), SceneTreeTimer.SignalName.Timeout);
+        for (var i = 0; i < 4; i++) {
+          await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+
+          if (Input.IsActionJustPressed("swap")) {
+            goto outer;
+          }
+        }
 
         Nodes.VBoxContainer_MarginContainer_Label.VisibleCharacters += 1;
-
-        if (Input.IsActionJustPressed("swap")) {
-          break;
-        }
       }
+
+    outer:
+      await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+      await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 
       Nodes.VBoxContainer_MarginContainer_Label.VisibleCharacters = str.Length;
 

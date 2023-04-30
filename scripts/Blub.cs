@@ -88,11 +88,15 @@ public partial class Blub : CharacterBody2D {
         if (parent is DialogTrigger trigger) {
           if (trigger.TriggerType == DialogTriggerType.Automatic) {
             if (IsOnFloor()) {
-              var _ = TriggerDialog(trigger, trigger.TriggerName);
+              trigger.QueueFree();
+
+              var _ = TriggerDialog(trigger.TriggerName);
             }
           } else if (trigger.TriggerType == DialogTriggerType.RequiresInteraction) {
             if (Input.IsActionJustPressed("interact")) {
-              var _ = TriggerDialog(trigger, trigger.TriggerName);
+              trigger.QueueFree();
+
+              var _ = TriggerDialog(trigger.TriggerName);
             }
           }
         }
@@ -100,14 +104,12 @@ public partial class Blub : CharacterBody2D {
     }
   }
 
-  private async Task TriggerDialog(DialogTrigger trigger, DialogTriggerName name) {
+  public async Task TriggerDialog(DialogTriggerName name) {
     if (IsFrozen) {
       return;
     }
 
     DialogLock = true;
-
-    trigger.QueueFree();
 
     await Root.Instance.Nodes.StaticCanvasLayer.Nodes.Dialog.RunDialog(name);
 

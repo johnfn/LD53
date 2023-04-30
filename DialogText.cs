@@ -6,21 +6,21 @@ using System.Collections.Generic;
 public class DialogText {
   public static Dictionary<DialogTriggerName, List<string>> Dialogs = new Dictionary<DialogTriggerName, List<string>> {
     [DialogTriggerName.FirstInteraction] = new List<string> {
-      "Hey, there's granny's house!",
-      "Right across that massive gap.",
-      "If only I could just jump across! That would be so easy!",
     },
 
     [DialogTriggerName.SecondInteraction] = new List<string> {
-      "OWW.",
-      "That was a long way to fall!",
-      "Dang it, granny. Why do you have such a huge pit right in front of your house? That seems like a safety hazard.",
+      "You are a Robo-Delivery-Unit 3000.",
+      "You are the last of your kind.",
+    },
+
+    [DialogTriggerName.SaveStation] = new List<string> {
+      "You have just activated a Save Station.",
+      "If you are to perish, another Robo-Delivery-3000 unit will be constructed here, with all of your memories.",
     },
 
     [DialogTriggerName.OhShootSpikes] = new List<string> {
-      "Oh no! My worst enemy!",
-      "Spikes!",
-      "I better be careful.",
+      "Lava is instanteously fatal to Robo-Delivery-Units.",
+      "",
     }
   };
 

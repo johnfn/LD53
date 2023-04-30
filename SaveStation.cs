@@ -4,6 +4,7 @@ using static Utils;
 
 public partial class SaveStation : Node2D {
   public static SaveStation? ActiveSaveStation = null;
+  public static bool HasExplained = false;
 
   public override void _Ready() {
     Modulate = new Color(1, 1, 1, 0.3f);
@@ -28,5 +29,13 @@ public partial class SaveStation : Node2D {
     ActiveSaveStation.Nodes.FakeGlow3.Visible = true;
     ActiveSaveStation.Nodes.AnimationPlayer_PlayPulse();
     Modulate = new Color(1, 1, 1, 1);
+
+    if (!SaveStation.HasExplained) {
+      SaveStation.HasExplained = true;
+
+      var _ = Root.Instance.Nodes.Blub.TriggerDialog(
+        DialogTriggerName.SaveStation
+      );
+    }
   }
 }

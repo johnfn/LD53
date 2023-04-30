@@ -16,7 +16,7 @@ PanelContainer/styles/panel = SubResource("StyleBoxTexture_xpou0")
 
 [node name="Dialog" type="PanelContainer"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(300, 2.08165e-12)
+custom_minimum_size = Vector2(500, 2.08165e-12)
 offset_left = 60.0
 offset_top = 314.0
 offset_right = 360.0

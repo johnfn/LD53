@@ -639,4 +639,4 @@ position = Vector2(1376, 2272)
 position = Vector2(1568, 2272)
 
 [node name="FakeBlub" parent="." instance=ExtResource("16_c4luv")]
-position = Vector2(1692, 2339)
+position = Vector2(-1132, -123)
