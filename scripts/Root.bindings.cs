@@ -104,6 +104,26 @@ public partial class Root : Node2D {
       }
     }
 
+    private Mailbox? _Mailbox;
+    public Mailbox Mailbox {
+      get {
+        if (_Mailbox == null) {
+          _Mailbox = parent.GetNode<Mailbox>("Mailbox");
+        }
+        return _Mailbox;
+      }
+    }
+
+    private VortexGun? _VortexGun;
+    public VortexGun VortexGun {
+      get {
+        if (_VortexGun == null) {
+          _VortexGun = parent.GetNode<VortexGun>("VortexGun");
+        }
+        return _VortexGun;
+      }
+    }
+
     private Blub? _Blub;
     public Blub Blub {
       get {
@@ -154,16 +174,6 @@ public partial class Root : Node2D {
       }
     }
 
-    private Mailbox? _Mailbox;
-    public Mailbox Mailbox {
-      get {
-        if (_Mailbox == null) {
-          _Mailbox = parent.GetNode<Mailbox>("Mailbox");
-        }
-        return _Mailbox;
-      }
-    }
-
     private Cannon? _Cannon;
     public Cannon Cannon {
       get {
@@ -181,16 +191,6 @@ public partial class Root : Node2D {
           _Cannonball = parent.GetNode<CannonBall>("Cannonball");
         }
         return _Cannonball;
-      }
-    }
-
-    private VortexGun? _VortexGun;
-    public VortexGun VortexGun {
-      get {
-        if (_VortexGun == null) {
-          _VortexGun = parent.GetNode<VortexGun>("VortexGun");
-        }
-        return _VortexGun;
       }
     }
 

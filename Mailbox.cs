@@ -41,6 +41,7 @@ public partial class Mailbox : Node2D {
 
   List<Rect2> sourceRects = new();
   List<Rect2> destRects = new();
+  List<Vector2I> previouslyClearedTiles = new();
 
   public void CreatePortalAt(Vector2 globalPosition) {
     Nodes.AnimationPlayer.Play("PulseBorder");
@@ -58,10 +59,21 @@ public partial class Mailbox : Node2D {
     SourceRect = new Rect2(GlobalPosition - new Vector2(PortalRadius, PortalRadius) * 32, new Vector2(PortalRadius * 2, PortalRadius * 2) * 32);
     DestRect = new Rect2(portalLocation - new Vector2(PortalRadius, PortalRadius) * 32, new Vector2(PortalRadius * 2, PortalRadius * 2) * 32);
 
+    // Reset collisions that were cleared last time.
+    foreach (var tile in previouslyClearedTiles) {
+      sourceTileMap.SetCell(0,
+        tile,
+        sourceTileMap.GetCellSourceId(0, tile),
+        sourceTileMap.GetCellAtlasCoords(0, tile),
+        0
+      );
+    }
+
     // Clear previous state.
     destTileMap.Clear();
     destRects.Clear();
     sourceRects.Clear();
+    previouslyClearedTiles.Clear();
 
     for (var i = -PortalRadius; i < PortalRadius; i++) {
       for (var j = -PortalRadius; j < PortalRadius; j++) {
@@ -76,9 +88,17 @@ public partial class Mailbox : Node2D {
           0, // TODO... lol. or maybe not. it works well enough.
           sourceTileMap.GetCellAtlasCoords(0, sourceLocation)
         );
+
+        // Will turn off collision.
+        sourceTileMap.SetCell(0,
+          destLocation,
+          sourceTileMap.GetCellSourceId(0, destLocation),
+          sourceTileMap.GetCellAtlasCoords(0, destLocation),
+          1
+        );
+        previouslyClearedTiles.Add(destLocation);
       }
     }
-
 
     sourceRects.Add(
       new Rect2(
@@ -109,6 +129,8 @@ public partial class Mailbox : Node2D {
         X = rect.Size.X / Nodes.SimpleBackground.Texture.GetSize().X,
         Y = rect.Size.Y / Nodes.SimpleBackground.Texture.GetSize().Y,
       };
+
+      // Nodes.SimpleBackground.Visible = false;
     }
   }
 }
