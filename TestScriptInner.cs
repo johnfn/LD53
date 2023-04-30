@@ -115,7 +115,7 @@ class MyCodegen {
     var nodes = new List<Node>();
 
     foreach (var block in blocks) {
-      var regex = new Regex(@"\[node name=""(.*?)"" type=""(.*?)""( parent=""(.*?)""|)\]");
+      var regex = new Regex(@"\[node name=""(.*?)"" type=""(.*?)""( parent=""(.*?)""|)( groups=\[""(.*?)""\]|)\]");
       var normalNodeMatch = regex.Match(block);
 
       if (normalNodeMatch.Success) {

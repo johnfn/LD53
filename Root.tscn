@@ -1,18 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://cighlqxcgtwkt"]
+[gd_scene load_steps=16 format=3 uid="uid://cighlqxcgtwkt"]
 
 [ext_resource type="Script" path="res://scripts/Root.cs" id="1_g2nw5"]
 [ext_resource type="Texture2D" uid="uid://br88iau15i78" path="res://assets/tiles.png" id="1_vsjbr"]
 [ext_resource type="Texture2D" uid="uid://e6gku5jbtlve" path="res://assets/alt_tilemap.png" id="2_j4k50"]
 [ext_resource type="Texture2D" uid="uid://c16y0nr2tjyvv" path="res://assets/Blub.png" id="2_v7jbu"]
+[ext_resource type="PackedScene" uid="uid://bbukephg1ioox" path="res://static_canvas_layer.tscn" id="2_xt8sg"]
 [ext_resource type="PackedScene" uid="uid://bp5iapgyc1h2b" path="res://blub.tscn" id="3_mvtuh"]
 [ext_resource type="PackedScene" uid="uid://bu2vk3novv12j" path="res://dialog_trigger.tscn" id="4_0fiya"]
-[ext_resource type="PackedScene" uid="uid://b6kqd3g2qewxd" path="res://dialog.tscn" id="5_pfmby"]
 [ext_resource type="PackedScene" uid="uid://g2suktq4d3b7" path="res://mailbox.tscn" id="6_8yew4"]
 [ext_resource type="Texture2D" uid="uid://canwy1ykkebvd" path="res://assets/background.png" id="8_8rjj8"]
-[ext_resource type="FontFile" uid="uid://c4404rcqc4lxq" path="res://assets/FreePixel.ttf" id="8_rq630"]
 [ext_resource type="PackedScene" uid="uid://d3fyxrbob04m3" path="res://cannon.tscn" id="9_crjh1"]
 [ext_resource type="PackedScene" uid="uid://djn3u8hr25lir" path="res://cannonball.tscn" id="10_5ctrg"]
-[ext_resource type="Script" path="res://EActionLabel.cs" id="11_dbs77"]
 [ext_resource type="PackedScene" uid="uid://cn20y86hb7sr7" path="res://vortex_gun.tscn" id="13_2megq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lmded"]
@@ -377,6 +375,8 @@ sources/0 = SubResource("TileSetAtlasSource_lmded")
 [node name="Root" type="Node2D"]
 script = ExtResource("1_g2nw5")
 
+[node name="StaticCanvasLayer" parent="." instance=ExtResource("2_xt8sg")]
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_v6udj")
 format = 2
@@ -431,6 +431,7 @@ position = Vector2(768, 1775)
 texture = ExtResource("2_v7jbu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1752, 1722)
 zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
@@ -450,20 +451,6 @@ TriggerName = 1
 position = Vector2(1273, 2094)
 scale = Vector2(3.4, 3.4)
 TriggerName = 2
-
-[node name="StaticCanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Dialog" parent="StaticCanvasLayer" instance=ExtResource("5_pfmby")]
-
-[node name="EActionLabel" type="Label" parent="StaticCanvasLayer"]
-offset_left = 839.0
-offset_top = 13.0
-offset_right = 944.0
-offset_bottom = 47.0
-theme_override_fonts/font = ExtResource("8_rq630")
-theme_override_font_sizes/font_size = 30
-text = "E: Warp"
-script = ExtResource("11_dbs77")
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1

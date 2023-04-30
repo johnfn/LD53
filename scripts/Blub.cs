@@ -110,7 +110,7 @@ public partial class Blub : CharacterBody2D {
 
     trigger.QueueFree();
 
-    await Root.Instance.Nodes.StaticCanvasLayer_Dialog.RunDialog(name);
+    await Root.Instance.Nodes.StaticCanvasLayer.Nodes.Dialog.RunDialog(name);
 
     DialogLock = false;
   }

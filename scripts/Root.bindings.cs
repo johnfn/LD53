@@ -74,26 +74,6 @@ public partial class Root : Node2D {
       }
     }
 
-    private CanvasLayer? _StaticCanvasLayer;
-    public CanvasLayer StaticCanvasLayer {
-      get {
-        if (_StaticCanvasLayer == null) {
-          _StaticCanvasLayer = parent.GetNode<CanvasLayer>("StaticCanvasLayer");
-        }
-        return _StaticCanvasLayer;
-      }
-    }
-
-    private Label? _StaticCanvasLayer_EActionLabel;
-    public Label StaticCanvasLayer_EActionLabel {
-      get {
-        if (_StaticCanvasLayer_EActionLabel == null) {
-          _StaticCanvasLayer_EActionLabel = parent.GetNode<Label>("StaticCanvasLayer/EActionLabel");
-        }
-        return _StaticCanvasLayer_EActionLabel;
-      }
-    }
-
     private CanvasLayer? _BackgroundCanvasLayer;
     public CanvasLayer BackgroundCanvasLayer {
       get {
@@ -111,6 +91,16 @@ public partial class Root : Node2D {
           _BackgroundCanvasLayer_Sky = parent.GetNode<Sprite2D>("BackgroundCanvasLayer/Sky");
         }
         return _BackgroundCanvasLayer_Sky;
+      }
+    }
+
+    private HeadsUpDisplay? _StaticCanvasLayer;
+    public HeadsUpDisplay StaticCanvasLayer {
+      get {
+        if (_StaticCanvasLayer == null) {
+          _StaticCanvasLayer = parent.GetNode<HeadsUpDisplay>("StaticCanvasLayer");
+        }
+        return _StaticCanvasLayer;
       }
     }
 
@@ -171,16 +161,6 @@ public partial class Root : Node2D {
           _DialogTriggers_OhShootSpikes = parent.GetNode<DialogTrigger>("DialogTriggers/OhShootSpikes");
         }
         return _DialogTriggers_OhShootSpikes;
-      }
-    }
-
-    private Dialog? _StaticCanvasLayer_Dialog;
-    public Dialog StaticCanvasLayer_Dialog {
-      get {
-        if (_StaticCanvasLayer_Dialog == null) {
-          _StaticCanvasLayer_Dialog = parent.GetNode<Dialog>("StaticCanvasLayer/Dialog");
-        }
-        return _StaticCanvasLayer_Dialog;
       }
     }
 

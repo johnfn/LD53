@@ -34,16 +34,6 @@ public partial class Mailbox : Node2D {
       }
     }
 
-    private Sprite2D? _SimpleBackgroundOutline;
-    public Sprite2D SimpleBackgroundOutline {
-      get {
-        if (_SimpleBackgroundOutline == null) {
-          _SimpleBackgroundOutline = parent.GetNode<Sprite2D>("SimpleBackgroundOutline");
-        }
-        return _SimpleBackgroundOutline;
-      }
-    }
-
     private Sprite2D? _SimpleBackground;
     public Sprite2D SimpleBackground {
       get {
@@ -54,6 +44,26 @@ public partial class Mailbox : Node2D {
       }
     }
 
+    private Area2D? _SimpleBackground_Area2D;
+    public Area2D SimpleBackground_Area2D {
+      get {
+        if (_SimpleBackground_Area2D == null) {
+          _SimpleBackground_Area2D = parent.GetNode<Area2D>("SimpleBackground/Area2D");
+        }
+        return _SimpleBackground_Area2D;
+      }
+    }
+
+    private CollisionShape2D? _SimpleBackground_Area2D_CollisionShape2D;
+    public CollisionShape2D SimpleBackground_Area2D_CollisionShape2D {
+      get {
+        if (_SimpleBackground_Area2D_CollisionShape2D == null) {
+          _SimpleBackground_Area2D_CollisionShape2D = parent.GetNode<CollisionShape2D>("SimpleBackground/Area2D/CollisionShape2D");
+        }
+        return _SimpleBackground_Area2D_CollisionShape2D;
+      }
+    }
+
     private Sprite2D? _SourceBackground;
     public Sprite2D SourceBackground {
       get {
@@ -61,6 +71,26 @@ public partial class Mailbox : Node2D {
           _SourceBackground = parent.GetNode<Sprite2D>("SourceBackground");
         }
         return _SourceBackground;
+      }
+    }
+
+    private Area2D? _SourceBackground_Area2D;
+    public Area2D SourceBackground_Area2D {
+      get {
+        if (_SourceBackground_Area2D == null) {
+          _SourceBackground_Area2D = parent.GetNode<Area2D>("SourceBackground/Area2D");
+        }
+        return _SourceBackground_Area2D;
+      }
+    }
+
+    private CollisionShape2D? _SourceBackground_Area2D_CollisionShape2D;
+    public CollisionShape2D SourceBackground_Area2D_CollisionShape2D {
+      get {
+        if (_SourceBackground_Area2D_CollisionShape2D == null) {
+          _SourceBackground_Area2D_CollisionShape2D = parent.GetNode<CollisionShape2D>("SourceBackground/Area2D/CollisionShape2D");
+        }
+        return _SourceBackground_Area2D_CollisionShape2D;
       }
     }
 

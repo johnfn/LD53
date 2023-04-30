@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://cp0rn3qn4w4mr" path="res://assets/radius_500.png" id="2_2rx65"]
 [ext_resource type="Shader" path="res://shimmer.gdshader" id="3_yxpen"]
 [ext_resource type="Texture2D" uid="uid://bb6u5qh36d534" path="res://assets/simplebackground.png" id="5_oeskr"]
-[ext_resource type="Texture2D" uid="uid://dqllsbj5qmpic" path="res://assets/white_square.png" id="6_hipia"]
 [ext_resource type="Shader" path="res://border.gdshader" id="6_jlyew"]
 [ext_resource type="Texture2D" uid="uid://b3sgumv72o0a6" path="res://assets/transparent.png" id="8_au0fx"]
 
@@ -20,6 +19,9 @@ shader = ExtResource("6_jlyew")
 shader_parameter/border_width = 2.0
 shader_parameter/border_color = Color(0.635294, 0.686275, 0.980392, 1)
 shader_parameter/texture_size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlqu1"]
+size = Vector2(203, 203)
 
 [sub_resource type="Shader" id="Shader_0dxol"]
 code = "shader_type canvas_item;
@@ -125,22 +127,31 @@ position = Vector2(74.5, -8.5)
 scale = Vector2(1.138, 1.138)
 texture = ExtResource("2_2rx65")
 
-[node name="SimpleBackgroundOutline" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(2.08165e-12, 2.08165e-12)
-texture = ExtResource("6_hipia")
-
 [node name="SimpleBackground" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_wety1")
 position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("5_oeskr")
 centered = false
 
+[node name="Area2D" type="Area2D" parent="SimpleBackground" groups=["Portal"]]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleBackground/Area2D"]
+position = Vector2(98.5, 98.5)
+shape = SubResource("RectangleShape2D_mlqu1")
+
 [node name="SourceBackground" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_n7kig")
 position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("8_au0fx")
 centered = false
+
+[node name="Area2D" type="Area2D" parent="SourceBackground" groups=["Portal"]]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SourceBackground/Area2D"]
+position = Vector2(98.5, 98.5)
+shape = SubResource("RectangleShape2D_mlqu1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

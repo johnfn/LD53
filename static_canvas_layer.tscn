@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbukephg1ioox"]
+
+[ext_resource type="Script" path="res://HeadsUpDisplay.cs" id="1_5lpuc"]
+[ext_resource type="PackedScene" uid="uid://b6kqd3g2qewxd" path="res://dialog.tscn" id="2_bvnmv"]
+[ext_resource type="FontFile" uid="uid://c4404rcqc4lxq" path="res://assets/FreePixel.ttf" id="3_uq5kf"]
+[ext_resource type="Script" path="res://EActionLabel.cs" id="4_k4nbj"]
+
+[sub_resource type="Animation" id="Animation_nrxp7"]
+resource_name = "ShowLabel"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EActionLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_foeyf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EActionLabel:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u8wpx"]
+_data = {
+"RESET": SubResource("Animation_foeyf"),
+"ShowLabel": SubResource("Animation_nrxp7")
+}
+
+[node name="StaticCanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_5lpuc")
+
+[node name="Dialog" parent="." instance=ExtResource("2_bvnmv")]
+
+[node name="EActionLabel" type="Label" parent="."]
+offset_left = 510.0
+offset_top = 3.0
+offset_right = 615.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("3_uq5kf")
+theme_override_font_sizes/font_size = 30
+text = "E: Warp"
+script = ExtResource("4_k4nbj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u8wpx")
+}
