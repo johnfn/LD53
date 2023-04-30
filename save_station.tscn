@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://SaveStation.cs" id="1_00cdo"]
 [ext_resource type="Texture2D" uid="uid://dhoexsdsdqbgd" path="res://assets/save_station.png" id="1_e2hic"]
-[ext_resource type="Texture2D" uid="uid://macpqnd4v3pu" path="res://assets/FakeGlow3.png" id="3_hoj1b"]
+[ext_resource type="Texture2D" uid="uid://cq51imedxaefc" path="res://assets/LinearGradient.png" id="3_7uhig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4aovo"]
 size = Vector2(64, 64)
@@ -52,12 +52,18 @@ _data = {
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_00cdo")
 
+[node name="FakeGlow3" type="Sprite2D" parent="."]
+position = Vector2(32, -67)
+scale = Vector2(1, 1.82812)
+texture = ExtResource("3_7uhig")
+
 [node name="Graphic" type="Sprite2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
 texture = ExtResource("1_e2hic")
 centered = false
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 position = Vector2(47, 52)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -65,15 +71,12 @@ position = Vector2(-15, -21)
 shape = SubResource("RectangleShape2D_4aovo")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(46, 53)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-14.5, 1)
 shape = SubResource("RectangleShape2D_nbjtp")
-
-[node name="FakeGlow3" type="Sprite2D" parent="."]
-position = Vector2(24, 6)
-texture = ExtResource("3_hoj1b")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

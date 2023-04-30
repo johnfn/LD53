@@ -14,6 +14,16 @@ public partial class SaveStation : Node2D {
     public SaveStationNodes(SaveStation parent) {
       this.parent = parent;
     }
+    private Sprite2D? _FakeGlow3;
+    public Sprite2D FakeGlow3 {
+      get {
+        if (_FakeGlow3 == null) {
+          _FakeGlow3 = parent.GetNode<Sprite2D>("FakeGlow3");
+        }
+        return _FakeGlow3;
+      }
+    }
+
     private Sprite2D? _Graphic;
     public Sprite2D Graphic {
       get {
@@ -61,16 +71,6 @@ public partial class SaveStation : Node2D {
           _StaticBody2D_CollisionShape2D = parent.GetNode<CollisionShape2D>("StaticBody2D/CollisionShape2D");
         }
         return _StaticBody2D_CollisionShape2D;
-      }
-    }
-
-    private Sprite2D? _FakeGlow3;
-    public Sprite2D FakeGlow3 {
-      get {
-        if (_FakeGlow3 == null) {
-          _FakeGlow3 = parent.GetNode<Sprite2D>("FakeGlow3");
-        }
-        return _FakeGlow3;
       }
     }
 
