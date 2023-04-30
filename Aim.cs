@@ -102,13 +102,16 @@ public partial class Aim : Node2D {
       currentLength += DashLength + GapLength;
     }
 
-    // Finally, draw reticule.
+    // Draw reticule.
 
     var tm = Root.Instance.Nodes.TileMap;
+    var localTilePosition = tm.LocalToMap(ToGlobal(end));
     // round position to nearest tile
-    var tilePosition = tm.MapToLocal(tm.LocalToMap(ToGlobal(end))) - new Vector2(16, 16);
+    var tilePosition = tm.MapToLocal(localTilePosition) - new Vector2(16, 16);
 
     Nodes.Reticle.GlobalPosition = tilePosition;
+
+    // Draw source rectangle.
 
     Nodes.SourceBackground.Visible = true;
     Nodes.SourceBackground.GlobalPosition = Nodes.Reticle.GlobalPosition - new Vector2(
@@ -119,5 +122,11 @@ public partial class Aim : Node2D {
       X = (Mailbox.PortalRadius * 2 * 32) / Nodes.SourceBackground.Texture.GetSize().X,
       Y = (Mailbox.PortalRadius * 2 * 32) / Nodes.SourceBackground.Texture.GetSize().Y,
     };
+
+    // Draw portal preview.
+
+    Root.Instance.Nodes.Mailbox.ShowPortalPreviewAt(
+      Nodes.Reticle.GlobalPosition
+    );
   }
 }

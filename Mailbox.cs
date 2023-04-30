@@ -39,6 +39,36 @@ public partial class Mailbox : Node2D {
     }
   }
 
+  public void ShowPortalPreviewAt(Vector2 globalPosition) {
+    // Draw preview rectangle to preview tilemap.
+
+    var sourceTileMap = Root.Instance.Nodes.TileMap;
+    var previewTileMap = Root.Instance.Nodes.DarkWorldPreview;
+    var portalRadius = Mailbox.PortalRadius;
+    var sourceCenter = sourceTileMap.LocalToMap(GlobalPosition);
+
+    previewTileMap.Clear();
+
+    for (var i = -portalRadius; i < portalRadius; i++) {
+      for (var j = -portalRadius; j < portalRadius; j++) {
+        var sourceLocation = sourceCenter + new Vector2I(i, j);
+        var destLocation = previewTileMap.LocalToMap(
+          previewTileMap.ToLocal(globalPosition)
+        ) + new Vector2I(i, j);
+        var sourceTile = sourceTileMap.GetCellTileData(0, sourceLocation);
+
+        previewTileMap.SetCell(
+          0,
+          destLocation,
+          // sourceTileMap.GetCellSourceId(0, sourceLocation),
+          0, // TODO... lol. or maybe not. it works well enough.
+          sourceTileMap.GetCellAtlasCoords(0, sourceLocation),
+          1 // no collision on these guys, theyre just previews
+        );
+      }
+    }
+  }
+
   List<Rect2> sourceRects = new();
   List<Rect2> destRects = new();
   List<Vector2I> previouslyClearedTiles = new();

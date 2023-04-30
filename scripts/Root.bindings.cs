@@ -24,6 +24,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private TileMap? _DarkWorldPreview;
+    public TileMap DarkWorldPreview {
+      get {
+        if (_DarkWorldPreview == null) {
+          _DarkWorldPreview = parent.GetNode<TileMap>("DarkWorldPreview");
+        }
+        return _DarkWorldPreview;
+      }
+    }
+
     private TileMap? _DarkWorld;
     public TileMap DarkWorld {
       get {
