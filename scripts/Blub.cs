@@ -14,7 +14,6 @@ public partial class Blub : CharacterBody2D {
 
   private float maxXVelocity = 300;
   public Vector2 FacingDirection = new Vector2(0, 0);
-  public Vector2 LastSafeSpot = new Vector2(0, 0);
 
   public override void _Ready() {
   }
@@ -24,7 +23,6 @@ public partial class Blub : CharacterBody2D {
     FaceCorrectDirection();
 
     if (!IsFrozen) {
-      LookForCheckpoint();
       ProcessKeyboardInput();
       CheckForDialog();
     }
@@ -50,34 +48,34 @@ public partial class Blub : CharacterBody2D {
     Nodes.Graphic.FlipH = FacingDirection.X < 0;
   }
 
-  private void LookForCheckpoint() {
-    if (IsOnFloor()) {
-      var positions = new List<Vector2> {
-        GlobalPosition + new Vector2(-20, 15),
-        GlobalPosition + new Vector2(0, 15),
-        GlobalPosition + new Vector2(20, 15),
-      };
-      var collisions = 0;
+  // private void LookForCheckpoint() {
+  //   if (IsOnFloor()) {
+  //     var positions = new List<Vector2> {
+  //       GlobalPosition + new Vector2(-20, 15),
+  //       GlobalPosition + new Vector2(0, 15),
+  //       GlobalPosition + new Vector2(20, 15),
+  //     };
+  //     var collisions = 0;
 
-      foreach (var position in positions) {
-        var collision = PhysicsServer2D.SpaceGetDirectState(GetWorld2D().Space).IntersectPoint(
-          new PhysicsPointQueryParameters2D {
-            Position = position,
-            CollideWithBodies = true,
-            CollideWithAreas = true,
-            CollisionMask = 1,
-          });
+  //     foreach (var position in positions) {
+  //       var collision = PhysicsServer2D.SpaceGetDirectState(GetWorld2D().Space).IntersectPoint(
+  //         new PhysicsPointQueryParameters2D {
+  //           Position = position,
+  //           CollideWithBodies = true,
+  //           CollideWithAreas = true,
+  //           CollisionMask = 1,
+  //         });
 
-        if (collision.Count > 0) {
-          collisions += 1;
-        }
-      }
+  //       if (collision.Count > 0) {
+  //         collisions += 1;
+  //       }
+  //     }
 
-      if (collisions == 3) {
-        LastSafeSpot = GlobalPosition;
-      }
-    }
-  }
+  //     if (collisions == 3) {
+  //       LastSafeSpot = GlobalPosition;
+  //     }
+  //   }
+  // }
 
   private void CheckForDialog() {
     var allAreas = Nodes.InteractionArea.GetOverlappingAreas();
@@ -223,7 +221,9 @@ public partial class Blub : CharacterBody2D {
     Scale = new Vector2(1, 1);
     Modulate = new Color(1, 1, 1, 1);
 
-    GlobalPosition = LastSafeSpot;
+    if (SaveStation.ActiveSaveStation != null) {
+      GlobalPosition = SaveStation.ActiveSaveStation.GlobalPosition + new Vector2(32, -32);
+    }
 
     DeathLock = false;
 

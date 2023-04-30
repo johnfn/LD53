@@ -254,23 +254,23 @@ public partial class Root : Node2D {
       }
     }
 
-    private CannonBall? _Cannonball;
-    public CannonBall Cannonball {
+    private SaveStation? _SaveStation;
+    public SaveStation SaveStation {
       get {
-        if (_Cannonball == null) {
-          _Cannonball = parent.GetNode<CannonBall>("Cannonball");
+        if (_SaveStation == null) {
+          _SaveStation = parent.GetNode<SaveStation>("SaveStation");
         }
-        return _Cannonball;
+        return _SaveStation;
       }
     }
 
-    private FadingWhiteSquare? _WhiteSquare;
-    public FadingWhiteSquare WhiteSquare {
+    private SaveStation? _SaveStation2;
+    public SaveStation SaveStation2 {
       get {
-        if (_WhiteSquare == null) {
-          _WhiteSquare = parent.GetNode<FadingWhiteSquare>("WhiteSquare");
+        if (_SaveStation2 == null) {
+          _SaveStation2 = parent.GetNode<SaveStation>("SaveStation2");
         }
-        return _WhiteSquare;
+        return _SaveStation2;
       }
     }
 

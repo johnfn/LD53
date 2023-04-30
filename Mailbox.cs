@@ -61,7 +61,7 @@ public partial class Mailbox : Node2D {
           0,
           destLocation,
           // sourceTileMap.GetCellSourceId(0, sourceLocation),
-          2, //the all white tilemap
+          0, //the all white tilemap
           sourceTileMap.GetCellAtlasCoords(0, sourceLocation),
           1 // no collision on these guys, theyre just previews
         );
@@ -143,7 +143,7 @@ public partial class Mailbox : Node2D {
           0,
           destLocation,
           // sourceTileMap.GetCellSourceId(0, sourceLocation),
-          0, // TODO... lol. or maybe not. it works well enough.
+          2, // TODO... lol. or maybe not. it works well enough.
           stAtlasCoords
         );
 

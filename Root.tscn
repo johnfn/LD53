@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cighlqxcgtwkt"]
+[gd_scene load_steps=24 format=3 uid="uid://cighlqxcgtwkt"]
 
 [ext_resource type="Script" path="res://scripts/Root.cs" id="1_g2nw5"]
 [ext_resource type="Texture2D" uid="uid://br88iau15i78" path="res://assets/tiles.png" id="1_vsjbr"]
@@ -13,9 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cit0akfk0o11j" path="res://assets/alt_tilemap_2.png" id="6_egc40"]
 [ext_resource type="Texture2D" uid="uid://canwy1ykkebvd" path="res://assets/background.png" id="8_8rjj8"]
 [ext_resource type="PackedScene" uid="uid://d3fyxrbob04m3" path="res://cannon.tscn" id="9_crjh1"]
-[ext_resource type="PackedScene" uid="uid://djn3u8hr25lir" path="res://cannonball.tscn" id="10_5ctrg"]
 [ext_resource type="PackedScene" uid="uid://cn20y86hb7sr7" path="res://vortex_gun.tscn" id="13_2megq"]
-[ext_resource type="PackedScene" uid="uid://ceqjsp7anipet" path="res://fading_white_square.tscn" id="15_lhcpr"]
+[ext_resource type="PackedScene" uid="uid://dctj5qlgcdwff" path="res://save_station.tscn" id="15_t5llf"]
 
 [sub_resource type="Gradient" id="Gradient_532py"]
 offsets = PackedFloat32Array(0.804281, 1)
@@ -575,7 +574,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Blub" parent="." instance=ExtResource("3_mvtuh")]
-position = Vector2(1058, 2215)
+position = Vector2(1752, 2166)
 collision_mask = 3
 
 [node name="FakeBlub" type="Sprite2D" parent="."]
@@ -618,6 +617,8 @@ texture = ExtResource("8_8rjj8")
 [node name="Cannon" parent="." instance=ExtResource("9_crjh1")]
 position = Vector2(3105, 2175)
 
-[node name="Cannonball" parent="." instance=ExtResource("10_5ctrg")]
+[node name="SaveStation" parent="." instance=ExtResource("15_t5llf")]
+position = Vector2(1376, 2272)
 
-[node name="WhiteSquare" parent="." instance=ExtResource("15_lhcpr")]
+[node name="SaveStation2" parent="." instance=ExtResource("15_t5llf")]
+position = Vector2(1568, 2272)

@@ -24,16 +24,6 @@ public partial class Mailbox : Node2D {
       }
     }
 
-    private Sprite2D? _RippleEffect;
-    public Sprite2D RippleEffect {
-      get {
-        if (_RippleEffect == null) {
-          _RippleEffect = parent.GetNode<Sprite2D>("RippleEffect");
-        }
-        return _RippleEffect;
-      }
-    }
-
     private Sprite2D? _SimpleBackground;
     public Sprite2D SimpleBackground {
       get {
@@ -106,6 +96,9 @@ public partial class Mailbox : Node2D {
 
     public void AnimationPlayer_PlayPulseBorder() {
       AnimationPlayer.Play("PulseBorder");
+    }
+    public void AnimationPlayer_PlayRESET() {
+      AnimationPlayer.Play("RESET");
     }
   }
 

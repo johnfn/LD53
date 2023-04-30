@@ -178,7 +178,7 @@ class MyCodegen {
         var animationLibrary = new AnimationLibrary();
         animationLibrary.Id = id;
 
-        var animationRegex = new Regex(@"(.*?): SubResource\(""(.*?)""\),");
+        var animationRegex = new Regex(@"(.*?): SubResource\(""(.*?)""\),?");
         var matches = animationRegex.Matches(block);
         var animations = new List<string>();
 

@@ -37,6 +37,9 @@ public partial class HeadsUpDisplay : CanvasLayer {
     public void AnimationPlayer_PlayRESET() {
       AnimationPlayer.Play("RESET");
     }
+    public void AnimationPlayer_PlayShowLabel() {
+      AnimationPlayer.Play("ShowLabel");
+    }
     private Dialog? _Dialog;
     public Dialog Dialog {
       get {

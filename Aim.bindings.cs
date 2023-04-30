@@ -34,6 +34,9 @@ public partial class Aim : Node2D {
       }
     }
 
+    public void AnimationPlayer_PlayReticle() {
+      AnimationPlayer.Play("Reticle");
+    }
     private Sprite2D? _SourceBackground;
     public Sprite2D SourceBackground {
       get {

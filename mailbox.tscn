@@ -1,18 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://g2suktq4d3b7"]
+[gd_scene load_steps=13 format=3 uid="uid://g2suktq4d3b7"]
 
 [ext_resource type="Script" path="res://Mailbox.cs" id="1_enhfc"]
 [ext_resource type="Texture2D" uid="uid://de5oo8vtjhmh0" path="res://assets/mailbox.png" id="1_yjd0e"]
-[ext_resource type="Texture2D" uid="uid://cp0rn3qn4w4mr" path="res://assets/radius_500.png" id="2_2rx65"]
-[ext_resource type="Shader" path="res://shimmer.gdshader" id="3_yxpen"]
 [ext_resource type="Texture2D" uid="uid://bb6u5qh36d534" path="res://assets/simplebackground.png" id="5_oeskr"]
 [ext_resource type="Shader" path="res://border.gdshader" id="6_jlyew"]
 [ext_resource type="Texture2D" uid="uid://b3sgumv72o0a6" path="res://assets/transparent.png" id="8_au0fx"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_veas8"]
-shader = ExtResource("3_yxpen")
-shader_parameter/wave_count = 20.0
-shader_parameter/speed = 3.0
-shader_parameter/height = 0.003
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wety1"]
 shader = ExtResource("6_jlyew")
@@ -120,12 +112,6 @@ script = ExtResource("1_enhfc")
 [node name="MailboxGraphic" type="Sprite2D" parent="."]
 position = Vector2(64.5, 86.5)
 texture = ExtResource("1_yjd0e")
-
-[node name="RippleEffect" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_veas8")
-position = Vector2(74.5, -8.5)
-scale = Vector2(1.138, 1.138)
-texture = ExtResource("2_2rx65")
 
 [node name="SimpleBackground" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_wety1")

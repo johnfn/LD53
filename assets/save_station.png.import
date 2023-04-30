@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f4lre2kv76tg"
-path="res://.godot/imported/FakeGlow2.png-c214941f135e91efc72d2a72078ff32a.ctex"
+uid="uid://dhoexsdsdqbgd"
+path="res://.godot/imported/save_station.png-e597587ac624f57f2c79a5bba721d8df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/FakeGlow2.png"
-dest_files=["res://.godot/imported/FakeGlow2.png-c214941f135e91efc72d2a72078ff32a.ctex"]
+source_file="res://assets/save_station.png"
+dest_files=["res://.godot/imported/save_station.png-e597587ac624f57f2c79a5bba721d8df.ctex"]
 
 [params]
 
