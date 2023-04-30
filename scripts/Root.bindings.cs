@@ -124,16 +124,6 @@ public partial class Root : Node2D {
       }
     }
 
-    private Sprite2D? _FakeBlub;
-    public Sprite2D FakeBlub {
-      get {
-        if (_FakeBlub == null) {
-          _FakeBlub = parent.GetNode<Sprite2D>("FakeBlub");
-        }
-        return _FakeBlub;
-      }
-    }
-
     private Camera2D? _Camera2D;
     public Camera2D Camera2D {
       get {
@@ -281,6 +271,16 @@ public partial class Root : Node2D {
           _SaveStation2 = parent.GetNode<SaveStation>("SaveStation2");
         }
         return _SaveStation2;
+      }
+    }
+
+    private FakeBlub? _FakeBlub;
+    public FakeBlub FakeBlub {
+      get {
+        if (_FakeBlub == null) {
+          _FakeBlub = parent.GetNode<FakeBlub>("FakeBlub");
+        }
+        return _FakeBlub;
       }
     }
 

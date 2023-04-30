@@ -21,8 +21,6 @@ public partial class HeadsUpDisplay : CanvasLayer {
     }
 
     if (isTouchingPortal) {
-      player.Modulate = new Color(1, 1, 1, 0.3f);
-
       if (Nodes.EActionLabel.Text == "") {
         Nodes.AnimationPlayer.Play("ShowLabel");
       }
@@ -30,8 +28,6 @@ public partial class HeadsUpDisplay : CanvasLayer {
       Nodes.EActionLabel.Text = "E: Warp";
       Nodes.EActionLabel.Modulate = new Color(1, 1, 1, 1);
     } else {
-      player.Modulate = new Color(1, 1, 1, 1f);
-
       Nodes.EActionLabel.Text = "";
       Nodes.EActionLabel.Modulate = new Color(1, 1, 1, 0);
     }

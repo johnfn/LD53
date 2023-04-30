@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scripts/Root.cs" id="1_g2nw5"]
 [ext_resource type="Texture2D" uid="uid://br88iau15i78" path="res://assets/tiles.png" id="1_vsjbr"]
 [ext_resource type="Texture2D" uid="uid://e6gku5jbtlve" path="res://assets/alt_tilemap.png" id="2_j4k50"]
-[ext_resource type="Texture2D" uid="uid://c16y0nr2tjyvv" path="res://assets/Blub.png" id="2_v7jbu"]
 [ext_resource type="PackedScene" uid="uid://bbukephg1ioox" path="res://static_canvas_layer.tscn" id="2_xt8sg"]
 [ext_resource type="PackedScene" uid="uid://bp5iapgyc1h2b" path="res://blub.tscn" id="3_mvtuh"]
 [ext_resource type="PackedScene" uid="uid://bu2vk3novv12j" path="res://dialog_trigger.tscn" id="4_0fiya"]
@@ -16,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://d3fyxrbob04m3" path="res://cannon.tscn" id="9_crjh1"]
 [ext_resource type="PackedScene" uid="uid://cn20y86hb7sr7" path="res://vortex_gun.tscn" id="13_2megq"]
 [ext_resource type="PackedScene" uid="uid://dctj5qlgcdwff" path="res://save_station.tscn" id="15_t5llf"]
+[ext_resource type="PackedScene" uid="uid://cs4nkhavn4so2" path="res://fake_blub.tscn" id="16_c4luv"]
 
 [sub_resource type="Gradient" id="Gradient_i1pgv"]
 offsets = PackedFloat32Array(0.279221, 1)
@@ -580,7 +580,6 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="DarkWorld" type="TileMap" parent="."]
-self_modulate = Color(1, 1, 1, 0.627451)
 tile_set = SubResource("TileSet_v6udj")
 format = 2
 layer_0/name = "Main"
@@ -596,10 +595,6 @@ layer_1/tile_data = PackedInt32Array()
 [node name="Blub" parent="." instance=ExtResource("3_mvtuh")]
 position = Vector2(2421, 2091)
 collision_mask = 3
-
-[node name="FakeBlub" type="Sprite2D" parent="."]
-position = Vector2(768, 1775)
-texture = ExtResource("2_v7jbu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1752, 1722)
@@ -642,3 +637,6 @@ position = Vector2(1376, 2272)
 
 [node name="SaveStation2" parent="." instance=ExtResource("15_t5llf")]
 position = Vector2(1568, 2272)
+
+[node name="FakeBlub" parent="." instance=ExtResource("16_c4luv")]
+position = Vector2(1692, 2339)

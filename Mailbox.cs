@@ -12,7 +12,7 @@ public partial class Mailbox : Node2D {
 
   public override void _Process(double delta) {
     var fakeBlub = Root.Instance.Nodes.FakeBlub;
-    fakeBlub.Modulate = new Color(1, 1, 1, 0.3f);
+    fakeBlub.Visible = true;
 
     if (PortalExists) {
       var sourceTopLeft = getSourceTopLeft();
@@ -22,20 +22,34 @@ public partial class Mailbox : Node2D {
 
       if (playerRect.Intersects(SourceRect)) {
         fakeBlub.GlobalPosition = Root.Instance.Nodes.Blub.GlobalPosition - portalDelta;
-        fakeBlub.Visible = true;
+
+        fakeBlub.Nodes.Graphic.Visible = false;
+        fakeBlub.Nodes.GraphicAlt.Visible = true;
+
+        player.Nodes.GraphicAlt.Visible = false;
+        player.Nodes.Graphic.Visible = true;
 
         if (Input.IsActionJustPressed("swap")) {
           Root.Instance.Nodes.Blub.GlobalPosition = Root.Instance.Nodes.Blub.GlobalPosition - portalDelta;
         }
       } else if (playerRect.Intersects(DestRect)) {
         fakeBlub.GlobalPosition = Root.Instance.Nodes.Blub.GlobalPosition + portalDelta;
-        fakeBlub.Visible = true;
+
+        fakeBlub.Nodes.Graphic.Visible = true;
+        fakeBlub.Nodes.GraphicAlt.Visible = false;
+
+        player.Nodes.GraphicAlt.Visible = true;
+        player.Nodes.Graphic.Visible = false;
 
         if (Input.IsActionJustPressed("swap")) {
           Root.Instance.Nodes.Blub.GlobalPosition = Root.Instance.Nodes.Blub.GlobalPosition + portalDelta;
         }
       } else {
-        fakeBlub.Visible = false;
+        player.Nodes.Graphic.Visible = true;
+        player.Nodes.GraphicAlt.Visible = false;
+
+        fakeBlub.Nodes.Graphic.Visible = false;
+        fakeBlub.Nodes.GraphicAlt.Visible = false;
       }
     }
   }
@@ -62,7 +76,7 @@ public partial class Mailbox : Node2D {
           0,
           destLocation,
           // sourceTileMap.GetCellSourceId(0, sourceLocation),
-          0, //the all white tilemap
+          2, //the all white tilemap
           sourceTileMap.GetCellAtlasCoords(0, sourceLocation),
           1 // no collision on these guys, theyre just previews
         );
@@ -155,7 +169,7 @@ public partial class Mailbox : Node2D {
           0,
           destLocation,
           // sourceTileMap.GetCellSourceId(0, sourceLocation),
-          2, // TODO... lol. or maybe not. it works well enough.
+          0, // outlines.
           stAtlasCoords
         );
 
@@ -180,7 +194,7 @@ public partial class Mailbox : Node2D {
         );
         previouslyClearedTiles.Add(destLocation);
 
-        for (var k = 0; k < 5; k++) {
+        for (var k = 0; k < 2; k++) {
           await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         }
       }

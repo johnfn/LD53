@@ -24,6 +24,16 @@ public partial class Blub : CharacterBody2D {
       }
     }
 
+    private Sprite2D? _GraphicAlt;
+    public Sprite2D GraphicAlt {
+      get {
+        if (_GraphicAlt == null) {
+          _GraphicAlt = parent.GetNode<Sprite2D>("GraphicAlt");
+        }
+        return _GraphicAlt;
+      }
+    }
+
     private CollisionShape2D? _CollisionShape2D;
     public CollisionShape2D CollisionShape2D {
       get {

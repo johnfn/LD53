@@ -46,6 +46,7 @@ public partial class Blub : CharacterBody2D {
     FacingDirection = newFacingDirection;
 
     Nodes.Graphic.FlipH = FacingDirection.X < 0;
+    Nodes.GraphicAlt.FlipH = FacingDirection.X < 0;
   }
 
   // private void LookForCheckpoint() {
