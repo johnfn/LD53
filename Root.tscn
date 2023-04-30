@@ -562,7 +562,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Mailbox" parent="." instance=ExtResource("6_8yew4")]
-position = Vector2(2759, 2163)
+position = Vector2(1743, 3811)
 
 [node name="VortexGun" parent="." instance=ExtResource("13_2megq")]
 
@@ -616,6 +616,16 @@ position = Vector2(0, 0)
 position = Vector2(200, 1939)
 scale = Vector2(3.4, 3.4)
 TriggerName = 1
+
+[node name="LavaDialogTrigger" parent="DialogTriggers" instance=ExtResource("4_0fiya")]
+position = Vector2(1412, 2056)
+scale = Vector2(1.33788, 1.33788)
+TriggerName = 3
+
+[node name="CannonDialogTrigger" parent="DialogTriggers" instance=ExtResource("4_0fiya")]
+position = Vector2(2141, 1937)
+scale = Vector2(1.33788, 1.33788)
+TriggerName = 4
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1

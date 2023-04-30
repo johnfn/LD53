@@ -20,8 +20,13 @@ public class DialogText {
 
     [DialogTriggerName.OhShootSpikes] = new List<string> {
       "Lava is instanteously fatal to Robo-Delivery-Units.",
-      "",
-    }
+    },
+
+    [DialogTriggerName.OhShootCannon] = new List<string> {
+      "Some machines still receive power.",
+      "They remain active.",
+      "And hostile.",
+    },
   };
 
   //   { DialogTriggerName.Bed,

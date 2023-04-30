@@ -234,6 +234,26 @@ public partial class Root : Node2D {
       }
     }
 
+    private DialogTrigger? _DialogTriggers_LavaDialogTrigger;
+    public DialogTrigger DialogTriggers_LavaDialogTrigger {
+      get {
+        if (_DialogTriggers_LavaDialogTrigger == null) {
+          _DialogTriggers_LavaDialogTrigger = parent.GetNode<DialogTrigger>("DialogTriggers/LavaDialogTrigger");
+        }
+        return _DialogTriggers_LavaDialogTrigger;
+      }
+    }
+
+    private DialogTrigger? _DialogTriggers_CannonDialogTrigger;
+    public DialogTrigger DialogTriggers_CannonDialogTrigger {
+      get {
+        if (_DialogTriggers_CannonDialogTrigger == null) {
+          _DialogTriggers_CannonDialogTrigger = parent.GetNode<DialogTrigger>("DialogTriggers/CannonDialogTrigger");
+        }
+        return _DialogTriggers_CannonDialogTrigger;
+      }
+    }
+
     private Cannon? _Cannon;
     public Cannon Cannon {
       get {
