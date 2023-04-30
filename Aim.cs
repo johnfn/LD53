@@ -44,7 +44,12 @@ public partial class Aim : Node2D {
     // First, let's just see if we can even make it to the end w/o hitting a wall
 
     var spaceState = GetWorld2D().DirectSpaceState;
-    var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, GetGlobalMousePosition());
+    var query = PhysicsRayQueryParameters2D.Create(
+      GlobalPosition,
+      GetGlobalMousePosition(),
+      uint.MaxValue // but not Cannonball
+      & ~(uint)(Globals.LayerNumbers[LayerMask.Cannonball])
+    );
     var result = spaceState.IntersectRay(query);
 
     if (result != null && result.Keys.Contains("position")) {
@@ -59,8 +64,9 @@ public partial class Aim : Node2D {
 
       for (int i = 0; i < 100; i++) {
         var candidatePosition = GetGlobalMousePosition() - dir * (float)i;
-        var query2 = PhysicsRayQueryParameters2D.Create(GlobalPosition, candidatePosition);
-        var result2 = spaceState.IntersectRay(query2);
+        query.From = GlobalPosition;
+        query.To = candidatePosition;
+        var result2 = spaceState.IntersectRay(query);
 
         if (result2 == null || !result2.Keys.Contains("position")) {
           end = ToLocal(candidatePosition);

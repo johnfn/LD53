@@ -8,6 +8,7 @@ size = Vector2(29, 27)
 
 [node name="Cannonball" type="RigidBody2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
+collision_layer = 4
 script = ExtResource("1_nbdhd")
 
 [node name="Graphic" type="Sprite2D" parent="."]

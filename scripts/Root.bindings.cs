@@ -84,13 +84,13 @@ public partial class Root : Node2D {
       }
     }
 
-    private Label? _StaticCanvasLayer_Label;
-    public Label StaticCanvasLayer_Label {
+    private Label? _StaticCanvasLayer_EActionLabel;
+    public Label StaticCanvasLayer_EActionLabel {
       get {
-        if (_StaticCanvasLayer_Label == null) {
-          _StaticCanvasLayer_Label = parent.GetNode<Label>("StaticCanvasLayer/Label");
+        if (_StaticCanvasLayer_EActionLabel == null) {
+          _StaticCanvasLayer_EActionLabel = parent.GetNode<Label>("StaticCanvasLayer/EActionLabel");
         }
-        return _StaticCanvasLayer_Label;
+        return _StaticCanvasLayer_EActionLabel;
       }
     }
 

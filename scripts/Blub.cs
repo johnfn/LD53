@@ -121,7 +121,7 @@ public partial class Blub : CharacterBody2D {
     camera.Position = new Vector2(
       Position.X + FacingDirection.X * 100,
       Position.Y + FacingDirection.Y * 100
-    );
+    ).Floor();
   }
 
   private void ProcessKeyboardInput() {
