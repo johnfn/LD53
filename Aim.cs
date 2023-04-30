@@ -38,7 +38,8 @@ public partial class Aim : Node2D {
 
   public override void _Draw() {
     var start = Vector2.Zero;
-    Vector2? nullableEnd = ToLocal(GetGlobalMousePosition());
+    var end = ToLocal(GetGlobalMousePosition());
+    var endReasonablyCloseToMouse = true;
 
     // First, let's just see if we can even make it to the end w/o hitting a wall
 
@@ -47,7 +48,7 @@ public partial class Aim : Node2D {
     var result = spaceState.IntersectRay(query);
 
     if (result != null && result.Keys.Contains("position")) {
-      nullableEnd = null;
+      endReasonablyCloseToMouse = false;
 
       var collision = (Godot.Collections.Dictionary)result;
       var globalPosition = (Vector2)collision["position"];
@@ -62,21 +63,17 @@ public partial class Aim : Node2D {
         var result2 = spaceState.IntersectRay(query2);
 
         if (result2 == null || !result2.Keys.Contains("position")) {
-          nullableEnd = ToLocal(candidatePosition);
+          end = ToLocal(candidatePosition);
+          endReasonablyCloseToMouse = true;
 
           break;
         }
       }
 
-      nullableEnd = ToLocal(globalPosition);
+      if (!endReasonablyCloseToMouse) {
+        end = ToLocal(globalPosition);
+      }
     }
-
-    if (nullableEnd == null) {
-      Nodes.SourceBackground.Visible = false;
-      return;
-    }
-
-    var end = nullableEnd.Value;
 
     double lineLength = start.DistanceTo(end);
     var firstOffset = -_offset;
@@ -102,6 +99,20 @@ public partial class Aim : Node2D {
       currentLength += DashLength + GapLength;
     }
 
+    if (!endReasonablyCloseToMouse) {
+      Nodes.SourceBackground.Visible = false;
+      Nodes.Reticle.Visible = false;
+      Root.Instance.Nodes.DarkWorldPreview.Visible = false;
+
+      return;
+    }
+
+    // Draw stuff.
+
+    Nodes.SourceBackground.Visible = true;
+    Nodes.Reticle.Visible = true;
+    Root.Instance.Nodes.DarkWorldPreview.Visible = true;
+
     // Draw reticule.
 
     var tm = Root.Instance.Nodes.TileMap;
@@ -113,7 +124,6 @@ public partial class Aim : Node2D {
 
     // Draw source rectangle.
 
-    Nodes.SourceBackground.Visible = true;
     Nodes.SourceBackground.GlobalPosition = Nodes.Reticle.GlobalPosition - new Vector2(
       Mailbox.PortalRadius * 32,
       Mailbox.PortalRadius * 32
