@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://djwpwuuq8lwcw"]
+
+[ext_resource type="Texture2D" uid="uid://dqllsbj5qmpic" path="res://assets/white_square.png" id="1_wfs81"]
+
+[node name="WhiteSquare" type="Sprite2D"]
+position = Vector2(2064, 2126)
+texture = ExtResource("1_wfs81")

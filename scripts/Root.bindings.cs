@@ -254,6 +254,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private FadingWhiteSquare? _WhiteSquare;
+    public FadingWhiteSquare WhiteSquare {
+      get {
+        if (_WhiteSquare == null) {
+          _WhiteSquare = parent.GetNode<FadingWhiteSquare>("WhiteSquare");
+        }
+        return _WhiteSquare;
+      }
+    }
+
   }
 
   public RootNodes? _Nodes;

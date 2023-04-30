@@ -154,7 +154,7 @@ public partial class Blub : CharacterBody2D {
     // if we're on the ground, we can jump
     if (IsOnFloor()) {
       if (Input.IsActionJustPressed("up")) {
-        delta.Y = -700;
+        delta.Y = -730;
       }
     }
 

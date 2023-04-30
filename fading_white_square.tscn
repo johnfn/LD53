@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceqjsp7anipet"]
+
+[ext_resource type="Texture2D" uid="uid://dqllsbj5qmpic" path="res://assets/white_square.png" id="1_0dy1b"]
+[ext_resource type="Script" path="res://FadingWhiteSquare.cs" id="2_g2ak2"]
+
+[node name="WhiteSquare" type="Sprite2D"]
+position = Vector2(2064, 2126)
+texture = ExtResource("1_0dy1b")
+centered = false
+script = ExtResource("2_g2ak2")
