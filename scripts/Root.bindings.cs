@@ -44,6 +44,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private Sprite2D? _GlowHacks_LinearGradient;
+    public Sprite2D GlowHacks_LinearGradient {
+      get {
+        if (_GlowHacks_LinearGradient == null) {
+          _GlowHacks_LinearGradient = parent.GetNode<Sprite2D>("GlowHacks/LinearGradient");
+        }
+        return _GlowHacks_LinearGradient;
+      }
+    }
+
     private Sprite2D? _GlowHacks_CrystalGlow;
     public Sprite2D GlowHacks_CrystalGlow {
       get {
@@ -54,33 +64,33 @@ public partial class Root : Node2D {
       }
     }
 
-    private GpuParticles2D? _GlowHacks_LavaParticles96;
-    public GpuParticles2D GlowHacks_LavaParticles96 {
+    private GpuParticles2D? _GlowHacks_LavaParticles1;
+    public GpuParticles2D GlowHacks_LavaParticles1 {
       get {
-        if (_GlowHacks_LavaParticles96 == null) {
-          _GlowHacks_LavaParticles96 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaParticles96");
+        if (_GlowHacks_LavaParticles1 == null) {
+          _GlowHacks_LavaParticles1 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaParticles1");
         }
-        return _GlowHacks_LavaParticles96;
+        return _GlowHacks_LavaParticles1;
       }
     }
 
-    private GpuParticles2D? _GlowHacks_LavaParticles97;
-    public GpuParticles2D GlowHacks_LavaParticles97 {
+    private GpuParticles2D? _GlowHacks_LavaParticles2;
+    public GpuParticles2D GlowHacks_LavaParticles2 {
       get {
-        if (_GlowHacks_LavaParticles97 == null) {
-          _GlowHacks_LavaParticles97 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaParticles97");
+        if (_GlowHacks_LavaParticles2 == null) {
+          _GlowHacks_LavaParticles2 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaParticles2");
         }
-        return _GlowHacks_LavaParticles97;
+        return _GlowHacks_LavaParticles2;
       }
     }
 
-    private GpuParticles2D? _GlowHacks_LavaParticles98;
-    public GpuParticles2D GlowHacks_LavaParticles98 {
+    private GpuParticles2D? _GlowHacks_LavaParticles3;
+    public GpuParticles2D GlowHacks_LavaParticles3 {
       get {
-        if (_GlowHacks_LavaParticles98 == null) {
-          _GlowHacks_LavaParticles98 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaParticles98");
+        if (_GlowHacks_LavaParticles3 == null) {
+          _GlowHacks_LavaParticles3 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaParticles3");
         }
-        return _GlowHacks_LavaParticles98;
+        return _GlowHacks_LavaParticles3;
       }
     }
 

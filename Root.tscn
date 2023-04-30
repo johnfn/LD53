@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cighlqxcgtwkt"]
+[gd_scene load_steps=27 format=3 uid="uid://cighlqxcgtwkt"]
 
 [ext_resource type="Script" path="res://scripts/Root.cs" id="1_g2nw5"]
 [ext_resource type="Texture2D" uid="uid://br88iau15i78" path="res://assets/tiles.png" id="1_vsjbr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bp5iapgyc1h2b" path="res://blub.tscn" id="3_mvtuh"]
 [ext_resource type="PackedScene" uid="uid://bu2vk3novv12j" path="res://dialog_trigger.tscn" id="4_0fiya"]
 [ext_resource type="Texture2D" uid="uid://0sgv1b0lv1hl" path="res://assets/particle.png" id="4_7jbyb"]
+[ext_resource type="Texture2D" uid="uid://cq51imedxaefc" path="res://assets/LinearGradient.png" id="4_hj6bl"]
 [ext_resource type="Texture2D" uid="uid://macpqnd4v3pu" path="res://assets/FakeGlow3.png" id="4_mstah"]
 [ext_resource type="PackedScene" uid="uid://g2suktq4d3b7" path="res://mailbox.tscn" id="6_8yew4"]
 [ext_resource type="Texture2D" uid="uid://cit0akfk0o11j" path="res://assets/alt_tilemap_2.png" id="6_egc40"]
@@ -15,6 +16,13 @@
 [ext_resource type="PackedScene" uid="uid://d3fyxrbob04m3" path="res://cannon.tscn" id="9_crjh1"]
 [ext_resource type="PackedScene" uid="uid://cn20y86hb7sr7" path="res://vortex_gun.tscn" id="13_2megq"]
 [ext_resource type="PackedScene" uid="uid://dctj5qlgcdwff" path="res://save_station.tscn" id="15_t5llf"]
+
+[sub_resource type="Gradient" id="Gradient_i1pgv"]
+offsets = PackedFloat32Array(0.279221, 1)
+colors = PackedColorArray(1, 1, 1, 0.478431, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bjwec"]
+gradient = SubResource("Gradient_i1pgv")
 
 [sub_resource type="Gradient" id="Gradient_532py"]
 offsets = PackedFloat32Array(0.804281, 1)
@@ -30,11 +38,13 @@ particle_flag_disable_z = true
 direction = Vector3(1, 1, 2.08165e-12)
 spread = 82.98
 gravity = Vector3(2.08165e-12, -98, 2.08165e-12)
+initial_velocity_max = 2.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 0.4
 scale_max = 0.8
 color_ramp = SubResource("GradientTexture1D_4qi0y")
+color_initial_ramp = SubResource("GradientTexture1D_bjwec")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lmded"]
 texture = ExtResource("2_j4k50")
@@ -460,6 +470,7 @@ texture_region_size = Vector2i(32, 32)
 4:0/0/physics_layer_0/angular_velocity = 0.0
 4:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 4:0/0/physics_layer_1/angular_velocity = 0.0
+4:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSet" id="TileSet_v6udj"]
 tile_size = Vector2i(32, 32)
@@ -500,30 +511,39 @@ position = Vector2(-124.624, -10.5106)
 scale = Vector2(1.40315, 1.40315)
 texture = ExtResource("4_mstah")
 
+[node name="LinearGradient" type="Sprite2D" parent="GlowHacks"]
+self_modulate = Color(1, 0.72549, 0.596078, 0.188235)
+position = Vector2(-30.7808, -204.204)
+scale = Vector2(2.22879, 3.23761)
+texture = ExtResource("4_hj6bl")
+
 [node name="CrystalGlow" type="Sprite2D" parent="GlowHacks"]
 modulate = Color(0.54902, 0.733333, 1, 0.866667)
 position = Vector2(-1282.28, -33.0331)
 scale = Vector2(1.00635, 1.00635)
 texture = ExtResource("4_mstah")
 
-[node name="LavaParticles96" type="GPUParticles2D" parent="GlowHacks"]
+[node name="LavaParticles1" type="GPUParticles2D" parent="GlowHacks"]
 position = Vector2(372.372, -52.5525)
 process_material = SubResource("ParticleProcessMaterial_4d5y2")
 texture = ExtResource("4_7jbyb")
+lifetime = 2.0
 explosiveness = 0.36
 randomness = 0.24
 
-[node name="LavaParticles97" type="GPUParticles2D" parent="GlowHacks"]
-position = Vector2(-18.0179, -21.021)
+[node name="LavaParticles2" type="GPUParticles2D" parent="GlowHacks"]
+position = Vector2(-54.054, -6.00591)
 process_material = SubResource("ParticleProcessMaterial_4d5y2")
 texture = ExtResource("4_7jbyb")
+lifetime = 2.0
 explosiveness = 0.36
 randomness = 0.24
 
-[node name="LavaParticles98" type="GPUParticles2D" parent="GlowHacks"]
-position = Vector2(-273.273, -27.0271)
+[node name="LavaParticles3" type="GPUParticles2D" parent="GlowHacks"]
+position = Vector2(-294.294, -6.00591)
 process_material = SubResource("ParticleProcessMaterial_4d5y2")
 texture = ExtResource("4_7jbyb")
+lifetime = 2.0
 explosiveness = 0.36
 randomness = 0.24
 
@@ -574,7 +594,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Blub" parent="." instance=ExtResource("3_mvtuh")]
-position = Vector2(1752, 2166)
+position = Vector2(2336, 2176)
 collision_mask = 3
 
 [node name="FakeBlub" type="Sprite2D" parent="."]
