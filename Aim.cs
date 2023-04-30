@@ -13,6 +13,10 @@ public partial class Aim : Node2D {
 
   private double _offset = 0.0f;
 
+  public override void _Ready() {
+    Nodes.AnimationPlayer.Play("Reticle");
+  }
+
   public override void _Process(double delta) {
     _offset += AnimationSpeed * delta;
 
@@ -21,8 +25,6 @@ public partial class Aim : Node2D {
     }
 
     QueueRedraw();
-
-    Nodes.AnimationPlayer.Play("Reticle");
   }
 
   // detect a click
