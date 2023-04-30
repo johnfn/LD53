@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dctj5qlgcdwff"]
+[gd_scene load_steps=15 format=3 uid="uid://dctj5qlgcdwff"]
 
 [ext_resource type="Script" path="res://SaveStation.cs" id="1_00cdo"]
 [ext_resource type="Texture2D" uid="uid://dhoexsdsdqbgd" path="res://assets/save_station.png" id="1_e2hic"]
 [ext_resource type="Texture2D" uid="uid://cq51imedxaefc" path="res://assets/LinearGradient.png" id="3_7uhig"]
+[ext_resource type="Texture2D" uid="uid://0sgv1b0lv1hl" path="res://assets/particle.png" id="4_vnghs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4aovo"]
 size = Vector2(64, 64)
@@ -48,6 +49,35 @@ _data = {
 "RESET": SubResource("Animation_v817r")
 }
 
+[sub_resource type="Gradient" id="Gradient_qj10p"]
+offsets = PackedFloat32Array(0.279221, 1)
+colors = PackedColorArray(1, 1, 1, 0.478431, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cfswp"]
+gradient = SubResource("Gradient_qj10p")
+
+[sub_resource type="Gradient" id="Gradient_udmry"]
+offsets = PackedFloat32Array(0.804281, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uyi1v"]
+gradient = SubResource("Gradient_udmry")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rc2aa"]
+emission_shape = 3
+emission_box_extents = Vector3(96, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 2.08165e-12)
+spread = 82.98
+gravity = Vector3(2.08165e-12, -98, 2.08165e-12)
+initial_velocity_max = 2.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.4
+scale_max = 0.8
+color_ramp = SubResource("GradientTexture1D_uyi1v")
+color_initial_ramp = SubResource("GradientTexture1D_cfswp")
+
 [node name="SaveStation" type="Node2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_00cdo")
@@ -82,3 +112,12 @@ shape = SubResource("RectangleShape2D_nbjtp")
 libraries = {
 "": SubResource("AnimationLibrary_r7w4r")
 }
+
+[node name="SaveStationParticles" type="GPUParticles2D" parent="."]
+position = Vector2(36, 32)
+scale = Vector2(0.360001, 0.360001)
+process_material = SubResource("ParticleProcessMaterial_rc2aa")
+texture = ExtResource("4_vnghs")
+lifetime = 2.0
+explosiveness = 0.36
+randomness = 0.24

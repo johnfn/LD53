@@ -9,12 +9,15 @@ public partial class SaveStation : Node2D {
   public override void _Ready() {
     Modulate = new Color(1, 1, 1, 0.3f);
     Nodes.FakeGlow3.Visible = false;
+    Nodes.SaveStationParticles.Visible = false;
   }
 
   public override void _Process(double delta) {
-    foreach (var body in Nodes.Area2D.GetOverlappingBodies()) {
-      if (body is Blub player && player.IsOnFloor()) {
-        SetActive();
+    if (ActiveSaveStation != this) {
+      foreach (var body in Nodes.Area2D.GetOverlappingBodies()) {
+        if (body is Blub player && player.IsOnFloor()) {
+          SetActive();
+        }
       }
     }
   }
@@ -23,9 +26,11 @@ public partial class SaveStation : Node2D {
     if (ActiveSaveStation != null) {
       ActiveSaveStation.Nodes.FakeGlow3.Visible = false;
       ActiveSaveStation.Modulate = new Color(1, 1, 1, 0.3f);
+      ActiveSaveStation.Nodes.SaveStationParticles.Visible = false;
     }
 
     ActiveSaveStation = this;
+    ActiveSaveStation.Nodes.SaveStationParticles.Visible = true;
     ActiveSaveStation.Nodes.FakeGlow3.Visible = true;
     ActiveSaveStation.Nodes.AnimationPlayer_PlayPulse();
     Modulate = new Color(1, 1, 1, 1);

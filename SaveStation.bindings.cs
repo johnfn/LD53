@@ -90,6 +90,16 @@ public partial class SaveStation : Node2D {
     public void AnimationPlayer_PlayRESET() {
       AnimationPlayer.Play("RESET");
     }
+    private GpuParticles2D? _SaveStationParticles;
+    public GpuParticles2D SaveStationParticles {
+      get {
+        if (_SaveStationParticles == null) {
+          _SaveStationParticles = parent.GetNode<GpuParticles2D>("SaveStationParticles");
+        }
+        return _SaveStationParticles;
+      }
+    }
+
   }
 
   public SaveStationNodes? _Nodes;

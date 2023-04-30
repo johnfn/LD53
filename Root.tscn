@@ -21,14 +21,14 @@
 offsets = PackedFloat32Array(0.279221, 1)
 colors = PackedColorArray(1, 1, 1, 0.478431, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cfswp"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d8gld"]
 gradient = SubResource("Gradient_i1pgv")
 
 [sub_resource type="Gradient" id="Gradient_532py"]
 offsets = PackedFloat32Array(0.804281, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uyi1v"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ncsju"]
 gradient = SubResource("Gradient_532py")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4d5y2"]
@@ -43,8 +43,9 @@ orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_min = 0.4
 scale_max = 0.8
-color_ramp = SubResource("GradientTexture1D_uyi1v")
-color_initial_ramp = SubResource("GradientTexture1D_cfswp")
+color = Color(1, 0.882353, 0.831373, 1)
+color_ramp = SubResource("GradientTexture1D_ncsju")
+color_initial_ramp = SubResource("GradientTexture1D_d8gld")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lmded"]
 texture = ExtResource("2_j4k50")
@@ -593,7 +594,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Blub" parent="." instance=ExtResource("3_mvtuh")]
-position = Vector2(604, 2120)
+position = Vector2(1256, 2261)
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -616,11 +617,6 @@ position = Vector2(200, 1939)
 scale = Vector2(3.4, 3.4)
 TriggerName = 1
 
-[node name="OhShootSpikes" parent="DialogTriggers" instance=ExtResource("4_0fiya")]
-position = Vector2(1273, 2094)
-scale = Vector2(3.4, 3.4)
-TriggerName = 2
-
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -634,9 +630,6 @@ position = Vector2(3105, 2175)
 
 [node name="SaveStation" parent="." instance=ExtResource("15_t5llf")]
 position = Vector2(1376, 2272)
-
-[node name="SaveStation2" parent="." instance=ExtResource("15_t5llf")]
-position = Vector2(1568, 2272)
 
 [node name="FakeBlub" parent="." instance=ExtResource("16_c4luv")]
 position = Vector2(-1132, -123)
