@@ -1,15 +1,62 @@
-[gd_scene load_steps=6 format=3 uid="uid://g2suktq4d3b7"]
+[gd_scene load_steps=13 format=3 uid="uid://g2suktq4d3b7"]
 
 [ext_resource type="Script" path="res://Mailbox.cs" id="1_enhfc"]
 [ext_resource type="Texture2D" uid="uid://de5oo8vtjhmh0" path="res://assets/mailbox.png" id="1_yjd0e"]
 [ext_resource type="Texture2D" uid="uid://cp0rn3qn4w4mr" path="res://assets/radius_500.png" id="2_2rx65"]
 [ext_resource type="Shader" path="res://shimmer.gdshader" id="3_yxpen"]
+[ext_resource type="Texture2D" uid="uid://bb6u5qh36d534" path="res://assets/simplebackground.png" id="5_oeskr"]
+[ext_resource type="Texture2D" uid="uid://dqllsbj5qmpic" path="res://assets/white_square.png" id="6_hipia"]
+[ext_resource type="Shader" path="res://border.gdshader" id="6_jlyew"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_veas8"]
 shader = ExtResource("3_yxpen")
 shader_parameter/wave_count = 20.0
 shader_parameter/speed = 3.0
 shader_parameter/height = 0.003
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7kig"]
+shader = ExtResource("6_jlyew")
+shader_parameter/border_width = 2.0
+shader_parameter/border_color = Color(1, 1, 1, 1)
+shader_parameter/texture_size = Vector2(100, 100)
+
+[sub_resource type="Animation" id="Animation_1lic5"]
+resource_name = "PulseBorder"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SimpleBackground:material:shader_parameter/border_width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [4.0, 0.3, 4.0]
+}
+
+[sub_resource type="Animation" id="Animation_4mdfo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SimpleBackground:material:shader_parameter/border_width")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_28qqt"]
+_data = {
+"PulseBorder": SubResource("Animation_1lic5"),
+"RESET": SubResource("Animation_4mdfo")
+}
 
 [node name="Mailbox" type="Node2D"]
 script = ExtResource("1_enhfc")
@@ -23,3 +70,19 @@ material = SubResource("ShaderMaterial_veas8")
 position = Vector2(74.5, -8.5)
 scale = Vector2(1.138, 1.138)
 texture = ExtResource("2_2rx65")
+
+[node name="SimpleBackgroundOutline" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("6_hipia")
+
+[node name="SimpleBackground" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_n7kig")
+position = Vector2(2.08165e-12, 2.08165e-12)
+texture = ExtResource("5_oeskr")
+centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_28qqt")
+}

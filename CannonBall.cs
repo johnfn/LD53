@@ -26,12 +26,6 @@ public partial class CannonBall : RigidBody2D {
   }
 
   public override void _Process(double delta) {
-    var c = GetCollidingBodies().Count;
-
-    if (c != 0) {
-      print(c);
-    }
-
     // Velocity = Facing * 100 * (float)delta;
 
     // var collision = MoveAndCollide();

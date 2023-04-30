@@ -8,7 +8,7 @@ public partial class Mailbox : Node2D {
   public Vector2 GlobalPortalLocation;
   public Rect2 SourceRect;
   public Rect2 DestRect;
-  public int PortalSize = 3;
+  public int PortalRadius = 3;
 
   public override void _Process(double delta) {
     var fakeBlub = Root.Instance.Nodes.FakeBlub;
@@ -43,6 +43,8 @@ public partial class Mailbox : Node2D {
   List<Rect2> destRects = new();
 
   public void CreatePortalAt(Vector2 globalPosition) {
+    Nodes.AnimationPlayer.Play("PulseBorder");
+
     PortalExists = true;
 
     GlobalPortalLocation = globalPosition;
@@ -53,16 +55,16 @@ public partial class Mailbox : Node2D {
     var destTileMap = Root.Instance.Nodes.DarkWorld;
     var destCenter = destTileMap.LocalToMap(portalLocation);
 
-    SourceRect = new Rect2(GlobalPosition - new Vector2(PortalSize, PortalSize) * 32, new Vector2(PortalSize * 2, PortalSize * 2) * 32);
-    DestRect = new Rect2(portalLocation - new Vector2(PortalSize, PortalSize) * 32, new Vector2(PortalSize * 2, PortalSize * 2) * 32);
+    SourceRect = new Rect2(GlobalPosition - new Vector2(PortalRadius, PortalRadius) * 32, new Vector2(PortalRadius * 2, PortalRadius * 2) * 32);
+    DestRect = new Rect2(portalLocation - new Vector2(PortalRadius, PortalRadius) * 32, new Vector2(PortalRadius * 2, PortalRadius * 2) * 32);
 
     // Clear previous state.
     destTileMap.Clear();
     destRects.Clear();
     sourceRects.Clear();
 
-    for (var i = -PortalSize; i < PortalSize; i++) {
-      for (var j = -PortalSize; j < PortalSize; j++) {
+    for (var i = -PortalRadius; i < PortalRadius; i++) {
+      for (var j = -PortalRadius; j < PortalRadius; j++) {
         var sourceLocation = sourceCenter + new Vector2I(i, j);
         var destLocation = destCenter + new Vector2I(i, j);
         var sourceTile = sourceTileMap.GetCellTileData(0, sourceLocation);
@@ -74,33 +76,39 @@ public partial class Mailbox : Node2D {
           0, // TODO... lol. or maybe not. it works well enough.
           sourceTileMap.GetCellAtlasCoords(0, sourceLocation)
         );
-
-        sourceRects.Add(
-          new Rect2(
-            sourceTileMap.MapToLocal(sourceLocation) - GlobalPosition,
-            new Vector2(32, 32)
-          )
-        );
-
-        destRects.Add(
-          new Rect2(
-            destTileMap.MapToLocal(destLocation) - GlobalPosition,
-            new Vector2(32, 32)
-          )
-        );
       }
     }
+
+
+    sourceRects.Add(
+      new Rect2(
+        sourceTileMap.MapToLocal(sourceCenter) - GlobalPosition,
+        new Vector2(PortalRadius * 2 * 32, PortalRadius * 2 * 32)
+      )
+    );
+
+    destRects.Add(
+      new Rect2(
+        destTileMap.MapToLocal(destCenter - new Vector2I(PortalRadius, PortalRadius)) - new Vector2(16, 16),
+        new Vector2(PortalRadius * 2 * 32, PortalRadius * 2 * 32)
+      )
+    );
 
     QueueRedraw();
   }
 
   public override void _Draw() {
     foreach (var rect in sourceRects) {
-      DrawRect(rect, new Color(1, 0, 0, 0.1f));
+      // DrawRect(rect, new Color(5 / 256, 20 / 256, 24 / 256, 1f));
+      // DrawRect(rect, new Color(1, 0, 0, 0.1f));
     }
 
     foreach (var rect in destRects) {
-      DrawRect(rect, new Color(0, 0, 1, 0.1f));
+      Nodes.SimpleBackground.GlobalPosition = rect.Position;
+      Nodes.SimpleBackground.Scale = new Vector2 {
+        X = rect.Size.X / Nodes.SimpleBackground.Texture.GetSize().X,
+        Y = rect.Size.Y / Nodes.SimpleBackground.Texture.GetSize().Y,
+      };
     }
   }
 }

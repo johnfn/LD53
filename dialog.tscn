@@ -16,11 +16,11 @@ PanelContainer/styles/panel = SubResource("StyleBoxTexture_xpou0")
 
 [node name="Dialog" type="PanelContainer"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(600, 2.08165e-12)
+custom_minimum_size = Vector2(300, 2.08165e-12)
 offset_left = 60.0
 offset_top = 314.0
-offset_right = 660.0
-offset_bottom = 375.0
+offset_right = 360.0
+offset_bottom = 395.0
 size_flags_vertical = 3
 theme = SubResource("Theme_74v02")
 script = ExtResource("2_xl3l2")
@@ -49,6 +49,6 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_teerf")
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 18
 text = "Done"
 horizontal_alignment = 2

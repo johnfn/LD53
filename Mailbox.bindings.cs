@@ -34,6 +34,39 @@ public partial class Mailbox : Node2D {
       }
     }
 
+    private Sprite2D? _SimpleBackgroundOutline;
+    public Sprite2D SimpleBackgroundOutline {
+      get {
+        if (_SimpleBackgroundOutline == null) {
+          _SimpleBackgroundOutline = parent.GetNode<Sprite2D>("SimpleBackgroundOutline");
+        }
+        return _SimpleBackgroundOutline;
+      }
+    }
+
+    private Sprite2D? _SimpleBackground;
+    public Sprite2D SimpleBackground {
+      get {
+        if (_SimpleBackground == null) {
+          _SimpleBackground = parent.GetNode<Sprite2D>("SimpleBackground");
+        }
+        return _SimpleBackground;
+      }
+    }
+
+    private AnimationPlayer? _AnimationPlayer;
+    public AnimationPlayer AnimationPlayer {
+      get {
+        if (_AnimationPlayer == null) {
+          _AnimationPlayer = parent.GetNode<AnimationPlayer>("AnimationPlayer");
+        }
+        return _AnimationPlayer;
+      }
+    }
+
+    public void AnimationPlayer_PlayPulseBorder() {
+      AnimationPlayer.Play("PulseBorder");
+    }
   }
 
   public MailboxNodes? _Nodes;

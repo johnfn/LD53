@@ -81,7 +81,7 @@ public partial class Aim : Node2D {
 
     var tm = Root.Instance.Nodes.TileMap;
     // round position to nearest tile
-    var tilePosition = tm.MapToLocal(tm.LocalToMap(ToGlobal(end)));
+    var tilePosition = tm.MapToLocal(tm.LocalToMap(ToGlobal(end))) - new Vector2(16, 16);
 
     Nodes.Reticle.GlobalPosition = tilePosition;
 
