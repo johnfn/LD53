@@ -123,6 +123,10 @@ class MyCodegen {
         var type = normalNodeMatch.Groups[2].Value;
         var parent = normalNodeMatch.Groups[4].Value;
 
+        if (type == "GPUParticles2D") {
+          type = "GpuParticles2D";
+        }
+
         if (parent == "") {
           parent = null;
         }

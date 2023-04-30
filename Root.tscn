@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cighlqxcgtwkt"]
+[gd_scene load_steps=22 format=3 uid="uid://cighlqxcgtwkt"]
 
 [ext_resource type="Script" path="res://scripts/Root.cs" id="1_g2nw5"]
 [ext_resource type="Texture2D" uid="uid://br88iau15i78" path="res://assets/tiles.png" id="1_vsjbr"]
@@ -7,13 +7,33 @@
 [ext_resource type="PackedScene" uid="uid://bbukephg1ioox" path="res://static_canvas_layer.tscn" id="2_xt8sg"]
 [ext_resource type="PackedScene" uid="uid://bp5iapgyc1h2b" path="res://blub.tscn" id="3_mvtuh"]
 [ext_resource type="PackedScene" uid="uid://bu2vk3novv12j" path="res://dialog_trigger.tscn" id="4_0fiya"]
+[ext_resource type="Texture2D" uid="uid://0sgv1b0lv1hl" path="res://assets/particle.png" id="4_7jbyb"]
 [ext_resource type="Texture2D" uid="uid://macpqnd4v3pu" path="res://assets/FakeGlow3.png" id="4_mstah"]
 [ext_resource type="PackedScene" uid="uid://g2suktq4d3b7" path="res://mailbox.tscn" id="6_8yew4"]
 [ext_resource type="Texture2D" uid="uid://canwy1ykkebvd" path="res://assets/background.png" id="8_8rjj8"]
 [ext_resource type="PackedScene" uid="uid://d3fyxrbob04m3" path="res://cannon.tscn" id="9_crjh1"]
 [ext_resource type="PackedScene" uid="uid://djn3u8hr25lir" path="res://cannonball.tscn" id="10_5ctrg"]
 [ext_resource type="PackedScene" uid="uid://cn20y86hb7sr7" path="res://vortex_gun.tscn" id="13_2megq"]
-[ext_resource type="Texture2D" uid="uid://dv3gbel0y1qjf" path="res://assets/cannonball.png" id="13_tux68"]
+
+[sub_resource type="Gradient" id="Gradient_532py"]
+offsets = PackedFloat32Array(0.804281, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4qi0y"]
+gradient = SubResource("Gradient_532py")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4d5y2"]
+emission_shape = 3
+emission_box_extents = Vector3(96, 1, 1)
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 2.08165e-12)
+spread = 82.98
+gravity = Vector3(2.08165e-12, -98, 2.08165e-12)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.4
+scale_max = 0.8
+color_ramp = SubResource("GradientTexture1D_4qi0y")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lmded"]
 texture = ExtResource("2_j4k50")
@@ -397,6 +417,27 @@ position = Vector2(-124.624, -10.5106)
 scale = Vector2(1.40315, 1.40315)
 texture = ExtResource("4_mstah")
 
+[node name="LavaParticles96" type="GPUParticles2D" parent="GlowHacks"]
+position = Vector2(372.372, -52.5525)
+process_material = SubResource("ParticleProcessMaterial_4d5y2")
+texture = ExtResource("4_7jbyb")
+explosiveness = 0.36
+randomness = 0.24
+
+[node name="LavaParticles97" type="GPUParticles2D" parent="GlowHacks"]
+position = Vector2(-18.0179, -21.021)
+process_material = SubResource("ParticleProcessMaterial_4d5y2")
+texture = ExtResource("4_7jbyb")
+explosiveness = 0.36
+randomness = 0.24
+
+[node name="LavaParticles98" type="GPUParticles2D" parent="GlowHacks"]
+position = Vector2(-273.273, -27.0271)
+process_material = SubResource("ParticleProcessMaterial_4d5y2")
+texture = ExtResource("4_7jbyb")
+explosiveness = 0.36
+randomness = 0.24
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_v6udj")
 format = 2
@@ -487,8 +528,3 @@ texture = ExtResource("8_8rjj8")
 position = Vector2(3105, 2175)
 
 [node name="Cannonball" parent="." instance=ExtResource("10_5ctrg")]
-
-[node name="Cannonball2" type="Sprite2D" parent="."]
-self_modulate = Color(4, 4, 4, 1)
-position = Vector2(2227, 2176)
-texture = ExtResource("13_tux68")

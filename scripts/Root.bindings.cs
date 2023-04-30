@@ -44,6 +44,36 @@ public partial class Root : Node2D {
       }
     }
 
+    private GpuParticles2D? _GlowHacks_LavaParticles96;
+    public GpuParticles2D GlowHacks_LavaParticles96 {
+      get {
+        if (_GlowHacks_LavaParticles96 == null) {
+          _GlowHacks_LavaParticles96 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaParticles96");
+        }
+        return _GlowHacks_LavaParticles96;
+      }
+    }
+
+    private GpuParticles2D? _GlowHacks_LavaParticles97;
+    public GpuParticles2D GlowHacks_LavaParticles97 {
+      get {
+        if (_GlowHacks_LavaParticles97 == null) {
+          _GlowHacks_LavaParticles97 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaParticles97");
+        }
+        return _GlowHacks_LavaParticles97;
+      }
+    }
+
+    private GpuParticles2D? _GlowHacks_LavaParticles98;
+    public GpuParticles2D GlowHacks_LavaParticles98 {
+      get {
+        if (_GlowHacks_LavaParticles98 == null) {
+          _GlowHacks_LavaParticles98 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaParticles98");
+        }
+        return _GlowHacks_LavaParticles98;
+      }
+    }
+
     private TileMap? _TileMap;
     public TileMap TileMap {
       get {
@@ -131,16 +161,6 @@ public partial class Root : Node2D {
           _BackgroundCanvasLayer_Sky = parent.GetNode<Sprite2D>("BackgroundCanvasLayer/Sky");
         }
         return _BackgroundCanvasLayer_Sky;
-      }
-    }
-
-    private Sprite2D? _Cannonball2;
-    public Sprite2D Cannonball2 {
-      get {
-        if (_Cannonball2 == null) {
-          _Cannonball2 = parent.GetNode<Sprite2D>("Cannonball2");
-        }
-        return _Cannonball2;
       }
     }
 
