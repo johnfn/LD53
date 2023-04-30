@@ -14,6 +14,36 @@ public partial class Root : Node2D {
     public RootNodes(Root parent) {
       this.parent = parent;
     }
+    private Node2D? _GlowHacks;
+    public Node2D GlowHacks {
+      get {
+        if (_GlowHacks == null) {
+          _GlowHacks = parent.GetNode<Node2D>("GlowHacks");
+        }
+        return _GlowHacks;
+      }
+    }
+
+    private Sprite2D? _GlowHacks_FakeGlow3;
+    public Sprite2D GlowHacks_FakeGlow3 {
+      get {
+        if (_GlowHacks_FakeGlow3 == null) {
+          _GlowHacks_FakeGlow3 = parent.GetNode<Sprite2D>("GlowHacks/FakeGlow3");
+        }
+        return _GlowHacks_FakeGlow3;
+      }
+    }
+
+    private Sprite2D? _GlowHacks_FakeGlow4;
+    public Sprite2D GlowHacks_FakeGlow4 {
+      get {
+        if (_GlowHacks_FakeGlow4 == null) {
+          _GlowHacks_FakeGlow4 = parent.GetNode<Sprite2D>("GlowHacks/FakeGlow4");
+        }
+        return _GlowHacks_FakeGlow4;
+      }
+    }
+
     private TileMap? _TileMap;
     public TileMap TileMap {
       get {
@@ -64,6 +94,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private WorldEnvironment? _Camera2D_WorldEnvironment;
+    public WorldEnvironment Camera2D_WorldEnvironment {
+      get {
+        if (_Camera2D_WorldEnvironment == null) {
+          _Camera2D_WorldEnvironment = parent.GetNode<WorldEnvironment>("Camera2D/WorldEnvironment");
+        }
+        return _Camera2D_WorldEnvironment;
+      }
+    }
+
     private Node2D? _DialogTriggers;
     public Node2D DialogTriggers {
       get {
@@ -91,6 +131,16 @@ public partial class Root : Node2D {
           _BackgroundCanvasLayer_Sky = parent.GetNode<Sprite2D>("BackgroundCanvasLayer/Sky");
         }
         return _BackgroundCanvasLayer_Sky;
+      }
+    }
+
+    private Sprite2D? _Cannonball2;
+    public Sprite2D Cannonball2 {
+      get {
+        if (_Cannonball2 == null) {
+          _Cannonball2 = parent.GetNode<Sprite2D>("Cannonball2");
+        }
+        return _Cannonball2;
       }
     }
 

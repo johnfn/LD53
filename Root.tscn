@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cighlqxcgtwkt"]
+[gd_scene load_steps=19 format=3 uid="uid://cighlqxcgtwkt"]
 
 [ext_resource type="Script" path="res://scripts/Root.cs" id="1_g2nw5"]
 [ext_resource type="Texture2D" uid="uid://br88iau15i78" path="res://assets/tiles.png" id="1_vsjbr"]
@@ -7,11 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://bbukephg1ioox" path="res://static_canvas_layer.tscn" id="2_xt8sg"]
 [ext_resource type="PackedScene" uid="uid://bp5iapgyc1h2b" path="res://blub.tscn" id="3_mvtuh"]
 [ext_resource type="PackedScene" uid="uid://bu2vk3novv12j" path="res://dialog_trigger.tscn" id="4_0fiya"]
+[ext_resource type="Texture2D" uid="uid://macpqnd4v3pu" path="res://assets/FakeGlow3.png" id="4_mstah"]
 [ext_resource type="PackedScene" uid="uid://g2suktq4d3b7" path="res://mailbox.tscn" id="6_8yew4"]
 [ext_resource type="Texture2D" uid="uid://canwy1ykkebvd" path="res://assets/background.png" id="8_8rjj8"]
 [ext_resource type="PackedScene" uid="uid://d3fyxrbob04m3" path="res://cannon.tscn" id="9_crjh1"]
 [ext_resource type="PackedScene" uid="uid://djn3u8hr25lir" path="res://cannonball.tscn" id="10_5ctrg"]
 [ext_resource type="PackedScene" uid="uid://cn20y86hb7sr7" path="res://vortex_gun.tscn" id="13_2megq"]
+[ext_resource type="Texture2D" uid="uid://dv3gbel0y1qjf" path="res://assets/cannonball.png" id="13_tux68"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lmded"]
 texture = ExtResource("2_j4k50")
@@ -349,6 +351,7 @@ texture_region_size = Vector2i(32, 32)
 4:0/animation_frame_1/duration = 0.4
 4:0/animation_frame_2/duration = 0.4
 4:0/0 = 0
+4:0/0/modulate = Color(1.00392, 1.00392, 1.00392, 1)
 4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:0/0/physics_layer_0/angular_velocity = 0.0
 4:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
@@ -363,10 +366,36 @@ custom_data_layer_0/type = 1
 sources/2 = SubResource("TileSetAtlasSource_qs02k")
 sources/0 = SubResource("TileSetAtlasSource_lmded")
 
+[sub_resource type="Environment" id="Environment_ma4pu"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.1
+glow_strength = 0.55
+glow_bloom = 1.0
+glow_blend_mode = 0
+glow_hdr_threshold = 0.1
+glow_hdr_scale = 1.0
+
 [node name="Root" type="Node2D"]
 script = ExtResource("1_g2nw5")
 
 [node name="StaticCanvasLayer" parent="." instance=ExtResource("2_xt8sg")]
+
+[node name="GlowHacks" type="Node2D" parent="."]
+position = Vector2(2020, 2276)
+scale = Vector2(0.666, 0.666)
+
+[node name="FakeGlow3" type="Sprite2D" parent="GlowHacks"]
+modulate = Color(1, 0.737255, 0.407843, 0.443137)
+position = Vector2(450.451, -72.0721)
+scale = Vector2(1.40315, 1.40315)
+texture = ExtResource("4_mstah")
+
+[node name="FakeGlow4" type="Sprite2D" parent="GlowHacks"]
+modulate = Color(1, 0.737255, 0.407843, 0.443137)
+position = Vector2(-124.624, -10.5106)
+scale = Vector2(1.40315, 1.40315)
+texture = ExtResource("4_mstah")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_v6udj")
@@ -427,6 +456,9 @@ zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Camera2D"]
+environment = SubResource("Environment_ma4pu")
+
 [node name="DialogTriggers" type="Node2D" parent="."]
 position = Vector2(269, 142)
 
@@ -455,3 +487,8 @@ texture = ExtResource("8_8rjj8")
 position = Vector2(3105, 2175)
 
 [node name="Cannonball" parent="." instance=ExtResource("10_5ctrg")]
+
+[node name="Cannonball2" type="Sprite2D" parent="."]
+self_modulate = Color(4, 4, 4, 1)
+position = Vector2(2227, 2176)
+texture = ExtResource("13_tux68")
