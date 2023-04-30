@@ -30,19 +30,19 @@ public partial class Dialog : PanelContainer {
 
         Nodes.VBoxContainer_MarginContainer_Label.VisibleCharacters += 1;
 
-        if (Input.IsActionJustPressed("jump")) {
+        if (Input.IsActionJustPressed("swap")) {
           break;
         }
       }
 
       Nodes.VBoxContainer_MarginContainer_Label.VisibleCharacters = str.Length;
 
-      Nodes.VBoxContainer_Button.Text = "Next (Space)";
+      Nodes.VBoxContainer_Button.Text = "Next (E)";
 
       while (true) {
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 
-        if (Input.IsActionJustPressed("jump")) {
+        if (Input.IsActionJustPressed("swap")) {
           break;
         }
       }
