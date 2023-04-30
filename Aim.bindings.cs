@@ -14,6 +14,26 @@ public partial class Aim : Node2D {
     public AimNodes(Aim parent) {
       this.parent = parent;
     }
+    private Sprite2D? _Reticle;
+    public Sprite2D Reticle {
+      get {
+        if (_Reticle == null) {
+          _Reticle = parent.GetNode<Sprite2D>("Reticle");
+        }
+        return _Reticle;
+      }
+    }
+
+    private AnimationPlayer? _AnimationPlayer;
+    public AnimationPlayer AnimationPlayer {
+      get {
+        if (_AnimationPlayer == null) {
+          _AnimationPlayer = parent.GetNode<AnimationPlayer>("AnimationPlayer");
+        }
+        return _AnimationPlayer;
+      }
+    }
+
   }
 
   public AimNodes? _Nodes;

@@ -153,7 +153,7 @@ public partial class Blub : CharacterBody2D {
 
     // if we're on the ground, we can jump
     if (IsOnFloor()) {
-      if (Input.IsActionJustPressed("jump")) {
+      if (Input.IsActionJustPressed("up")) {
         delta.Y = -600;
       }
     }
@@ -169,7 +169,7 @@ public partial class Blub : CharacterBody2D {
       Velocity = new Vector2(-maxXVelocity, Velocity.Y);
     }
 
-    if (!Input.IsActionPressed("jump") && Velocity.Y < 0) {
+    if (!Input.IsActionPressed("up") && Velocity.Y < 0) {
       Velocity = new Vector2(Velocity.X, 0.0f);
     }
 

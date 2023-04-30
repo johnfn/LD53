@@ -21,15 +21,38 @@ public partial class Aim : Node2D {
     }
 
     QueueRedraw();
+
+    Nodes.AnimationPlayer.Play("Reticle");
+  }
+
+  // detect a click
+  public override void _Input(InputEvent @event) {
+    if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed) {
+      var portalSource = Root.Instance.Nodes.Mailbox;
+
+      portalSource.CreatePortalAt(
+        Nodes.Reticle.GlobalPosition
+      );
+    }
   }
 
   public override void _Draw() {
-    if (End == null) {
-      return;
+    var start = Vector2.Zero;
+    var end = ToLocal(GetGlobalMousePosition());
+
+    // First, let's just see if we can even make it to the end w/o hitting a wall
+
+    var spaceState = GetWorld2D().DirectSpaceState;
+    var query = PhysicsRayQueryParameters2D.Create(GlobalPosition, GetGlobalMousePosition());
+    var result = spaceState.IntersectRay(query);
+
+    if (result != null && result.Keys.Contains("position")) {
+      var collision = (Godot.Collections.Dictionary)result;
+      var position = (Vector2)collision["position"];
+
+      end = ToLocal(position);
     }
 
-    var start = Vector2.Zero;
-    var end = ToLocal(End.GlobalPosition);
     double lineLength = start.DistanceTo(end);
     var firstOffset = -_offset;
 
@@ -53,6 +76,15 @@ public partial class Aim : Node2D {
       currentPosition = nextGapStart;
       currentLength += DashLength + GapLength;
     }
-  }
 
+    // Finally, draw reticule.
+
+    var tm = Root.Instance.Nodes.TileMap;
+    // round position to nearest tile
+    var tilePosition = tm.MapToLocal(tm.LocalToMap(ToGlobal(end)));
+
+    Nodes.Reticle.GlobalPosition = tilePosition;
+
+    // TODO: If the reticle is on a wall, we should push it closer to the source.
+  }
 }

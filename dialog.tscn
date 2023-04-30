@@ -15,6 +15,7 @@ texture = ExtResource("1_5aa4l")
 PanelContainer/styles/panel = SubResource("StyleBoxTexture_xpou0")
 
 [node name="Dialog" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(600, 2.08165e-12)
 offset_left = 60.0
 offset_top = 314.0
@@ -44,6 +45,10 @@ theme_override_font_sizes/font_size = 30
 text = "asdf"
 autowrap_mode = 2
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_teerf")
+theme_override_font_sizes/font_size = 36
 text = "Done"
+horizontal_alignment = 2

@@ -44,11 +44,11 @@ public partial class Dialog : PanelContainer {
       }
     }
 
-    private Button? _VBoxContainer_Button;
-    public Button VBoxContainer_Button {
+    private Label? _VBoxContainer_Button;
+    public Label VBoxContainer_Button {
       get {
         if (_VBoxContainer_Button == null) {
-          _VBoxContainer_Button = parent.GetNode<Button>("VBoxContainer/Button");
+          _VBoxContainer_Button = parent.GetNode<Label>("VBoxContainer/Button");
         }
         return _VBoxContainer_Button;
       }
