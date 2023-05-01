@@ -1,10 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://g2suktq4d3b7"]
+[gd_scene load_steps=25 format=3 uid="uid://g2suktq4d3b7"]
 
 [ext_resource type="Script" path="res://Mailbox.cs" id="1_enhfc"]
 [ext_resource type="Texture2D" uid="uid://de5oo8vtjhmh0" path="res://assets/mailbox.png" id="1_yjd0e"]
 [ext_resource type="Texture2D" uid="uid://bb6u5qh36d534" path="res://assets/simplebackground.png" id="5_oeskr"]
 [ext_resource type="Texture2D" uid="uid://0sgv1b0lv1hl" path="res://assets/particle.png" id="5_rwjy1"]
 [ext_resource type="Shader" path="res://border.gdshader" id="6_jlyew"]
+[ext_resource type="Texture2D" uid="uid://cq51imedxaefc" path="res://assets/LinearGradient.png" id="7_st3vn"]
 [ext_resource type="Texture2D" uid="uid://b3sgumv72o0a6" path="res://assets/transparent.png" id="8_au0fx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wety1"]
@@ -156,6 +157,44 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8ud4"]
 size = Vector2(184, 173)
 
+[sub_resource type="Animation" id="Animation_5qs1o"]
+resource_name = "Active"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LinearGradient:self_modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.321569), Color(1, 1, 1, 0.0156863), Color(1, 1, 1, 0.321569)]
+}
+
+[sub_resource type="Animation" id="Animation_r6aft"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LinearGradient:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.321569)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oh00y"]
+_data = {
+"Active": SubResource("Animation_5qs1o"),
+"RESET": SubResource("Animation_r6aft")
+}
+
 [node name="Mailbox" type="Node2D"]
 script = ExtResource("1_enhfc")
 
@@ -220,3 +259,25 @@ collision_layer = 64
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MailboxArea"]
 position = Vector2(-237, 147)
 shape = SubResource("RectangleShape2D_x8ud4")
+
+[node name="MailboxActive" type="Node2D" parent="."]
+
+[node name="LinearGradient" type="Sprite2D" parent="MailboxActive"]
+self_modulate = Color(1, 1, 1, 0.321569)
+position = Vector2(-10.5, -84)
+scale = Vector2(0.734375, 1.31426)
+texture = ExtResource("7_st3vn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MailboxActive"]
+libraries = {
+"": SubResource("AnimationLibrary_oh00y")
+}
+
+[node name="MailboxParticles" type="GPUParticles2D" parent="MailboxActive"]
+position = Vector2(-7, -41)
+scale = Vector2(0.358366, 1.0283)
+process_material = SubResource("ParticleProcessMaterial_ya80t")
+texture = ExtResource("5_rwjy1")
+lifetime = 2.0
+explosiveness = 0.36
+randomness = 0.24

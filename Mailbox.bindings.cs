@@ -140,6 +140,52 @@ public partial class Mailbox : Node2D {
       }
     }
 
+    private Node2D? _MailboxActive;
+    public Node2D MailboxActive {
+      get {
+        if (_MailboxActive == null) {
+          _MailboxActive = parent.GetNode<Node2D>("MailboxActive");
+        }
+        return _MailboxActive;
+      }
+    }
+
+    private Sprite2D? _MailboxActive_LinearGradient;
+    public Sprite2D MailboxActive_LinearGradient {
+      get {
+        if (_MailboxActive_LinearGradient == null) {
+          _MailboxActive_LinearGradient = parent.GetNode<Sprite2D>("MailboxActive/LinearGradient");
+        }
+        return _MailboxActive_LinearGradient;
+      }
+    }
+
+    private AnimationPlayer? _MailboxActive_AnimationPlayer;
+    public AnimationPlayer MailboxActive_AnimationPlayer {
+      get {
+        if (_MailboxActive_AnimationPlayer == null) {
+          _MailboxActive_AnimationPlayer = parent.GetNode<AnimationPlayer>("MailboxActive/AnimationPlayer");
+        }
+        return _MailboxActive_AnimationPlayer;
+      }
+    }
+
+    public void MailboxActive_AnimationPlayer_PlayPulseBorder() {
+      MailboxActive_AnimationPlayer.Play("PulseBorder");
+    }
+    public void MailboxActive_AnimationPlayer_PlayRESET() {
+      MailboxActive_AnimationPlayer.Play("RESET");
+    }
+    private GpuParticles2D? _MailboxActive_MailboxParticles;
+    public GpuParticles2D MailboxActive_MailboxParticles {
+      get {
+        if (_MailboxActive_MailboxParticles == null) {
+          _MailboxActive_MailboxParticles = parent.GetNode<GpuParticles2D>("MailboxActive/MailboxParticles");
+        }
+        return _MailboxActive_MailboxParticles;
+      }
+    }
+
   }
 
   public MailboxNodes? _Nodes;

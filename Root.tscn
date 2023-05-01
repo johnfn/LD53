@@ -890,7 +890,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Blub" parent="." instance=ExtResource("3_mvtuh")]
-position = Vector2(896, 3424)
+position = Vector2(1024, 3584)
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]

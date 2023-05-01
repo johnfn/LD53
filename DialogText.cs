@@ -22,7 +22,7 @@ public class DialogText {
     },
 
     [DialogTriggerName.OhShootSpikes] = new List<string> {
-      "Log continuation: I decided to divert from my typical route today.",
+      "Log continuation: For reasons I cannot explain, I diverted from my usual route today.",
       "My new route took me near some lava.",
       "I was careful to avoid it.",
     },
@@ -34,10 +34,11 @@ public class DialogText {
     },
 
     [DialogTriggerName.FirstPortal] = new List<string> {
-      "Log continuation: I've found what appaers to be a spatial anomaly.",
-      "My memory banks have an entry for such anomalies. They are called a 'Dimensional Vortex'.",
-      "A square section of the world has been cloned elsewhere.",
-      "I can travel between these cloned worlds by pressing 'E'."
+      "Log continuation: I've found what appears to be a spatial anomaly.",
+      "I have never seen anything like it before.",
+      "It appears that a square section of the world has been cloned elsewhere.",
+      "I can travel between these cloned worlds by pressing 'E'.",
+      "How this is possible, I do not know."
     },
 
     [DialogTriggerName.SecondPortal] = new List<string> {

@@ -18,15 +18,33 @@ public partial class Mailbox : Node2D {
 
   public override void _Ready() {
     Nodes.SimpleBackground.Hide();
+    Nodes.MailboxActive_LinearGradient.Hide();
+    Nodes.MailboxActive_MailboxParticles.Visible = false;
   }
 
   public void Link() {
     if (CurrentlyLinkedMailbox != null) {
+      CurrentlyLinkedMailbox.Nodes.MailboxActive_LinearGradient.Hide();
       CurrentlyLinkedMailbox.IsLinked = false;
+      CurrentlyLinkedMailbox.Nodes.MailboxActive_MailboxParticles.Visible = false;
     }
 
     IsLinked = true;
     CurrentlyLinkedMailbox = this;
+    Nodes.MailboxActive_LinearGradient.Show();
+    Nodes.MailboxActive_AnimationPlayer.Play("Active");
+    CurrentlyLinkedMailbox.Nodes.MailboxActive_MailboxParticles.Visible = true;
+
+    SourceRect = new Rect2(
+      getSourceTopLeft(),
+      new Vector2(PortalRadius * 2 * 32, PortalRadius * 2 * 32)
+    );
+
+    Nodes.SourceBackground.GlobalPosition = SourceRect.Position;
+    Nodes.SourceBackground.Scale = new Vector2 {
+      X = SourceRect.Size.X / Nodes.SourceBackground.Texture.GetSize().X,
+      Y = SourceRect.Size.Y / Nodes.SourceBackground.Texture.GetSize().Y,
+    };
   }
 
   public override void _Process(double delta) {
