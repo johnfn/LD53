@@ -23,7 +23,7 @@ public class DialogText {
 
     [DialogTriggerName.OhShootSpikes] = new List<string> {
       "Log continuation: For reasons I cannot explain, I diverted from my usual route today.",
-      "My new route took me near some lava.",
+      "While exploring, I came across some lava.",
       "I was careful to avoid it.",
     },
 
