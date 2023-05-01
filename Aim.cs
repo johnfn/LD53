@@ -32,16 +32,19 @@ public partial class Aim : Node2D {
     if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed) {
       var portalSource = Mailbox.CurrentlyLinkedMailbox;
 
-      if (portalSource != null) {
-        // if (HeadsUpDisplay.IsInsidePortal) {
-        //   Root.Instance.Nodes.Blub.ShowOverheadText("I can't create a Rift from inside a Rift!");
+      if (Nodes.Reticle.Visible) {
+        if (portalSource != null) {
+          // if (HeadsUpDisplay.IsInsidePortal) {
+          //   Root.Instance.Nodes.Blub.ShowOverheadText("I can't create a Rift from inside a Rift!");
 
-        //   return;
-        // }
+          //   return;
+          // }
 
-        portalSource.CreatePortalAt(
-          Nodes.Reticle.GlobalPosition
-        );
+          portalSource.CreatePortalAt(
+            Nodes.Reticle.GlobalPosition
+          );
+        }
+
       }
     }
   }
