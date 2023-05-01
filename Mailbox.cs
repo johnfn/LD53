@@ -19,6 +19,7 @@ public partial class Mailbox : Node2D {
 
   public override void _Ready() {
     Nodes.SimpleBackground.Hide();
+    Nodes.SourceBackground.Hide();
     Nodes.MailboxActive_LinearGradient.Hide();
     Nodes.MailboxActive_MailboxParticles.Visible = false;
   }
@@ -28,6 +29,7 @@ public partial class Mailbox : Node2D {
       CurrentlyLinkedMailbox.Nodes.MailboxActive_LinearGradient.Hide();
       CurrentlyLinkedMailbox.IsLinked = false;
       CurrentlyLinkedMailbox.Nodes.MailboxActive_MailboxParticles.Visible = false;
+      CurrentlyLinkedMailbox.Nodes.SourceBackground.Hide();
     }
 
     IsLinked = true;
@@ -35,6 +37,7 @@ public partial class Mailbox : Node2D {
     Nodes.MailboxActive_LinearGradient.Show();
     Nodes.MailboxActive_AnimationPlayer.Play("Active");
     CurrentlyLinkedMailbox.Nodes.MailboxActive_MailboxParticles.Visible = true;
+    Nodes.SourceBackground.Show();
 
     SourceRect = new Rect2(
       getSourceTopLeft(),
@@ -147,6 +150,7 @@ public partial class Mailbox : Node2D {
 
   public async void CreatePortalAt(Vector2 globalPosition) {
     Nodes.SimpleBackground.Show();
+    Nodes.SourceBackground.Show();
 
     Nodes.AnimationPlayer.Play("PulseBorder");
 

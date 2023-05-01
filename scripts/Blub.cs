@@ -115,6 +115,10 @@ public partial class Blub : CharacterBody2D {
       return;
     }
 
+    if (Globals.Debug) {
+      return;
+    }
+
     DialogLock = true;
 
     await Root.Instance.Nodes.StaticCanvasLayer.Nodes.Dialog.RunDialog(name);
