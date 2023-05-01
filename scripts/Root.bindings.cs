@@ -64,16 +64,6 @@ public partial class Root : Node2D {
       }
     }
 
-    private Sprite2D? _GlowHacks_LinearGradient;
-    public Sprite2D GlowHacks_LinearGradient {
-      get {
-        if (_GlowHacks_LinearGradient == null) {
-          _GlowHacks_LinearGradient = parent.GetNode<Sprite2D>("GlowHacks/LinearGradient");
-        }
-        return _GlowHacks_LinearGradient;
-      }
-    }
-
     private Sprite2D? _GlowHacks_CrystalGlow;
     public Sprite2D GlowHacks_CrystalGlow {
       get {
@@ -84,13 +74,13 @@ public partial class Root : Node2D {
       }
     }
 
-    private GpuParticles2D? _GlowHacks_LavaParticles1;
-    public GpuParticles2D GlowHacks_LavaParticles1 {
+    private Sprite2D? _GlowHacks_LinearGradient;
+    public Sprite2D GlowHacks_LinearGradient {
       get {
-        if (_GlowHacks_LavaParticles1 == null) {
-          _GlowHacks_LavaParticles1 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaParticles1");
+        if (_GlowHacks_LinearGradient == null) {
+          _GlowHacks_LinearGradient = parent.GetNode<Sprite2D>("GlowHacks/LinearGradient");
         }
-        return _GlowHacks_LavaParticles1;
+        return _GlowHacks_LinearGradient;
       }
     }
 
@@ -104,6 +94,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private GpuParticles2D? _GlowHacks_LavaParticles1;
+    public GpuParticles2D GlowHacks_LavaParticles1 {
+      get {
+        if (_GlowHacks_LavaParticles1 == null) {
+          _GlowHacks_LavaParticles1 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaParticles1");
+        }
+        return _GlowHacks_LavaParticles1;
+      }
+    }
+
     private GpuParticles2D? _GlowHacks_LavaParticles3;
     public GpuParticles2D GlowHacks_LavaParticles3 {
       get {
@@ -111,6 +111,96 @@ public partial class Root : Node2D {
           _GlowHacks_LavaParticles3 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaParticles3");
         }
         return _GlowHacks_LavaParticles3;
+      }
+    }
+
+    private Node2D? _GlowHacks_LavaGlow;
+    public Node2D GlowHacks_LavaGlow {
+      get {
+        if (_GlowHacks_LavaGlow == null) {
+          _GlowHacks_LavaGlow = parent.GetNode<Node2D>("GlowHacks/LavaGlow");
+        }
+        return _GlowHacks_LavaGlow;
+      }
+    }
+
+    private Sprite2D? _GlowHacks_LavaGlow_LinearGradient;
+    public Sprite2D GlowHacks_LavaGlow_LinearGradient {
+      get {
+        if (_GlowHacks_LavaGlow_LinearGradient == null) {
+          _GlowHacks_LavaGlow_LinearGradient = parent.GetNode<Sprite2D>("GlowHacks/LavaGlow/LinearGradient");
+        }
+        return _GlowHacks_LavaGlow_LinearGradient;
+      }
+    }
+
+    private GpuParticles2D? _GlowHacks_LavaGlow_LavaParticles2;
+    public GpuParticles2D GlowHacks_LavaGlow_LavaParticles2 {
+      get {
+        if (_GlowHacks_LavaGlow_LavaParticles2 == null) {
+          _GlowHacks_LavaGlow_LavaParticles2 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaGlow/LavaParticles2");
+        }
+        return _GlowHacks_LavaGlow_LavaParticles2;
+      }
+    }
+
+    private Node2D? _GlowHacks_LavaGlow2;
+    public Node2D GlowHacks_LavaGlow2 {
+      get {
+        if (_GlowHacks_LavaGlow2 == null) {
+          _GlowHacks_LavaGlow2 = parent.GetNode<Node2D>("GlowHacks/LavaGlow2");
+        }
+        return _GlowHacks_LavaGlow2;
+      }
+    }
+
+    private Sprite2D? _GlowHacks_LavaGlow2_LinearGradient;
+    public Sprite2D GlowHacks_LavaGlow2_LinearGradient {
+      get {
+        if (_GlowHacks_LavaGlow2_LinearGradient == null) {
+          _GlowHacks_LavaGlow2_LinearGradient = parent.GetNode<Sprite2D>("GlowHacks/LavaGlow2/LinearGradient");
+        }
+        return _GlowHacks_LavaGlow2_LinearGradient;
+      }
+    }
+
+    private GpuParticles2D? _GlowHacks_LavaGlow2_LavaParticles2;
+    public GpuParticles2D GlowHacks_LavaGlow2_LavaParticles2 {
+      get {
+        if (_GlowHacks_LavaGlow2_LavaParticles2 == null) {
+          _GlowHacks_LavaGlow2_LavaParticles2 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaGlow2/LavaParticles2");
+        }
+        return _GlowHacks_LavaGlow2_LavaParticles2;
+      }
+    }
+
+    private Node2D? _GlowHacks_LavaGlow3;
+    public Node2D GlowHacks_LavaGlow3 {
+      get {
+        if (_GlowHacks_LavaGlow3 == null) {
+          _GlowHacks_LavaGlow3 = parent.GetNode<Node2D>("GlowHacks/LavaGlow3");
+        }
+        return _GlowHacks_LavaGlow3;
+      }
+    }
+
+    private Sprite2D? _GlowHacks_LavaGlow3_LinearGradient;
+    public Sprite2D GlowHacks_LavaGlow3_LinearGradient {
+      get {
+        if (_GlowHacks_LavaGlow3_LinearGradient == null) {
+          _GlowHacks_LavaGlow3_LinearGradient = parent.GetNode<Sprite2D>("GlowHacks/LavaGlow3/LinearGradient");
+        }
+        return _GlowHacks_LavaGlow3_LinearGradient;
+      }
+    }
+
+    private GpuParticles2D? _GlowHacks_LavaGlow3_LavaParticles2;
+    public GpuParticles2D GlowHacks_LavaGlow3_LavaParticles2 {
+      get {
+        if (_GlowHacks_LavaGlow3_LavaParticles2 == null) {
+          _GlowHacks_LavaGlow3_LavaParticles2 = parent.GetNode<GpuParticles2D>("GlowHacks/LavaGlow3/LavaParticles2");
+        }
+        return _GlowHacks_LavaGlow3_LavaParticles2;
       }
     }
 
