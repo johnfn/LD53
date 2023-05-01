@@ -5,7 +5,8 @@ using static Utils;
 
 public partial class Mailbox : Node2D {
   public bool PortalExists = false;
-  public bool IsActivated = false;
+  public static Mailbox? CurrentlyLinkedMailbox = null;
+  public bool IsLinked = false;
   public Vector2 PortalTopLeft;
   public Rect2 SourceRect;
   public Rect2 DestRect;
@@ -15,8 +16,13 @@ public partial class Mailbox : Node2D {
   public bool AutoCreate = false;
   private bool _hasAutoCreated = false;
 
-  public override void _Ready() {
-    Nodes.SimpleBackground.Show();
+  public void Link() {
+    if (CurrentlyLinkedMailbox != null) {
+      CurrentlyLinkedMailbox.IsLinked = false;
+    }
+
+    IsLinked = true;
+    CurrentlyLinkedMailbox = this;
   }
 
   public override void _Process(double delta) {
@@ -24,6 +30,8 @@ public partial class Mailbox : Node2D {
     fakeBlub.Visible = true;
 
     if (AutoCreate && !_hasAutoCreated) {
+      Nodes.SimpleBackground.Show();
+
       _hasAutoCreated = true;
 
       Node2D target = (Node2D)GetNode("Target")!;

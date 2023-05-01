@@ -120,6 +120,26 @@ public partial class Mailbox : Node2D {
     public void AnimationPlayer_PlayRESET() {
       AnimationPlayer.Play("RESET");
     }
+    private Area2D? _MailboxArea;
+    public Area2D MailboxArea {
+      get {
+        if (_MailboxArea == null) {
+          _MailboxArea = parent.GetNode<Area2D>("MailboxArea");
+        }
+        return _MailboxArea;
+      }
+    }
+
+    private CollisionShape2D? _MailboxArea_CollisionShape2D;
+    public CollisionShape2D MailboxArea_CollisionShape2D {
+      get {
+        if (_MailboxArea_CollisionShape2D == null) {
+          _MailboxArea_CollisionShape2D = parent.GetNode<CollisionShape2D>("MailboxArea/CollisionShape2D");
+        }
+        return _MailboxArea_CollisionShape2D;
+      }
+    }
+
   }
 
   public MailboxNodes? _Nodes;

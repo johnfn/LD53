@@ -11,6 +11,7 @@
 [node name="Blub" type="CharacterBody2D"]
 position = Vector2(131, 65)
 collision_layer = 9
+collision_mask = 65
 script = ExtResource("1_g3qqm")
 
 [node name="Graphic" type="Sprite2D" parent="."]

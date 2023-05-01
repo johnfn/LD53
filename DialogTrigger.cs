@@ -16,6 +16,7 @@ public enum DialogTriggerName {
   FirstPortal,
   SecondPortal,
   CantMakeIt,
+  GetVortexGun,
 }
 
 public partial class DialogTrigger : Node2D {

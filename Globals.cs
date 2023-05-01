@@ -24,4 +24,6 @@ public static class Globals {
     [LayerMask.Portal] = 1 << 3,
     [LayerMask.Ladder] = 1 << 4,
   };
+
+  public static bool Debug = false;
 }

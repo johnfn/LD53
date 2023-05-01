@@ -30,21 +30,26 @@ public partial class Aim : Node2D {
   // detect a click
   public override void _Input(InputEvent @event) {
     if (@event is InputEventMouseButton mouseButton && mouseButton.Pressed) {
-      var portalSource = Root.Instance.Nodes.Mailbox;
+      var portalSource = Mailbox.CurrentlyLinkedMailbox;
 
-      portalSource.CreatePortalAt(
-        Nodes.Reticle.GlobalPosition
-      );
+      if (portalSource != null) {
+        portalSource.CreatePortalAt(
+          Nodes.Reticle.GlobalPosition
+        );
+      }
     }
   }
 
   public override void _Draw() {
-    var mailbox = Root.Instance.Nodes.Mailbox;
+    var mailbox = Mailbox.CurrentlyLinkedMailbox;
 
-    if (!mailbox.IsActivated) {
+    if (mailbox == null) {
       Nodes.Reticle.Visible = false;
+
       return;
     }
+
+    Nodes.Reticle.Visible = true;
 
     var start = Vector2.Zero;
     var end = ToLocal(GetGlobalMousePosition());

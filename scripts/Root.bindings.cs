@@ -264,6 +264,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private Mailbox? _Mailbox3;
+    public Mailbox Mailbox3 {
+      get {
+        if (_Mailbox3 == null) {
+          _Mailbox3 = parent.GetNode<Mailbox>("Mailbox3");
+        }
+        return _Mailbox3;
+      }
+    }
+
     private VortexGun? _VortexGun;
     public VortexGun VortexGun {
       get {
@@ -411,6 +421,16 @@ public partial class Root : Node2D {
           _FakeBlub = parent.GetNode<FakeBlub>("FakeBlub");
         }
         return _FakeBlub;
+      }
+    }
+
+    private Item? _Item;
+    public Item Item {
+      get {
+        if (_Item == null) {
+          _Item = parent.GetNode<Item>("Item");
+        }
+        return _Item;
       }
     }
 

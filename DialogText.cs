@@ -51,5 +51,12 @@ public class DialogText {
       "Log continuation: That looks too far for me to safely jump across.",
       "Maybe there's some other way.",
     },
+
+    [DialogTriggerName.GetVortexGun] = new List<string> {
+      "Log continuation: I have made a major discovery today.",
+      "This appears to be a device that can create a Dimensional Vortex.",
+      "First, I need to link it to a Mailbox.",
+      "I can do that by pressing E when I've found one."
+    },
   };
 }
