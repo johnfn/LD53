@@ -743,7 +743,8 @@ glow_hdr_threshold = 0.1
 glow_hdr_scale = 1.0
 
 [sub_resource type="Gradient" id="Gradient_lhasu"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.368627)
+offsets = PackedFloat32Array(0, 0.631985, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.947199, 0.343332, 0.600982, 1, 1, 1, 0.368627)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_00bm1"]
 gradient = SubResource("Gradient_lhasu")
@@ -762,8 +763,8 @@ direction = Vector3(1000, 2.08165e-12, 2.08165e-12)
 gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
-scale_min = 3.0
-scale_max = 9.0
+scale_min = 0.1
+scale_max = 0.6
 color = Color(1, 1, 1, 0.341176)
 color_ramp = SubResource("GradientTexture1D_j6rax")
 color_initial_ramp = SubResource("GradientTexture1D_00bm1")
@@ -979,7 +980,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Blub" parent="." instance=ExtResource("3_mvtuh")]
-position = Vector2(1184, 3360)
+position = Vector2(3040, 2560)
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -1036,24 +1037,26 @@ TriggerName = 10
 layer = -1
 
 [node name="Sky" type="Sprite2D" parent="BackgroundCanvasLayer"]
+modulate = Color(1.2, 1.17844, 0.910056, 1)
 position = Vector2(928, 672)
 scale = Vector2(1.85698, 1.32977)
 texture = ExtResource("8_8rjj8")
 
 [node name="Sky2" type="Sprite2D" parent="BackgroundCanvasLayer"]
-modulate = Color(0.329412, 0.607843, 0.811765, 1)
+modulate = Color(0.870588, 0.792157, 0.54902, 1)
 position = Vector2(927.878, 832)
 scale = Vector2(1.85625, 1.024)
 texture = ExtResource("8_8rjj8")
 
 [node name="Sky3" type="Sprite2D" parent="BackgroundCanvasLayer"]
-modulate = Color(0.215686, 0.396078, 0.529412, 1)
+modulate = Color(0.654902, 0.509804, 0.290196, 1)
 position = Vector2(927.878, 928)
 scale = Vector2(1.85625, 0.832)
 texture = ExtResource("8_8rjj8")
 
 [node name="RandomParticles" type="GPUParticles2D" parent="BackgroundCanvasLayer"]
 position = Vector2(352, 320)
+amount = 50
 process_material = SubResource("ParticleProcessMaterial_wlom8")
 texture = ExtResource("4_7jbyb")
 lifetime = 2.0
