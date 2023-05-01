@@ -165,6 +165,7 @@ texture = ExtResource("1_yjd0e")
 
 [node name="SimpleBackground" type="Sprite2D" parent="."]
 visible = false
+self_modulate = Color(0, 0, 0, 1)
 material = SubResource("ShaderMaterial_wety1")
 position = Vector2(-96, -96)
 texture = ExtResource("5_oeskr")

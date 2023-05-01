@@ -16,6 +16,10 @@ public partial class Mailbox : Node2D {
   public bool AutoCreate = false;
   private bool _hasAutoCreated = false;
 
+  public override void _Ready() {
+    Nodes.SimpleBackground.Hide();
+  }
+
   public void Link() {
     if (CurrentlyLinkedMailbox != null) {
       CurrentlyLinkedMailbox.IsLinked = false;
@@ -82,22 +86,21 @@ public partial class Mailbox : Node2D {
     var sourceTileMap = Root.Instance.Nodes.TileMap;
     var previewTileMap = Root.Instance.Nodes.DarkWorldPreview;
     var portalRadius = Mailbox.PortalRadius;
-    var sourceCenter = sourceTileMap.LocalToMap(GlobalPosition);
+    var sourceTopLeft = getSourceTopLeft();
 
     previewTileMap.Clear();
 
-    for (var i = -portalRadius; i < portalRadius; i++) {
-      for (var j = -portalRadius; j < portalRadius; j++) {
-        var sourceLocation = sourceCenter + new Vector2I(i, j);
+    for (var i = 0; i < portalRadius * 2; i++) {
+      for (var j = 0; j < portalRadius * 2; j++) {
+        var sourceLocation = previewTileMap.LocalToMap(sourceTopLeft) + new Vector2I(i, j);
         var destLocation = previewTileMap.LocalToMap(
           previewTileMap.ToLocal(globalPosition)
-        ) + new Vector2I(i, j);
+        ) + new Vector2I(i, j) - new Vector2I(PortalRadius, PortalRadius);
         var sourceTile = sourceTileMap.GetCellTileData(0, sourceLocation);
 
         previewTileMap.SetCell(
           0,
           destLocation,
-          // sourceTileMap.GetCellSourceId(0, sourceLocation),
           2,
           sourceTileMap.GetCellAtlasCoords(0, sourceLocation),
           1 // no collision on these guys, theyre just previews
@@ -132,35 +135,32 @@ public partial class Mailbox : Node2D {
     var destTileMap = Root.Instance.Nodes.DarkWorld;
     var destCenter = destTileMap.LocalToMap(portalLocation);
 
-    SourceRect = new Rect2(GlobalPosition - new Vector2(PortalRadius, PortalRadius) * 32, new Vector2(PortalRadius * 2, PortalRadius * 2) * 32);
-    DestRect = new Rect2(portalLocation - new Vector2(PortalRadius, PortalRadius) * 32, new Vector2(PortalRadius * 2, PortalRadius * 2) * 32);
-
     // draw source rect
 
-    var sr = new Rect2(
+    SourceRect = new Rect2(
       getSourceTopLeft(),
       new Vector2(PortalRadius * 2 * 32, PortalRadius * 2 * 32)
     );
 
-    Nodes.SourceBackground.GlobalPosition = sr.Position;
+    Nodes.SourceBackground.GlobalPosition = SourceRect.Position;
     Nodes.SourceBackground.Scale = new Vector2 {
-      X = sr.Size.X / Nodes.SourceBackground.Texture.GetSize().X,
-      Y = sr.Size.Y / Nodes.SourceBackground.Texture.GetSize().Y,
+      X = SourceRect.Size.X / Nodes.SourceBackground.Texture.GetSize().X,
+      Y = SourceRect.Size.Y / Nodes.SourceBackground.Texture.GetSize().Y,
     };
 
     // draw dest rect
 
-    var dr = new Rect2(
+    DestRect = new Rect2(
       destTileMap.MapToLocal(destCenter - new Vector2I(PortalRadius, PortalRadius)) - new Vector2(16, 16),
       new Vector2(PortalRadius * 2 * 32, PortalRadius * 2 * 32)
     );
 
-    PortalTopLeft = dr.Position;
+    PortalTopLeft = DestRect.Position;
 
-    Nodes.SimpleBackground.GlobalPosition = dr.Position;
+    Nodes.SimpleBackground.GlobalPosition = DestRect.Position;
     Nodes.SimpleBackground.Scale = new Vector2 {
-      X = dr.Size.X / Nodes.SimpleBackground.Texture.GetSize().X,
-      Y = dr.Size.Y / Nodes.SimpleBackground.Texture.GetSize().Y,
+      X = DestRect.Size.X / Nodes.SimpleBackground.Texture.GetSize().X,
+      Y = DestRect.Size.Y / Nodes.SimpleBackground.Texture.GetSize().Y,
     };
 
     // Reset collisions that were cleared last time.

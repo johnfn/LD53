@@ -156,8 +156,10 @@ public partial class Aim : Node2D {
 
     // Draw portal preview.
 
-    Root.Instance.Nodes.Mailbox.ShowPortalPreviewAt(
-      Nodes.Reticle.GlobalPosition
-    );
+    if (Mailbox.CurrentlyLinkedMailbox != null) {
+      Mailbox.CurrentlyLinkedMailbox.ShowPortalPreviewAt(
+        Nodes.Reticle.GlobalPosition
+      );
+    }
   }
 }
