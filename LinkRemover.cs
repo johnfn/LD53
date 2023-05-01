@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using static Utils;
 
 public partial class LinkRemover : Node2D {
@@ -8,6 +9,16 @@ public partial class LinkRemover : Node2D {
       if (body is Blub b) {
         if (Mailbox.CurrentlyLinkedMailbox != null) {
           Mailbox.CurrentlyLinkedMailbox.Unlink();
+
+          var randomMessages = new List<string> {
+            "Link deactivated.",
+            "Link broken.",
+            "Vortex gun offline."
+          };
+
+          b.ShowOverheadText(
+            randomMessages[(int)(GD.Randi() % randomMessages.Count)]
+          );
         }
       }
     };

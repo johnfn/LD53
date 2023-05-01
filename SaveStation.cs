@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using static Utils;
 
 public partial class SaveStation : Node2D {
@@ -40,6 +41,17 @@ public partial class SaveStation : Node2D {
 
       var _ = Root.Instance.Nodes.Blub.TriggerDialog(
         DialogTriggerName.SaveStation
+      );
+    } else {
+      var randomMessages = new List<string> {
+        "Save station activated!",
+        "Save station ready to go.",
+        "Save station online.",
+        "Save station ready.",
+      };
+
+      Root.Instance.Nodes.Blub.ShowOverheadText(
+        randomMessages[(int)(GD.Randi() % randomMessages.Count)]
       );
     }
   }
