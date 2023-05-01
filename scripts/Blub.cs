@@ -12,6 +12,7 @@ public partial class Blub : CharacterBody2D {
   public static bool DialogLock = false;
   public static bool DeathLock = false;
 
+  private bool isOnLadder = false;
   private float maxXVelocity = 300;
   public Vector2 FacingDirection = new Vector2(0, 0);
 
@@ -179,6 +180,38 @@ public partial class Blub : CharacterBody2D {
       !Input.IsActionPressed("left")
     ) {
       Velocity = new Vector2(Velocity.X * 0.92f, Velocity.Y);
+    }
+
+    // check for ladders.
+    var spaceState = GetWorld2D().DirectSpaceState;
+
+    var ladderIntersection = spaceState.IntersectPoint(new PhysicsPointQueryParameters2D {
+      CollisionMask = (uint)Globals.LayerNumbers[LayerMask.Ladder],
+      CollideWithBodies = true,
+      CollideWithAreas = true,
+      Position = GlobalPosition,
+    });
+
+    var touchingLadder = ladderIntersection.Count > 0;
+
+    if (touchingLadder) {
+      // Get on a ladder if you press up / down
+      if (!isOnLadder) {
+        isOnLadder = Input.IsActionJustPressed("up") || Input.IsActionJustPressed("down");
+      }
+
+      // Get off ladder if you jump.
+      if (isOnLadder) {
+        if (Input.IsActionJustPressed("jump")) {
+          isOnLadder = false;
+        }
+      }
+
+      if (isOnLadder) {
+        Velocity = new Vector2(Velocity.X,
+          Input.IsActionPressed("down") ? 300 : Input.IsActionPressed("up") ? -300 : 0
+        );
+      }
     }
 
     MoveAndSlide();

@@ -88,6 +88,7 @@ swap={
 2d_physics/layer_2="Spike"
 2d_physics/layer_3="Cannonball"
 2d_physics/layer_4="Portal"
+2d_physics/layer_5="Ladder"
 
 [rendering]
 
