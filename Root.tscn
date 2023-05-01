@@ -886,7 +886,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Blub" parent="." instance=ExtResource("3_mvtuh")]
-position = Vector2(2016, 2528)
+position = Vector2(2080, 2144)
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -940,11 +940,17 @@ texture = ExtResource("8_8rjj8")
 [node name="Cannon" parent="." instance=ExtResource("9_crjh1")]
 position = Vector2(3105, 2175)
 
-[node name="SaveStation" parent="." instance=ExtResource("15_t5llf")]
+[node name="SaveStations" type="Node2D" parent="."]
 position = Vector2(1376, 2272)
 
-[node name="SaveStation2" parent="." instance=ExtResource("15_t5llf")]
-position = Vector2(3040, 2560)
+[node name="SaveStation" parent="SaveStations" instance=ExtResource("15_t5llf")]
+position = Vector2(0, 0)
+
+[node name="SaveStation2" parent="SaveStations" instance=ExtResource("15_t5llf")]
+position = Vector2(1664, 288)
+
+[node name="SaveStation3" parent="SaveStations" instance=ExtResource("15_t5llf")]
+position = Vector2(960, -128)
 
 [node name="SplashParticle" type="GPUParticles2D" parent="."]
 position = Vector2(2930, 2237)

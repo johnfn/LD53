@@ -214,6 +214,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private Node2D? _SaveStations;
+    public Node2D SaveStations {
+      get {
+        if (_SaveStations == null) {
+          _SaveStations = parent.GetNode<Node2D>("SaveStations");
+        }
+        return _SaveStations;
+      }
+    }
+
     private GpuParticles2D? _SplashParticle;
     public GpuParticles2D SplashParticle {
       get {
@@ -344,23 +354,33 @@ public partial class Root : Node2D {
       }
     }
 
-    private SaveStation? _SaveStation;
-    public SaveStation SaveStation {
+    private SaveStation? _SaveStations_SaveStation;
+    public SaveStation SaveStations_SaveStation {
       get {
-        if (_SaveStation == null) {
-          _SaveStation = parent.GetNode<SaveStation>("SaveStation");
+        if (_SaveStations_SaveStation == null) {
+          _SaveStations_SaveStation = parent.GetNode<SaveStation>("SaveStations/SaveStation");
         }
-        return _SaveStation;
+        return _SaveStations_SaveStation;
       }
     }
 
-    private SaveStation? _SaveStation2;
-    public SaveStation SaveStation2 {
+    private SaveStation? _SaveStations_SaveStation2;
+    public SaveStation SaveStations_SaveStation2 {
       get {
-        if (_SaveStation2 == null) {
-          _SaveStation2 = parent.GetNode<SaveStation>("SaveStation2");
+        if (_SaveStations_SaveStation2 == null) {
+          _SaveStations_SaveStation2 = parent.GetNode<SaveStation>("SaveStations/SaveStation2");
         }
-        return _SaveStation2;
+        return _SaveStations_SaveStation2;
+      }
+    }
+
+    private SaveStation? _SaveStations_SaveStation3;
+    public SaveStation SaveStations_SaveStation3 {
+      get {
+        if (_SaveStations_SaveStation3 == null) {
+          _SaveStations_SaveStation3 = parent.GetNode<SaveStation>("SaveStations/SaveStation3");
+        }
+        return _SaveStations_SaveStation3;
       }
     }
 

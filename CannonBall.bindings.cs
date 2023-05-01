@@ -34,6 +34,16 @@ public partial class CannonBall : RigidBody2D {
       }
     }
 
+    private VisibleOnScreenNotifier2D? _VisibleOnScreenNotifier2D;
+    public VisibleOnScreenNotifier2D VisibleOnScreenNotifier2D {
+      get {
+        if (_VisibleOnScreenNotifier2D == null) {
+          _VisibleOnScreenNotifier2D = parent.GetNode<VisibleOnScreenNotifier2D>("VisibleOnScreenNotifier2D");
+        }
+        return _VisibleOnScreenNotifier2D;
+      }
+    }
+
   }
 
   public CannonBallNodes? _Nodes;

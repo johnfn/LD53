@@ -19,19 +19,15 @@ public partial class CannonBall : RigidBody2D {
         b.DieAndRespawn();
       }
     };
+
+    Nodes.VisibleOnScreenNotifier2D.VisibilityChanged += () => {
+      if (!Nodes.VisibleOnScreenNotifier2D.IsOnScreen()) {
+        QueueFree();
+      }
+    };
   }
 
   public void Explode() {
     QueueFree();
-  }
-
-  public override void _Process(double delta) {
-    // Destroy if we're offscreen.
-    var camera = Root.Instance.Nodes.Camera2D;
-    var cameraRect = new Rect2(camera.GlobalPosition, camera.GetViewportRect().Size);
-
-    if (!cameraRect.Intersects(new Rect2(GlobalPosition, new Vector2(16, 16)))) {
-      QueueFree();
-    }
   }
 }
