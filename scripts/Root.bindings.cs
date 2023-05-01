@@ -344,6 +344,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private DialogTrigger? _DialogTriggers_CantMakeIt;
+    public DialogTrigger DialogTriggers_CantMakeIt {
+      get {
+        if (_DialogTriggers_CantMakeIt == null) {
+          _DialogTriggers_CantMakeIt = parent.GetNode<DialogTrigger>("DialogTriggers/CantMakeIt");
+        }
+        return _DialogTriggers_CantMakeIt;
+      }
+    }
+
     private Cannon? _Cannon;
     public Cannon Cannon {
       get {
@@ -381,6 +391,16 @@ public partial class Root : Node2D {
           _SaveStations_SaveStation3 = parent.GetNode<SaveStation>("SaveStations/SaveStation3");
         }
         return _SaveStations_SaveStation3;
+      }
+    }
+
+    private SaveStation? _SaveStations_SaveStation4;
+    public SaveStation SaveStations_SaveStation4 {
+      get {
+        if (_SaveStations_SaveStation4 == null) {
+          _SaveStations_SaveStation4 = parent.GetNode<SaveStation>("SaveStations/SaveStation4");
+        }
+        return _SaveStations_SaveStation4;
       }
     }
 

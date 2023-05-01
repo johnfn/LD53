@@ -8,37 +8,48 @@ public class DialogText {
     [DialogTriggerName.FirstInteraction] = new List<string> {
     },
     [DialogTriggerName.SecondInteraction] = new List<string> {
-      "I am Robo-Delivery-Unit 3000.",
-      "A machine designed to deliver packages.",
-      "As far as I know, I am the last of my kind.",
+      "Robo-Delivery-Unit 3000's log.",
+      "Entry: Day 184,821.",
+      "I continue to carry out my routine deliveries.",
+      "It has been 182,102 days since the last time I've seen another Robo-Delivery-Unit.",
     },
 
     [DialogTriggerName.SaveStation] = new List<string> {
-      "I just activated a Save Station.",
-      "If I am to perish, another Robo-Delivery-3000 unit will be constructed here, with all of my memories intact.",
+      "Log continuation: I found an interesting device today.",
+      "It's labelled as a 'Save Station'.",
+      "My memory banks claim that, if I am to perish, it will construct another Robo-Delivery-3000 unit here, with all of my memories intact.",
+      "I wonder if I can trust it.",
     },
 
     [DialogTriggerName.OhShootSpikes] = new List<string> {
-      "Lava is instanteously fatal.",
+      "Log continuation: I decided to divert from my typical route today.",
+      "My new route took me near some lava.",
+      "I was careful to avoid it.",
     },
 
     [DialogTriggerName.OhShootCannon] = new List<string> {
-      "Most machines were destroyed after the war.",
-      "However.",
-      "Some machines still receive power.",
-      "They remain active.",
-      "And hostile.",
+      "Log continuation: My diversion took me near an active cannon.",
+      "I was unaware that active cannons were still in the area.",
+      "Most were destroyed, or deactivated, after the war.",
     },
 
     [DialogTriggerName.FirstPortal] = new List<string> {
-      "Years and years ago, Robo-Delivery-Units developed a new technology.",
-      "This technology creates a clone of a square section of the world.",
+      "Log continuation: I've found what appaers to be a spatial anomaly.",
+      "My memory banks have an entry for such anomalies. They are called a 'Dimensional Vortex'.",
+      "A square section of the world has been cloned elsewhere.",
       "I can travel between these cloned worlds by pressing 'E'."
     },
 
     [DialogTriggerName.SecondPortal] = new List<string> {
-      "The Dimensional Vortex also creates copies of any obstacles in the world.",
+      "Log continuation: I have found another spatial anomaly, similar to the previous one.",
+      "This one is different, however.",
+      "It appears to contain copies of any obstacles in the world.",
       "If one side of the Vortex is impassable, perhaps the other side offers a way through.",
+    },
+
+    [DialogTriggerName.CantMakeIt] = new List<string> {
+      "Log continuation: That looks too far for me to safely jump across.",
+      "Maybe there's some other way.",
     },
   };
 }
