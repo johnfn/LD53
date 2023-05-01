@@ -26,15 +26,12 @@ public partial class CannonBall : RigidBody2D {
   }
 
   public override void _Process(double delta) {
-    // Velocity = Facing * 100 * (float)delta;
+    // Destroy if we're offscreen.
+    var camera = Root.Instance.Nodes.Camera2D;
+    var cameraRect = new Rect2(camera.GlobalPosition, camera.GetViewportRect().Size);
 
-    // var collision = MoveAndCollide();
-    // if (collision != null) {
-    //   var enemy = collision.Collider as Enemy;
-    //   if (enemy != null) {
-    //     enemy.QueueFree();
-    //     QueueFree();
-    //   }
-    // }
+    if (!cameraRect.Intersects(new Rect2(GlobalPosition, new Vector2(16, 16)))) {
+      QueueFree();
+    }
   }
 }

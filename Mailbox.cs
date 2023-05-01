@@ -15,6 +15,10 @@ public partial class Mailbox : Node2D {
   public bool AutoCreate = false;
   private bool _hasAutoCreated = false;
 
+  public override void _Ready() {
+    Nodes.SimpleBackground.Show();
+  }
+
   public override void _Process(double delta) {
     var fakeBlub = Root.Instance.Nodes.FakeBlub;
     fakeBlub.Visible = true;
@@ -50,8 +54,8 @@ public partial class Mailbox : Node2D {
         fakeBlub.Nodes.Graphic.Visible = true;
         fakeBlub.Nodes.GraphicAlt.Visible = false;
 
-        player.Nodes.GraphicAlt.Visible = true;
-        player.Nodes.Graphic.Visible = false;
+        player.Nodes.GraphicAlt.Visible = false;
+        player.Nodes.Graphic.Visible = true;
 
         if (Input.IsActionJustPressed("swap")) {
           Root.Instance.Nodes.Blub.GlobalPosition = Root.Instance.Nodes.Blub.GlobalPosition + portalDelta;
@@ -103,8 +107,6 @@ public partial class Mailbox : Node2D {
     return sourceTileMap.MapToLocal(sourceCenter - new Vector2I(PortalRadius, PortalRadius)) - new Vector2(16, 16);
   }
 
-  List<Rect2> sourceRects = new();
-  List<Rect2> destRects = new();
   List<Vector2I> previouslyClearedTiles = new();
 
   public async void CreatePortalAt(Vector2 globalPosition) {
@@ -164,9 +166,8 @@ public partial class Mailbox : Node2D {
     }
 
     // Clear previous state.
-    destTileMap.Clear();
-    destRects.Clear();
-    sourceRects.Clear();
+
+    // destTileMap.Clear();
     previouslyClearedTiles.Clear();
 
     for (var i = -PortalRadius; i < PortalRadius; i++) {

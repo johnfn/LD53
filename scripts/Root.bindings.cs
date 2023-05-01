@@ -134,6 +134,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private Node2D? _Mailbox2_Target;
+    public Node2D Mailbox2_Target {
+      get {
+        if (_Mailbox2_Target == null) {
+          _Mailbox2_Target = parent.GetNode<Node2D>("Mailbox2/Target");
+        }
+        return _Mailbox2_Target;
+      }
+    }
+
     private TileMap? _DarkWorldPreview;
     public TileMap DarkWorldPreview {
       get {
@@ -234,6 +244,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private Mailbox? _Mailbox2;
+    public Mailbox Mailbox2 {
+      get {
+        if (_Mailbox2 == null) {
+          _Mailbox2 = parent.GetNode<Mailbox>("Mailbox2");
+        }
+        return _Mailbox2;
+      }
+    }
+
     private VortexGun? _VortexGun;
     public VortexGun VortexGun {
       get {
@@ -301,6 +321,16 @@ public partial class Root : Node2D {
           _DialogTriggers_CannonDialogTrigger2 = parent.GetNode<DialogTrigger>("DialogTriggers/CannonDialogTrigger2");
         }
         return _DialogTriggers_CannonDialogTrigger2;
+      }
+    }
+
+    private DialogTrigger? _DialogTriggers_CannonDialogTrigger3;
+    public DialogTrigger DialogTriggers_CannonDialogTrigger3 {
+      get {
+        if (_DialogTriggers_CannonDialogTrigger3 == null) {
+          _DialogTriggers_CannonDialogTrigger3 = parent.GetNode<DialogTrigger>("DialogTriggers/CannonDialogTrigger3");
+        }
+        return _DialogTriggers_CannonDialogTrigger3;
       }
     }
 

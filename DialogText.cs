@@ -7,7 +7,6 @@ public class DialogText {
   public static Dictionary<DialogTriggerName, List<string>> Dialogs = new Dictionary<DialogTriggerName, List<string>> {
     [DialogTriggerName.FirstInteraction] = new List<string> {
     },
-
     [DialogTriggerName.SecondInteraction] = new List<string> {
       "I am Robo-Delivery-Unit 3000.",
       "A machine designed to deliver packages.",
@@ -35,6 +34,11 @@ public class DialogText {
       "Years and years ago, Robo-Delivery-Units developed a new technology.",
       "This technology creates a clone of a square section of the world.",
       "I can travel between these cloned worlds by pressing 'E'."
+    },
+
+    [DialogTriggerName.SecondPortal] = new List<string> {
+      "The Dimensional Vortex also creates copies of any obstacles in the world.",
+      "If one side of the Vortex is impassable, perhaps the other side offers a way through.",
     },
   };
 }
