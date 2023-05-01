@@ -118,6 +118,8 @@ public partial class Aim : Node2D {
     var currentPosition = start;
     double currentLength = 0.0f;
 
+    // Draw dashed line.
+
     while (currentLength < lineLength) {
       var nextDashEnd = currentPosition + direction * (float)(DashLength - firstOffset);
       firstOffset = 0;
@@ -133,6 +135,22 @@ public partial class Aim : Node2D {
       currentLength += DashLength + GapLength;
     }
 
+    var previewRect = new Rect2(
+      GetGlobalMousePosition() - new Vector2(Mailbox.PortalRadius * 32, Mailbox.PortalRadius * 32),
+      new Vector2(Mailbox.PortalRadius * 2 * 32, Mailbox.PortalRadius * 2 * 32)
+    );
+
+    var player = Root.Instance.Nodes.Blub;
+    var playerRect = Root.Instance.Nodes.Blub.Nodes.Graphic.GetRect();
+    var playerGlobalRect = new Rect2(
+      Root.Instance.Nodes.Blub.GlobalPosition + playerRect.Position,
+      playerRect.Size
+    );
+
+    if (previewRect.Intersects(playerGlobalRect)) {
+      endReasonablyCloseToMouse = false;
+    }
+
     if (!endReasonablyCloseToMouse) {
       Nodes.SourceBackground.Visible = false;
       Nodes.Reticle.Visible = false;
@@ -141,7 +159,7 @@ public partial class Aim : Node2D {
       return;
     }
 
-    // Draw stuff.
+    // Draw rest of preview.
 
     Nodes.SourceBackground.Visible = true;
     Nodes.Reticle.Visible = true;
