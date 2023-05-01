@@ -24,6 +24,26 @@ public partial class Root : Node2D {
       }
     }
 
+    private Sprite2D? _GlowHacks_LinearGradient2;
+    public Sprite2D GlowHacks_LinearGradient2 {
+      get {
+        if (_GlowHacks_LinearGradient2 == null) {
+          _GlowHacks_LinearGradient2 = parent.GetNode<Sprite2D>("GlowHacks/LinearGradient2");
+        }
+        return _GlowHacks_LinearGradient2;
+      }
+    }
+
+    private Sprite2D? _GlowHacks_LinearGradient3;
+    public Sprite2D GlowHacks_LinearGradient3 {
+      get {
+        if (_GlowHacks_LinearGradient3 == null) {
+          _GlowHacks_LinearGradient3 = parent.GetNode<Sprite2D>("GlowHacks/LinearGradient3");
+        }
+        return _GlowHacks_LinearGradient3;
+      }
+    }
+
     private Sprite2D? _GlowHacks_FakeGlow3;
     public Sprite2D GlowHacks_FakeGlow3 {
       get {
@@ -171,6 +191,16 @@ public partial class Root : Node2D {
           _BackgroundCanvasLayer_Sky = parent.GetNode<Sprite2D>("BackgroundCanvasLayer/Sky");
         }
         return _BackgroundCanvasLayer_Sky;
+      }
+    }
+
+    private GpuParticles2D? _SplashParticle;
+    public GpuParticles2D SplashParticle {
+      get {
+        if (_SplashParticle == null) {
+          _SplashParticle = parent.GetNode<GpuParticles2D>("SplashParticle");
+        }
+        return _SplashParticle;
       }
     }
 
