@@ -64,6 +64,42 @@ public partial class Blub : CharacterBody2D {
       }
     }
 
+    private Node2D? _OverheadText;
+    public Node2D OverheadText {
+      get {
+        if (_OverheadText == null) {
+          _OverheadText = parent.GetNode<Node2D>("OverheadText");
+        }
+        return _OverheadText;
+      }
+    }
+
+    private Label? _OverheadText_Text;
+    public Label OverheadText_Text {
+      get {
+        if (_OverheadText_Text == null) {
+          _OverheadText_Text = parent.GetNode<Label>("OverheadText/Text");
+        }
+        return _OverheadText_Text;
+      }
+    }
+
+    private AnimationPlayer? _OverheadText_AnimationPlayer;
+    public AnimationPlayer OverheadText_AnimationPlayer {
+      get {
+        if (_OverheadText_AnimationPlayer == null) {
+          _OverheadText_AnimationPlayer = parent.GetNode<AnimationPlayer>("OverheadText/AnimationPlayer");
+        }
+        return _OverheadText_AnimationPlayer;
+      }
+    }
+
+    public void OverheadText_AnimationPlayer_PlayPlayText() {
+      OverheadText_AnimationPlayer.Play("PlayText");
+    }
+    public void OverheadText_AnimationPlayer_PlayRESET() {
+      OverheadText_AnimationPlayer.Play("RESET");
+    }
   }
 
   public BlubNodes? _Nodes;

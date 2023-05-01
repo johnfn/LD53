@@ -17,9 +17,6 @@ public partial class Blub : CharacterBody2D {
   public Vector2 FacingDirection = new Vector2(0, 0);
   public bool HasVortexGun = Globals.Debug;
 
-  public override void _Ready() {
-  }
-
   public override void _Process(double deltaTime) {
     UpdateCamera();
     FaceCorrectDirection();
@@ -28,6 +25,12 @@ public partial class Blub : CharacterBody2D {
       ProcessKeyboardInput();
       CheckForDialog();
     }
+  }
+
+  public void ShowOverheadText(string text) {
+    Nodes.OverheadText_Text.Text = text;
+    Nodes.OverheadText_Text.VisibleRatio = 0;
+    Nodes.OverheadText_AnimationPlayer.Play("PlayText");
   }
 
   private void FaceCorrectDirection() {
@@ -277,6 +280,20 @@ public partial class Blub : CharacterBody2D {
     if (SaveStation.ActiveSaveStation != null) {
       GlobalPosition = SaveStation.ActiveSaveStation.GlobalPosition + new Vector2(32, -32);
     }
+
+    var randomMessages = new List<string> {
+      "Robo-Delivery-Unit 3000: Online.",
+      "Ow!",
+      "I'm okay!",
+      "Let's try again!",
+      "We can do it if we try!",
+      "Ouchie!",
+      "Rebooted and ready to go!",
+    };
+
+    ShowOverheadText(
+      randomMessages[(int)(GD.Randi() % randomMessages.Count)]
+    );
 
     DeathLock = false;
 
