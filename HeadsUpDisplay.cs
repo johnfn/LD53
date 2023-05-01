@@ -11,14 +11,17 @@ public partial class HeadsUpDisplay : CanvasLayer {
     var allPortals = GetTree().GetNodesInGroup("Portal");
     var allMailboxAreas = GetTree().GetNodesInGroup("MailboxArea");
     var isTouchingPortal = false;
-    var isTouchingMailboxArea = false;
 
     foreach (var portal in allPortals) {
       if (portal is Area2D area) {
         if (area.GetOverlappingBodies().Contains(player)) {
-          isTouchingPortal = true;
+          var mailboxParent = area.GetParent().GetParent();
 
-          break;
+          if (mailboxParent is Mailbox mb && mb.IsLinked) {
+            isTouchingPortal = true;
+
+            break;
+          }
         }
       }
     }
@@ -49,8 +52,7 @@ public partial class HeadsUpDisplay : CanvasLayer {
       }
     }
 
-    if (isTouchingMailboxArea) {
-    } else if (isTouchingPortal) {
+    if (isTouchingPortal) {
       if (Nodes.EActionLabel.Text == "") {
         Nodes.AnimationPlayer.Play("ShowLabel");
       }
