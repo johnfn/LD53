@@ -45,7 +45,7 @@ public class DialogText {
       "Log continuation: I have found another spatial anomaly, similar to the previous one.",
       "This one is different, however.",
       "It appears to contain copies of any obstacles in the world.",
-      "If one side of the Vortex is impassable, perhaps the other side offers a way through.",
+      "If one side of the Rift is impassable, perhaps the other side offers a way through.",
     },
 
     [DialogTriggerName.CantMakeIt] = new List<string> {
@@ -55,19 +55,19 @@ public class DialogText {
 
     [DialogTriggerName.GetVortexGun] = new List<string> {
       "Log continuation: I have made a major discovery today.",
-      "This appears to be a device that can create a Dimensional Vortex.",
+      "This appears to be a device that can create a Dimensional Rift.",
       "First, I need to link it to a Mailbox.",
       "I can do that by pressing E when I've found one."
     },
 
     [DialogTriggerName.LinkMailbox] = new List<string> {
-      "I have linked the Vortex Gun to this Mailbox.",
+      "I have linked the Rift Gun to this Mailbox.",
       "Now, I can copy the area around the Mailbox to a new location by clicking the mouse.",
       "Once I've done that, I can warp between the two locations by pressing E.",
     },
 
     [DialogTriggerName.LostLink] = new List<string> {
-      "According to my sensors, the red area will cause any link from my Vortex Gun to a Mailbox to be lost.",
+      "According to my sensors, the red area will cause any link from my Rift Gun to a Mailbox to be lost.",
       "I should be careful.",
       "But I am hopeful that if I proceed, I will find more mailboxes to link with."
     },

@@ -3,6 +3,8 @@ using System;
 using static Utils;
 
 public partial class HeadsUpDisplay : CanvasLayer {
+  public static bool IsInsidePortal = false;
+
   public override void _Ready() {
   }
 
@@ -25,6 +27,8 @@ public partial class HeadsUpDisplay : CanvasLayer {
         }
       }
     }
+
+    IsInsidePortal = isTouchingPortal;
 
     foreach (var mailboxArea in allMailboxAreas) {
       if (mailboxArea is Area2D area) {

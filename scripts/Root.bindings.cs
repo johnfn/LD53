@@ -124,23 +124,33 @@ public partial class Root : Node2D {
       }
     }
 
-    private Node2D? _Mailbox_Target;
-    public Node2D Mailbox_Target {
+    private Node2D? _Mailboxes;
+    public Node2D Mailboxes {
       get {
-        if (_Mailbox_Target == null) {
-          _Mailbox_Target = parent.GetNode<Node2D>("Mailbox/Target");
+        if (_Mailboxes == null) {
+          _Mailboxes = parent.GetNode<Node2D>("Mailboxes");
         }
-        return _Mailbox_Target;
+        return _Mailboxes;
       }
     }
 
-    private Node2D? _Mailbox2_Target;
-    public Node2D Mailbox2_Target {
+    private Node2D? _Mailboxes_Mailbox_Target;
+    public Node2D Mailboxes_Mailbox_Target {
       get {
-        if (_Mailbox2_Target == null) {
-          _Mailbox2_Target = parent.GetNode<Node2D>("Mailbox2/Target");
+        if (_Mailboxes_Mailbox_Target == null) {
+          _Mailboxes_Mailbox_Target = parent.GetNode<Node2D>("Mailboxes/Mailbox/Target");
         }
-        return _Mailbox2_Target;
+        return _Mailboxes_Mailbox_Target;
+      }
+    }
+
+    private Node2D? _Mailboxes_Mailbox2_Target;
+    public Node2D Mailboxes_Mailbox2_Target {
+      get {
+        if (_Mailboxes_Mailbox2_Target == null) {
+          _Mailboxes_Mailbox2_Target = parent.GetNode<Node2D>("Mailboxes/Mailbox2/Target");
+        }
+        return _Mailboxes_Mailbox2_Target;
       }
     }
 
@@ -264,33 +274,53 @@ public partial class Root : Node2D {
       }
     }
 
-    private Mailbox? _Mailbox;
-    public Mailbox Mailbox {
+    private Mailbox? _Mailboxes_Mailbox;
+    public Mailbox Mailboxes_Mailbox {
       get {
-        if (_Mailbox == null) {
-          _Mailbox = parent.GetNode<Mailbox>("Mailbox");
+        if (_Mailboxes_Mailbox == null) {
+          _Mailboxes_Mailbox = parent.GetNode<Mailbox>("Mailboxes/Mailbox");
         }
-        return _Mailbox;
+        return _Mailboxes_Mailbox;
       }
     }
 
-    private Mailbox? _Mailbox2;
-    public Mailbox Mailbox2 {
+    private Mailbox? _Mailboxes_Mailbox2;
+    public Mailbox Mailboxes_Mailbox2 {
       get {
-        if (_Mailbox2 == null) {
-          _Mailbox2 = parent.GetNode<Mailbox>("Mailbox2");
+        if (_Mailboxes_Mailbox2 == null) {
+          _Mailboxes_Mailbox2 = parent.GetNode<Mailbox>("Mailboxes/Mailbox2");
         }
-        return _Mailbox2;
+        return _Mailboxes_Mailbox2;
       }
     }
 
-    private Mailbox? _Mailbox3;
-    public Mailbox Mailbox3 {
+    private Mailbox? _Mailboxes_Mailbox3;
+    public Mailbox Mailboxes_Mailbox3 {
       get {
-        if (_Mailbox3 == null) {
-          _Mailbox3 = parent.GetNode<Mailbox>("Mailbox3");
+        if (_Mailboxes_Mailbox3 == null) {
+          _Mailboxes_Mailbox3 = parent.GetNode<Mailbox>("Mailboxes/Mailbox3");
         }
-        return _Mailbox3;
+        return _Mailboxes_Mailbox3;
+      }
+    }
+
+    private Mailbox? _Mailboxes_Mailbox5;
+    public Mailbox Mailboxes_Mailbox5 {
+      get {
+        if (_Mailboxes_Mailbox5 == null) {
+          _Mailboxes_Mailbox5 = parent.GetNode<Mailbox>("Mailboxes/Mailbox5");
+        }
+        return _Mailboxes_Mailbox5;
+      }
+    }
+
+    private Mailbox? _Mailboxes_Mailbox4;
+    public Mailbox Mailboxes_Mailbox4 {
+      get {
+        if (_Mailboxes_Mailbox4 == null) {
+          _Mailboxes_Mailbox4 = parent.GetNode<Mailbox>("Mailboxes/Mailbox4");
+        }
+        return _Mailboxes_Mailbox4;
       }
     }
 
@@ -424,6 +454,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private SaveStation? _SaveStations_SaveStation5;
+    public SaveStation SaveStations_SaveStation5 {
+      get {
+        if (_SaveStations_SaveStation5 == null) {
+          _SaveStations_SaveStation5 = parent.GetNode<SaveStation>("SaveStations/SaveStation5");
+        }
+        return _SaveStations_SaveStation5;
+      }
+    }
+
     private SaveStation? _SaveStations_SaveStation3;
     public SaveStation SaveStations_SaveStation3 {
       get {
@@ -471,6 +511,16 @@ public partial class Root : Node2D {
           _LinkRemovers_LinkRemover = parent.GetNode<LinkRemover>("LinkRemovers/LinkRemover");
         }
         return _LinkRemovers_LinkRemover;
+      }
+    }
+
+    private LinkRemover? _LinkRemovers_LinkRemover2;
+    public LinkRemover LinkRemovers_LinkRemover2 {
+      get {
+        if (_LinkRemovers_LinkRemover2 == null) {
+          _LinkRemovers_LinkRemover2 = parent.GetNode<LinkRemover>("LinkRemovers/LinkRemover2");
+        }
+        return _LinkRemovers_LinkRemover2;
       }
     }
 

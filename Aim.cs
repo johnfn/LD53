@@ -33,6 +33,12 @@ public partial class Aim : Node2D {
       var portalSource = Mailbox.CurrentlyLinkedMailbox;
 
       if (portalSource != null) {
+        // if (HeadsUpDisplay.IsInsidePortal) {
+        //   Root.Instance.Nodes.Blub.ShowOverheadText("I can't create a Rift from inside a Rift!");
+
+        //   return;
+        // }
+
         portalSource.CreatePortalAt(
           Nodes.Reticle.GlobalPosition
         );

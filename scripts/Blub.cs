@@ -133,7 +133,7 @@ public partial class Blub : CharacterBody2D {
     var camera = Root.Instance.Nodes.Camera2D;
 
     camera.Position = new Vector2(
-      Position.X + FacingDirection.X * 100,
+      Position.X + FacingDirection.X * 300,
       Position.Y + FacingDirection.Y * 100
     ).Floor();
   }

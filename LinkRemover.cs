@@ -13,7 +13,7 @@ public partial class LinkRemover : Node2D {
           var randomMessages = new List<string> {
             "Link deactivated.",
             "Link broken.",
-            "Vortex gun offline."
+            "Rift gun offline."
           };
 
           b.ShowOverheadText(
