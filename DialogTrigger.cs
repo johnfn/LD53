@@ -12,7 +12,8 @@ public enum DialogTriggerName {
   SecondInteraction,
   SaveStation,
   OhShootSpikes,
-  OhShootCannon
+  OhShootCannon,
+  FirstPortal
 }
 
 public partial class DialogTrigger : Node2D {

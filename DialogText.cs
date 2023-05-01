@@ -30,5 +30,11 @@ public class DialogText {
       "They remain active.",
       "And hostile.",
     },
+
+    [DialogTriggerName.FirstPortal] = new List<string> {
+      "Years and years ago, Robo-Delivery-Units developed a new technology.",
+      "This technology creates a clone of a square section of the world.",
+      "I can travel between these cloned worlds by pressing 'E'."
+    },
   };
 }

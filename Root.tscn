@@ -838,7 +838,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Blub" parent="." instance=ExtResource("3_mvtuh")]
-position = Vector2(2688, 2592)
+position = Vector2(3232, 2560)
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -871,6 +871,11 @@ position = Vector2(2141, 1937)
 scale = Vector2(1.33788, 1.33788)
 TriggerName = 4
 
+[node name="CannonDialogTrigger2" parent="DialogTriggers" instance=ExtResource("4_0fiya")]
+position = Vector2(2419, 2418)
+scale = Vector2(1.33788, 1.33788)
+TriggerName = 5
+
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -884,6 +889,9 @@ position = Vector2(3105, 2175)
 
 [node name="SaveStation" parent="." instance=ExtResource("15_t5llf")]
 position = Vector2(1376, 2272)
+
+[node name="SaveStation2" parent="." instance=ExtResource("15_t5llf")]
+position = Vector2(3040, 2560)
 
 [node name="SplashParticle" type="GPUParticles2D" parent="."]
 position = Vector2(2930, 2237)
