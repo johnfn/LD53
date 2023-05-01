@@ -28,7 +28,7 @@ public partial class HeadsUpDisplay : CanvasLayer {
         if (area.GetOverlappingBodies().Contains(player)) {
           var mailbox = (Mailbox)area.GetParent();
 
-          if (!mailbox.IsLinked) {
+          if (!mailbox.IsLinked && player.HasVortexGun) {
             if (Nodes.EActionLabel.Text == "") {
               Nodes.AnimationPlayer.Play("ShowLabel");
             }
