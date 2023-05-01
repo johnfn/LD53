@@ -214,6 +214,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private GpuParticles2D? _BackgroundCanvasLayer_RandomParticles;
+    public GpuParticles2D BackgroundCanvasLayer_RandomParticles {
+      get {
+        if (_BackgroundCanvasLayer_RandomParticles == null) {
+          _BackgroundCanvasLayer_RandomParticles = parent.GetNode<GpuParticles2D>("BackgroundCanvasLayer/RandomParticles");
+        }
+        return _BackgroundCanvasLayer_RandomParticles;
+      }
+    }
+
     private Node2D? _SaveStations;
     public Node2D SaveStations {
       get {
