@@ -185,14 +185,20 @@ public partial class Blub : CharacterBody2D {
     // check for ladders.
     var spaceState = GetWorld2D().DirectSpaceState;
 
-    var ladderIntersection = spaceState.IntersectPoint(new PhysicsPointQueryParameters2D {
+    var ladderIntersection1 = spaceState.IntersectPoint(new PhysicsPointQueryParameters2D {
       CollisionMask = (uint)Globals.LayerNumbers[LayerMask.Ladder],
       CollideWithBodies = true,
       CollideWithAreas = true,
-      Position = GlobalPosition,
+      Position = GlobalPosition + new Vector2(16, 16),
+    });
+    var ladderIntersection2 = spaceState.IntersectPoint(new PhysicsPointQueryParameters2D {
+      CollisionMask = (uint)Globals.LayerNumbers[LayerMask.Ladder],
+      CollideWithBodies = true,
+      CollideWithAreas = true,
+      Position = GlobalPosition - new Vector2(16, 16),
     });
 
-    var touchingLadder = ladderIntersection.Count > 0;
+    var touchingLadder = (ladderIntersection1.Count > 0) || (ladderIntersection2.Count > 0);
 
     if (touchingLadder) {
       // Get on a ladder if you press up / down
@@ -212,6 +218,8 @@ public partial class Blub : CharacterBody2D {
           Input.IsActionPressed("down") ? 300 : Input.IsActionPressed("up") ? -300 : 0
         );
       }
+    } else {
+      isOnLadder = false;
     }
 
     MoveAndSlide();

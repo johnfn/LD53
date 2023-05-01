@@ -11,9 +11,20 @@ public partial class Mailbox : Node2D {
   public Rect2 DestRect;
   public static int PortalRadius = 3;
 
+  [Export]
+  public bool AutoCreate = false;
+  private bool _hasAutoCreated = false;
+
   public override void _Process(double delta) {
     var fakeBlub = Root.Instance.Nodes.FakeBlub;
     fakeBlub.Visible = true;
+
+    if (AutoCreate && !_hasAutoCreated) {
+      _hasAutoCreated = true;
+
+      Node2D target = (Node2D)GetNode("Target")!;
+      CreatePortalAt(target.GlobalPosition + new Vector2(32, 32) * PortalRadius);
+    }
 
     if (PortalExists) {
       var sourceTopLeft = getSourceTopLeft();

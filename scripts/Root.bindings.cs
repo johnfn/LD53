@@ -124,6 +124,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private Node2D? _Mailbox_Target;
+    public Node2D Mailbox_Target {
+      get {
+        if (_Mailbox_Target == null) {
+          _Mailbox_Target = parent.GetNode<Node2D>("Mailbox/Target");
+        }
+        return _Mailbox_Target;
+      }
+    }
+
     private TileMap? _DarkWorldPreview;
     public TileMap DarkWorldPreview {
       get {
