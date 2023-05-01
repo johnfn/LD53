@@ -234,6 +234,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private Node2D? _LinkRemovers;
+    public Node2D LinkRemovers {
+      get {
+        if (_LinkRemovers == null) {
+          _LinkRemovers = parent.GetNode<Node2D>("LinkRemovers");
+        }
+        return _LinkRemovers;
+      }
+    }
+
     private HeadsUpDisplay? _StaticCanvasLayer;
     public HeadsUpDisplay StaticCanvasLayer {
       get {
@@ -364,6 +374,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private DialogTrigger? _DialogTriggers_LostLink;
+    public DialogTrigger DialogTriggers_LostLink {
+      get {
+        if (_DialogTriggers_LostLink == null) {
+          _DialogTriggers_LostLink = parent.GetNode<DialogTrigger>("DialogTriggers/LostLink");
+        }
+        return _DialogTriggers_LostLink;
+      }
+    }
+
     private Cannon? _Cannon;
     public Cannon Cannon {
       get {
@@ -431,6 +451,16 @@ public partial class Root : Node2D {
           _Item = parent.GetNode<Item>("Item");
         }
         return _Item;
+      }
+    }
+
+    private LinkRemover? _LinkRemovers_LinkRemover;
+    public LinkRemover LinkRemovers_LinkRemover {
+      get {
+        if (_LinkRemovers_LinkRemover == null) {
+          _LinkRemovers_LinkRemover = parent.GetNode<LinkRemover>("LinkRemovers/LinkRemover");
+        }
+        return _LinkRemovers_LinkRemover;
       }
     }
 

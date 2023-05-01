@@ -24,13 +24,19 @@ public partial class Mailbox : Node2D {
     Nodes.MailboxActive_MailboxParticles.Visible = false;
   }
 
-  public void Link() {
+  public void Unlink() {
     if (CurrentlyLinkedMailbox != null) {
       CurrentlyLinkedMailbox.Nodes.MailboxActive_LinearGradient.Hide();
       CurrentlyLinkedMailbox.IsLinked = false;
       CurrentlyLinkedMailbox.Nodes.MailboxActive_MailboxParticles.Visible = false;
       CurrentlyLinkedMailbox.Nodes.SourceBackground.Hide();
+
+      CurrentlyLinkedMailbox = null;
     }
+  }
+
+  public void Link() {
+    Unlink();
 
     IsLinked = true;
     CurrentlyLinkedMailbox = this;
@@ -118,6 +124,7 @@ public partial class Mailbox : Node2D {
     var portalRadius = Mailbox.PortalRadius;
     var sourceTopLeft = getSourceTopLeft();
 
+    // Also done in Aim.cs for reasons.
     previewTileMap.Clear();
 
     for (var i = 0; i < portalRadius * 2; i++) {

@@ -44,7 +44,11 @@ public partial class Aim : Node2D {
     var mailbox = Mailbox.CurrentlyLinkedMailbox;
 
     if (mailbox == null) {
+      Nodes.SourceBackground.Visible = false;
       Nodes.Reticle.Visible = false;
+
+      // Also done in Aim.cs for reasons.
+      Root.Instance.Nodes.DarkWorldPreview.Clear();
 
       return;
     }

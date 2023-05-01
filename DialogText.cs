@@ -65,5 +65,11 @@ public class DialogText {
       "Now, I can copy the area around the Mailbox to a new location by clicking the mouse.",
       "Once I've done that, I can warp between the two locations by pressing E.",
     },
+
+    [DialogTriggerName.LostLink] = new List<string> {
+      "According to my sensors, the red area will cause any link from my Vortex Gun to a Mailbox to be lost.",
+      "I should be careful.",
+      "But I am hopeful that if I proceed, I will find more links."
+    },
   };
 }

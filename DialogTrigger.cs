@@ -18,6 +18,7 @@ public enum DialogTriggerName {
   CantMakeIt,
   GetVortexGun,
   LinkMailbox,
+  LostLink,
 }
 
 public partial class DialogTrigger : Node2D {
