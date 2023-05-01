@@ -111,6 +111,10 @@ public partial class Blub : CharacterBody2D {
       return;
     }
 
+    if (name == DialogTriggerName.CantMakeIt && HasVortexGun) {
+      return;
+    }
+
     DialogLock = true;
 
     await Root.Instance.Nodes.StaticCanvasLayer.Nodes.Dialog.RunDialog(name);
