@@ -34,17 +34,18 @@ public partial class Aim : Node2D {
 
       if (Nodes.Reticle.Visible) {
         if (portalSource != null) {
-          // if (HeadsUpDisplay.IsInsidePortal) {
-          //   Root.Instance.Nodes.Blub.ShowOverheadText("I can't create a Rift from inside a Rift!");
-
-          //   return;
-          // }
-
           portalSource.CreatePortalAt(
             Nodes.Reticle.GlobalPosition
           );
         }
+      } else {
+        var allMailboxes = GetTree().GetNodesInGroup("Mailbox");
 
+        foreach (var mailbox in allMailboxes) {
+          if (mailbox is Mailbox mailboxNode) {
+            mailboxNode.ClearPortal();
+          }
+        }
       }
     }
   }
@@ -90,7 +91,7 @@ public partial class Aim : Node2D {
 
       var dir = (globalPosition - GlobalPosition).Normalized();
 
-      for (int i = 0; i < 100; i++) {
+      for (int i = 0; i < 10; i++) {
         var candidatePosition = GetGlobalMousePosition() - dir * (float)i;
         query.From = GlobalPosition;
         query.To = candidatePosition;

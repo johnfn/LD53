@@ -195,7 +195,7 @@ _data = {
 "RESET": SubResource("Animation_r6aft")
 }
 
-[node name="Mailbox" type="Node2D"]
+[node name="Mailbox" type="Node2D" groups=["Mailbox"]]
 script = ExtResource("1_enhfc")
 
 [node name="MailboxGraphic" type="Sprite2D" parent="."]

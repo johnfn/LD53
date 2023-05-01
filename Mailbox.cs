@@ -153,9 +153,40 @@ public partial class Mailbox : Node2D {
     return sourceTileMap.MapToLocal(sourceCenter - new Vector2I(PortalRadius, PortalRadius)) - new Vector2(16, 16);
   }
 
+  public void ClearPortal() {
+    var sourceTileMap = Root.Instance.Nodes.TileMap;
+    var destTileMap = Root.Instance.Nodes.DarkWorld;
+
+    Nodes.SimpleBackground.Hide();
+    Nodes.SourceBackground.Hide();
+
+    // Reset collisions that were cleared last time.
+    foreach (var tile in prevPortalTiles) {
+      sourceTileMap.SetCell(0,
+        tile,
+        sourceTileMap.GetCellSourceId(0, tile),
+        sourceTileMap.GetCellAtlasCoords(0, tile),
+        0
+      );
+
+      destTileMap.SetCell(
+        0,
+        tile,
+        -1,
+        destTileMap.GetCellAtlasCoords(0, tile),
+        0
+      );
+    }
+
+    // Clear previous state.
+    prevPortalTiles.Clear();
+  }
+
   List<Vector2I> prevPortalTiles = new();
 
   public async void CreatePortalAt(Vector2 globalPosition) {
+    ClearPortal();
+
     Nodes.SimpleBackground.Show();
     Nodes.SourceBackground.Show();
 
@@ -200,27 +231,6 @@ public partial class Mailbox : Node2D {
       X = DestRect.Size.X / Nodes.SimpleBackground.Texture.GetSize().X,
       Y = DestRect.Size.Y / Nodes.SimpleBackground.Texture.GetSize().Y,
     };
-
-    // Reset collisions that were cleared last time.
-    foreach (var tile in prevPortalTiles) {
-      sourceTileMap.SetCell(0,
-        tile,
-        sourceTileMap.GetCellSourceId(0, tile),
-        sourceTileMap.GetCellAtlasCoords(0, tile),
-        0
-      );
-
-      destTileMap.SetCell(
-        0,
-        tile,
-        -1,
-        destTileMap.GetCellAtlasCoords(0, tile),
-        0
-      );
-    }
-
-    // Clear previous state.
-    prevPortalTiles.Clear();
 
     for (var i = -PortalRadius; i < PortalRadius; i++) {
       for (var j = -PortalRadius; j < PortalRadius; j++) {
