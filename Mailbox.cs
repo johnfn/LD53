@@ -11,6 +11,7 @@ public partial class Mailbox : Node2D {
   public Rect2 SourceRect;
   public Rect2 DestRect;
   public static int PortalRadius = 3;
+  public static bool HasExplainedLinking = false;
 
   [Export]
   public bool AutoCreate = false;
@@ -45,6 +46,14 @@ public partial class Mailbox : Node2D {
       X = SourceRect.Size.X / Nodes.SourceBackground.Texture.GetSize().X,
       Y = SourceRect.Size.Y / Nodes.SourceBackground.Texture.GetSize().Y,
     };
+
+    if (!Mailbox.HasExplainedLinking) {
+      Mailbox.HasExplainedLinking = true;
+
+      var _ = Root.Instance.Nodes.Blub.TriggerDialog(
+        DialogTriggerName.LinkMailbox
+      );
+    }
   }
 
   public override void _Process(double delta) {

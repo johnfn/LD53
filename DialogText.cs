@@ -59,5 +59,11 @@ public class DialogText {
       "First, I need to link it to a Mailbox.",
       "I can do that by pressing E when I've found one."
     },
+
+    [DialogTriggerName.LinkMailbox] = new List<string> {
+      "I have linked the Vortex Gun to this Mailbox.",
+      "Now, I can copy the area around the Mailbox to a new location by clicking the mouse.",
+      "Once I've done that, I can warp between the two locations by pressing E.",
+    },
   };
 }
