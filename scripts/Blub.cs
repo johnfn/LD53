@@ -154,8 +154,8 @@ public partial class Blub : CharacterBody2D {
     }
 
     // if we're on the ground, we can jump
-    if (IsOnFloor()) {
-      if (Input.IsActionJustPressed("up")) {
+    if (IsOnFloor() || isOnLadder) {
+      if (Input.IsActionJustPressed("jump")) {
         delta.Y = -730;
       }
     }
@@ -171,7 +171,7 @@ public partial class Blub : CharacterBody2D {
     }
 
     // Instantly start falling if we're not holding the jump btn.
-    if (!Input.IsActionPressed("up") && Velocity.Y < 0) {
+    if (!Input.IsActionPressed("jump") && Velocity.Y < 0) {
       Velocity = new Vector2(Velocity.X, 0.0f);
     }
 
