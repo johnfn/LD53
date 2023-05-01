@@ -61,8 +61,9 @@ public partial class Aim : Node2D {
     var query = PhysicsRayQueryParameters2D.Create(
       GlobalPosition,
       GetGlobalMousePosition(),
-      uint.MaxValue // but not Cannonball
+      uint.MaxValue
       & ~(uint)(Globals.LayerNumbers[LayerMask.Cannonball])
+      & ~(uint)(Globals.LayerNumbers[LayerMask.Ladder])
     );
     var result = spaceState.IntersectRay(query);
 

@@ -30,8 +30,6 @@ public partial class Mailbox : Node2D {
     fakeBlub.Visible = true;
 
     if (AutoCreate && !_hasAutoCreated) {
-      Nodes.SimpleBackground.Show();
-
       _hasAutoCreated = true;
 
       Node2D target = (Node2D)GetNode("Target")!;
@@ -100,7 +98,7 @@ public partial class Mailbox : Node2D {
           0,
           destLocation,
           // sourceTileMap.GetCellSourceId(0, sourceLocation),
-          2, //the all white tilemap
+          2,
           sourceTileMap.GetCellAtlasCoords(0, sourceLocation),
           1 // no collision on these guys, theyre just previews
         );
@@ -115,9 +113,11 @@ public partial class Mailbox : Node2D {
     return sourceTileMap.MapToLocal(sourceCenter - new Vector2I(PortalRadius, PortalRadius)) - new Vector2(16, 16);
   }
 
-  List<Vector2I> previouslyClearedTiles = new();
+  List<Vector2I> prevPortalTiles = new();
 
   public async void CreatePortalAt(Vector2 globalPosition) {
+    Nodes.SimpleBackground.Show();
+
     Nodes.AnimationPlayer.Play("PulseBorder");
 
     Nodes.SimpleBackground_PortalParticles.Restart();
@@ -164,19 +164,25 @@ public partial class Mailbox : Node2D {
     };
 
     // Reset collisions that were cleared last time.
-    foreach (var tile in previouslyClearedTiles) {
+    foreach (var tile in prevPortalTiles) {
       sourceTileMap.SetCell(0,
         tile,
         sourceTileMap.GetCellSourceId(0, tile),
         sourceTileMap.GetCellAtlasCoords(0, tile),
         0
       );
+
+      destTileMap.SetCell(
+        0,
+        tile,
+        -1,
+        destTileMap.GetCellAtlasCoords(0, tile),
+        0
+      );
     }
 
     // Clear previous state.
-
-    // destTileMap.Clear();
-    previouslyClearedTiles.Clear();
+    prevPortalTiles.Clear();
 
     for (var i = -PortalRadius; i < PortalRadius; i++) {
       for (var j = -PortalRadius; j < PortalRadius; j++) {
@@ -213,7 +219,7 @@ public partial class Mailbox : Node2D {
           sourceTileMap.GetCellAtlasCoords(0, destLocation),
           1
         );
-        previouslyClearedTiles.Add(destLocation);
+        prevPortalTiles.Add(destLocation);
 
         for (var k = 0; k < 2; k++) {
           await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
