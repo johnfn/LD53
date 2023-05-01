@@ -16,6 +16,7 @@ public partial class Blub : CharacterBody2D {
   private float maxXVelocity = 300;
   public Vector2 FacingDirection = new Vector2(0, 0);
   public bool HasVortexGun = Globals.Debug;
+  public bool LastActionWasMouse = false;
 
   public override void _Process(double deltaTime) {
     UpdateCamera();
@@ -131,14 +132,36 @@ public partial class Blub : CharacterBody2D {
 
   private void UpdateCamera() {
     var camera = Root.Instance.Nodes.Camera2D;
-
-    camera.Position = new Vector2(
-      Position.X + FacingDirection.X * 300,
-      Position.Y + FacingDirection.Y * 100
+    var normalCameraTarget = new Vector2(
+      Position.X + FacingDirection.X * 50,
+      Position.Y + FacingDirection.Y * 50
     ).Floor();
+
+    if (LastActionWasMouse) {
+      var mouseTarget = GetGlobalMousePosition().Floor();
+
+      camera.Position = mouseTarget.Lerp(normalCameraTarget, 0.8f);
+    } else {
+      camera.Position = normalCameraTarget;
+    }
+  }
+
+  public override void _Input(InputEvent @event) {
+    if (@event is InputEventMouseMotion) {
+      LastActionWasMouse = true;
+    }
   }
 
   private void ProcessKeyboardInput() {
+    if (
+      Input.IsActionJustPressed("up") ||
+      Input.IsActionJustPressed("down") ||
+      Input.IsActionJustPressed("left") ||
+      Input.IsActionJustPressed("right")
+    ) {
+      LastActionWasMouse = false;
+    }
+
     // move via arrow keys
     var delta = new Vector2();
 

@@ -43,8 +43,8 @@ public class DialogText {
 
     [DialogTriggerName.SecondPortal] = new List<string> {
       "Log continuation: I have found another spatial anomaly, similar to the previous one.",
-      "This one is different, however.",
-      "It appears to contain copies of any obstacles in the world.",
+      "This one has a notable unique characteristic.",
+      "It appears that obstacles have been copied over from the other side of the anomaly.",
       "If one side of the Rift is impassable, perhaps the other side offers a way through.",
     },
 

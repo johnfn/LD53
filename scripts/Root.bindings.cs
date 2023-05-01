@@ -314,6 +314,26 @@ public partial class Root : Node2D {
       }
     }
 
+    private Sprite2D? _BackgroundCanvasLayer_Sky2;
+    public Sprite2D BackgroundCanvasLayer_Sky2 {
+      get {
+        if (_BackgroundCanvasLayer_Sky2 == null) {
+          _BackgroundCanvasLayer_Sky2 = parent.GetNode<Sprite2D>("BackgroundCanvasLayer/Sky2");
+        }
+        return _BackgroundCanvasLayer_Sky2;
+      }
+    }
+
+    private Sprite2D? _BackgroundCanvasLayer_Sky3;
+    public Sprite2D BackgroundCanvasLayer_Sky3 {
+      get {
+        if (_BackgroundCanvasLayer_Sky3 == null) {
+          _BackgroundCanvasLayer_Sky3 = parent.GetNode<Sprite2D>("BackgroundCanvasLayer/Sky3");
+        }
+        return _BackgroundCanvasLayer_Sky3;
+      }
+    }
+
     private GpuParticles2D? _BackgroundCanvasLayer_RandomParticles;
     public GpuParticles2D BackgroundCanvasLayer_RandomParticles {
       get {

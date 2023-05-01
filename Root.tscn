@@ -939,7 +939,7 @@ position = Vector2(864, -992)
 AutoCreate = true
 
 [node name="Target" type="Node2D" parent="Mailboxes/Mailbox2"]
-position = Vector2(-64, 160)
+position = Vector2(-96, 160)
 
 [node name="Mailbox3" parent="Mailboxes" instance=ExtResource("6_8yew4")]
 
@@ -979,7 +979,7 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Blub" parent="." instance=ExtResource("3_mvtuh")]
-position = Vector2(3200, 3424)
+position = Vector2(1184, 3360)
 collision_mask = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -1038,6 +1038,18 @@ layer = -1
 [node name="Sky" type="Sprite2D" parent="BackgroundCanvasLayer"]
 position = Vector2(928, 672)
 scale = Vector2(1.85698, 1.32977)
+texture = ExtResource("8_8rjj8")
+
+[node name="Sky2" type="Sprite2D" parent="BackgroundCanvasLayer"]
+modulate = Color(0.329412, 0.607843, 0.811765, 1)
+position = Vector2(927.878, 832)
+scale = Vector2(1.85625, 1.024)
+texture = ExtResource("8_8rjj8")
+
+[node name="Sky3" type="Sprite2D" parent="BackgroundCanvasLayer"]
+modulate = Color(0.215686, 0.396078, 0.529412, 1)
+position = Vector2(927.878, 928)
+scale = Vector2(1.85625, 0.832)
 texture = ExtResource("8_8rjj8")
 
 [node name="RandomParticles" type="GPUParticles2D" parent="BackgroundCanvasLayer"]

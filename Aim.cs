@@ -39,11 +39,14 @@ public partial class Aim : Node2D {
           );
         }
       } else {
-        var allMailboxes = GetTree().GetNodesInGroup("Mailbox");
+        // dont disable initial portals b4 we even used them.
+        if (Root.Instance.Nodes.Blub.HasVortexGun) {
+          var allMailboxes = GetTree().GetNodesInGroup("Mailbox");
 
-        foreach (var mailbox in allMailboxes) {
-          if (mailbox is Mailbox mailboxNode) {
-            mailboxNode.ClearPortal();
+          foreach (var mailbox in allMailboxes) {
+            if (mailbox is Mailbox mailboxNode) {
+              mailboxNode.ClearPortal();
+            }
           }
         }
       }
@@ -51,9 +54,10 @@ public partial class Aim : Node2D {
   }
 
   public override void _Draw() {
+    var player = Root.Instance.Nodes.Blub;
     var mailbox = Mailbox.CurrentlyLinkedMailbox;
 
-    if (mailbox == null) {
+    if (mailbox == null || !player.LastActionWasMouse) {
       Nodes.SourceBackground.Visible = false;
       Nodes.Reticle.Visible = false;
 
@@ -141,7 +145,6 @@ public partial class Aim : Node2D {
       new Vector2(Mailbox.PortalRadius * 2 * 32, Mailbox.PortalRadius * 2 * 32)
     );
 
-    var player = Root.Instance.Nodes.Blub;
     var playerRect = Root.Instance.Nodes.Blub.Nodes.Graphic.GetRect();
     var playerGlobalRect = new Rect2(
       Root.Instance.Nodes.Blub.GlobalPosition + playerRect.Position,
