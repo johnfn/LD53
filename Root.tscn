@@ -1090,6 +1090,9 @@ position = Vector2(960, -128)
 [node name="SaveStation4" parent="SaveStations" instance=ExtResource("15_t5llf")]
 position = Vector2(-267, 1919)
 
+[node name="SaveStation6" parent="SaveStations" instance=ExtResource("15_t5llf")]
+position = Vector2(6069, 1311)
+
 [node name="SplashParticle" type="GPUParticles2D" parent="."]
 position = Vector2(2941, 1630)
 scale = Vector2(0.248076, 0.248076)

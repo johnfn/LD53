@@ -614,6 +614,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private SaveStation? _SaveStations_SaveStation6;
+    public SaveStation SaveStations_SaveStation6 {
+      get {
+        if (_SaveStations_SaveStation6 == null) {
+          _SaveStations_SaveStation6 = parent.GetNode<SaveStation>("SaveStations/SaveStation6");
+        }
+        return _SaveStations_SaveStation6;
+      }
+    }
+
     private FakeBlub? _FakeBlub;
     public FakeBlub FakeBlub {
       get {
