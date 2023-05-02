@@ -424,6 +424,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private Mailbox? _Mailboxes_Mailbox6;
+    public Mailbox Mailboxes_Mailbox6 {
+      get {
+        if (_Mailboxes_Mailbox6 == null) {
+          _Mailboxes_Mailbox6 = parent.GetNode<Mailbox>("Mailboxes/Mailbox6");
+        }
+        return _Mailboxes_Mailbox6;
+      }
+    }
+
     private VortexGun? _VortexGun;
     public VortexGun VortexGun {
       get {
@@ -621,6 +631,16 @@ public partial class Root : Node2D {
           _LinkRemovers_LinkRemover2 = parent.GetNode<LinkRemover>("LinkRemovers/LinkRemover2");
         }
         return _LinkRemovers_LinkRemover2;
+      }
+    }
+
+    private LinkRemover? _LinkRemover2;
+    public LinkRemover LinkRemover2 {
+      get {
+        if (_LinkRemover2 == null) {
+          _LinkRemover2 = parent.GetNode<LinkRemover>("LinkRemover2");
+        }
+        return _LinkRemover2;
       }
     }
 
