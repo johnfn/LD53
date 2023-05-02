@@ -64,16 +64,6 @@ public partial class Root : Node2D {
       }
     }
 
-    private Sprite2D? _GlowHacks_CrystalGlow;
-    public Sprite2D GlowHacks_CrystalGlow {
-      get {
-        if (_GlowHacks_CrystalGlow == null) {
-          _GlowHacks_CrystalGlow = parent.GetNode<Sprite2D>("GlowHacks/CrystalGlow");
-        }
-        return _GlowHacks_CrystalGlow;
-      }
-    }
-
     private Sprite2D? _GlowHacks_LinearGradient;
     public Sprite2D GlowHacks_LinearGradient {
       get {
