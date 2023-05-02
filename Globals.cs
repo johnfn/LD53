@@ -25,5 +25,6 @@ public static class Globals {
     [LayerMask.Ladder] = 1 << 4,
   };
 
-  public static bool Debug = true;
+  public static bool Debug = false;
+  public static bool DebugHasRiftGun = true;
 }

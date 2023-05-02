@@ -15,6 +15,7 @@ public partial class Aim : Node2D {
 
   public override void _Ready() {
     Nodes.AnimationPlayer.Play("Reticle");
+    Nodes.TooClose.Visible = false;
   }
 
   public override void _Process(double delta) {
@@ -151,8 +152,22 @@ public partial class Aim : Node2D {
       playerRect.Size
     );
 
+    if (!endReasonablyCloseToMouse) {
+      if (player.LastActionWasMouse) {
+        Nodes.TooClose.Visible = true;
+        Nodes.TooClose.Text = "No clear shot!";
+        Nodes.TooClose.GlobalPosition = GetGlobalMousePosition();
+      }
+    }
+
     if (previewRect.Intersects(playerGlobalRect)) {
       endReasonablyCloseToMouse = false;
+
+      if (player.LastActionWasMouse) {
+        Nodes.TooClose.Visible = true;
+        Nodes.TooClose.Text = "Too close!";
+        Nodes.TooClose.GlobalPosition = GetGlobalMousePosition();
+      }
     }
 
     if (!endReasonablyCloseToMouse) {
@@ -162,6 +177,8 @@ public partial class Aim : Node2D {
 
       return;
     }
+
+    Nodes.TooClose.Visible = false;
 
     // Draw rest of preview.
 

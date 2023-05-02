@@ -534,6 +534,26 @@ public partial class Root : Node2D {
       }
     }
 
+    private DialogTrigger? _DialogTriggers_NowWhatDoIDo;
+    public DialogTrigger DialogTriggers_NowWhatDoIDo {
+      get {
+        if (_DialogTriggers_NowWhatDoIDo == null) {
+          _DialogTriggers_NowWhatDoIDo = parent.GetNode<DialogTrigger>("DialogTriggers/NowWhatDoIDo");
+        }
+        return _DialogTriggers_NowWhatDoIDo;
+      }
+    }
+
+    private DialogTrigger? _DialogTriggers_NowWhatDoIDo2;
+    public DialogTrigger DialogTriggers_NowWhatDoIDo2 {
+      get {
+        if (_DialogTriggers_NowWhatDoIDo2 == null) {
+          _DialogTriggers_NowWhatDoIDo2 = parent.GetNode<DialogTrigger>("DialogTriggers/NowWhatDoIDo2");
+        }
+        return _DialogTriggers_NowWhatDoIDo2;
+      }
+    }
+
     private Cannon? _Cannon;
     public Cannon Cannon {
       get {

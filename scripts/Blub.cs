@@ -15,7 +15,7 @@ public partial class Blub : CharacterBody2D {
   private bool isOnLadder = false;
   private float maxXVelocity = 300;
   public Vector2 FacingDirection = new Vector2(0, 0);
-  public bool HasVortexGun = Globals.Debug;
+  public bool HasVortexGun = Globals.Debug || Globals.DebugHasRiftGun;
   public bool LastActionWasMouse = false;
 
   public override void _Process(double deltaTime) {

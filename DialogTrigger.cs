@@ -19,6 +19,8 @@ public enum DialogTriggerName {
   GetVortexGun,
   LinkMailbox,
   LostLink,
+  NowWhatDoIDo,
+  PhewFinallyOut,
 }
 
 public partial class DialogTrigger : Node2D {

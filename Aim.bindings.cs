@@ -47,6 +47,16 @@ public partial class Aim : Node2D {
       }
     }
 
+    private Label? _TooClose;
+    public Label TooClose {
+      get {
+        if (_TooClose == null) {
+          _TooClose = parent.GetNode<Label>("TooClose");
+        }
+        return _TooClose;
+      }
+    }
+
   }
 
   public AimNodes? _Nodes;

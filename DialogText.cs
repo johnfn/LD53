@@ -71,5 +71,17 @@ public class DialogText {
       "I should be careful.",
       "But I am hopeful that if I proceed, I will find more mailboxes to link with."
     },
+
+    [DialogTriggerName.NowWhatDoIDo] = new List<string> {
+      "Hmm. There is no clear path forward.",
+      "My sensors indicate that there may be paths beneath the ground.",
+      "But how do I get to them?"
+    },
+
+    [DialogTriggerName.PhewFinallyOut] = new List<string> {
+      "Phew, finally I made it out of there.",
+      "I was starting to feel a little claustrophobic.",
+      "I wonder what's next?"
+    },
   };
 }
