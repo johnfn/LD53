@@ -64,6 +64,16 @@ public partial class Audio : Node2D {
       }
     }
 
+    private AudioStreamPlayer? _Music;
+    public AudioStreamPlayer Music {
+      get {
+        if (_Music == null) {
+          _Music = parent.GetNode<AudioStreamPlayer>("Music");
+        }
+        return _Music;
+      }
+    }
+
   }
 
   public AudioNodes? _Nodes;
