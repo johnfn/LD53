@@ -48,7 +48,7 @@ public partial class Aim : Node2D {
 
           foreach (var mailbox in allMailboxes) {
             if (mailbox is Mailbox mailboxNode) {
-              mailboxNode.ClearPortal();
+              mailboxNode.ClearPortal(true);
             }
           }
         }
