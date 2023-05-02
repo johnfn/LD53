@@ -24,6 +24,16 @@ public partial class HeadsUpDisplay : CanvasLayer {
       }
     }
 
+    private Label? _RActionLabel;
+    public Label RActionLabel {
+      get {
+        if (_RActionLabel == null) {
+          _RActionLabel = parent.GetNode<Label>("RActionLabel");
+        }
+        return _RActionLabel;
+      }
+    }
+
     private AnimationPlayer? _AnimationPlayer;
     public AnimationPlayer AnimationPlayer {
       get {

@@ -25,6 +25,10 @@ public partial class Blub : CharacterBody2D {
     if (!IsFrozen) {
       ProcessKeyboardInput();
       CheckForDialog();
+
+      if (Input.IsActionJustPressed("reset")) {
+        DieAndRespawn();
+      }
     }
   }
 

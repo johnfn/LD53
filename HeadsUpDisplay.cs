@@ -67,5 +67,9 @@ public partial class HeadsUpDisplay : CanvasLayer {
       Nodes.EActionLabel.Text = "";
       Nodes.EActionLabel.Modulate = new Color(1, 1, 1, 0);
     }
+
+    if (SaveStation.ActiveSaveStation != null) {
+      Nodes.RActionLabel.Text = "R: Reset";
+    }
   }
 }
