@@ -31,11 +31,18 @@ public partial class Dialog : PanelContainer {
           await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 
           if (Input.IsActionJustPressed("swap")) {
+
+            Audio.Instance.Nodes.ChirpDone.Play();
             goto outer;
           }
         }
 
         Nodes.VBoxContainer_MarginContainer_Label.VisibleCharacters += 1;
+
+        // if not already playing...
+        if (Audio.Instance.Nodes.Chirp.GetPlaybackPosition() > 0.06 || !Audio.Instance.Nodes.Chirp.Playing) {
+          Audio.Instance.Nodes.Chirp.Play();
+        }
       }
 
     outer:

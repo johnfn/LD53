@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj81446gsieds"]
+
+[ext_resource type="Script" path="res://Audio.cs" id="1_qrabu"]
+[ext_resource type="AudioStream" uid="uid://cu8ohfa6h6x5i" path="res://assets/chirp.mp3" id="1_v7wju"]
+[ext_resource type="AudioStream" uid="uid://b7vl4vrnoaoa4" path="res://assets/chirp_done.mp3" id="3_6vo34"]
+[ext_resource type="AudioStream" uid="uid://c7gtjed2qgisp" path="res://assets/warp.mp3" id="4_y1vxq"]
+[ext_resource type="AudioStream" uid="uid://kuhi636j46m5" path="res://assets/create portal.mp3" id="5_85vtl"]
+[ext_resource type="AudioStream" uid="uid://2dbrjffvjrjg" path="res://assets/close portal.mp3" id="6_d50sm"]
+
+[node name="Audio" type="Node2D"]
+script = ExtResource("1_qrabu")
+
+[node name="Chirp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_v7wju")
+
+[node name="ChirpDone" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6vo34")
+
+[node name="Warp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_y1vxq")
+
+[node name="CreatePortal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_85vtl")
+
+[node name="ClosePortal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_d50sm")

@@ -664,6 +664,16 @@ public partial class Root : Node2D {
       }
     }
 
+    private Audio? _Audio;
+    public Audio Audio {
+      get {
+        if (_Audio == null) {
+          _Audio = parent.GetNode<Audio>("Audio");
+        }
+        return _Audio;
+      }
+    }
+
   }
 
   public RootNodes? _Nodes;

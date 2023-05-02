@@ -38,6 +38,8 @@ public partial class Aim : Node2D {
           portalSource.CreatePortalAt(
             Nodes.Reticle.GlobalPosition
           );
+
+          Audio.Instance.Nodes.CreatePortal.Play();
         }
       } else {
         // dont disable initial portals b4 we even used them.

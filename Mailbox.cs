@@ -92,6 +92,7 @@ public partial class Mailbox : Node2D {
         player.Nodes.Graphic.Visible = true;
 
         if (Input.IsActionJustPressed("swap")) {
+          Audio.Instance.Nodes.Warp.Play();
           Root.Instance.Nodes.Blub.GlobalPosition = Root.Instance.Nodes.Blub.GlobalPosition - portalDelta;
         }
       } else if (playerRect.Intersects(DestRect)) {
@@ -104,6 +105,7 @@ public partial class Mailbox : Node2D {
         player.Nodes.Graphic.Visible = true;
 
         if (Input.IsActionJustPressed("swap")) {
+          Audio.Instance.Nodes.Warp.Play();
           Root.Instance.Nodes.Blub.GlobalPosition = Root.Instance.Nodes.Blub.GlobalPosition + portalDelta;
         }
       } else {
@@ -153,7 +155,7 @@ public partial class Mailbox : Node2D {
     return sourceTileMap.MapToLocal(sourceCenter - new Vector2I(PortalRadius, PortalRadius)) - new Vector2(16, 16);
   }
 
-  public void ClearPortal() {
+  public void ClearPortal(bool del = false) {
     var sourceTileMap = Root.Instance.Nodes.TileMap;
     var destTileMap = Root.Instance.Nodes.DarkWorld;
 
@@ -176,6 +178,10 @@ public partial class Mailbox : Node2D {
         destTileMap.GetCellAtlasCoords(0, tile),
         0
       );
+    }
+
+    if (prevPortalTiles.Count > 0) {
+      Audio.Instance.Nodes.ClosePortal.Play();
     }
 
     // Clear previous state.

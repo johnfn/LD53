@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cighlqxcgtwkt"]
+[gd_scene load_steps=36 format=3 uid="uid://cighlqxcgtwkt"]
 
 [ext_resource type="Script" path="res://scripts/Root.cs" id="1_g2nw5"]
 [ext_resource type="Texture2D" uid="uid://br88iau15i78" path="res://assets/tiles.png" id="1_vsjbr"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cs4nkhavn4so2" path="res://fake_blub.tscn" id="16_c4luv"]
 [ext_resource type="PackedScene" uid="uid://beiqxlnonf7en" path="res://item.tscn" id="17_54dk1"]
 [ext_resource type="PackedScene" uid="uid://buhcbq4gj6g5y" path="res://link_remover.tscn" id="18_vxb67"]
+[ext_resource type="PackedScene" uid="uid://bj81446gsieds" path="res://audio.tscn" id="19_tibev"]
 
 [sub_resource type="Gradient" id="Gradient_i1pgv"]
 offsets = PackedFloat32Array(0.279221, 1)
@@ -1117,3 +1118,5 @@ scale = Vector2(11.9245, 32.5645)
 [node name="LinkRemover2" parent="." instance=ExtResource("18_vxb67")]
 position = Vector2(7008, 2784)
 scale = Vector2(11.9245, 32.5645)
+
+[node name="Audio" parent="." instance=ExtResource("19_tibev")]
