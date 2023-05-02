@@ -81,7 +81,13 @@ public class DialogText {
     [DialogTriggerName.PhewFinallyOut] = new List<string> {
       "Phew, finally I made it out of there.",
       "I was starting to feel a little claustrophobic.",
-      "I wonder what's next?"
+      "I wonder what's next?",
+      "JOHNFN: LITERALLY NOTHING, THE GAME IS OVER. GOODBYE.",
+      "JOHNFN: ...",
+      "JOHNFN: ...",
+      "JOHNFN: ...",
+      "JOHNFN: That's it. That's the end of the game.",
+      "JOHNFN: Thanks for playing!",
     },
   };
 }
